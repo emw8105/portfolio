@@ -10,24 +10,41 @@ export default function ExperiencePage() {
       company: "ACM UTD",
       location: "Dallas, TX",
       period: "Current",
-      type: "Leadership",
+      type: "Organization Role",
       description:
         "Leading technical initiatives and development projects for UTD's largest computer science organization.",
-      technologies: ["JavaScript", "TypeScript", "React", "Node.js"],
+      technologies: ["React", "TypeScript", "Python", "Golang", "AWS", "GCP", "Firebase"],
+      highlights: [
+        "Developed internal tools to streamline operations",
+        "Managed and mentored team of 45+ developers",
+        "Conducted 100+ interviews for various technical roles",
+        "Led transition to data consolidation and automated pipelines",
+      ],
+    },
+    {
+      title: "Lead Developer",
+      company: "ACM UTD",
+      location: "Dallas, TX",
+      period: "Spring 2025",
+      type: "Organization Role",
+      description:
+        "Worked to build the SAGE application by leading the development and managing a team of 10 officers.",
+      technologies: ["React", "Typescript", "Python", "AWS Lambda", "AWS S3", "AWS DynamoDB"],
       highlights: [
         "Built Chrome extension for UTD officers",
-        "Led SAGE website development",
-        "Mentored development team",
+        "Led SAGE website and backend development",
+        "Created several data ingestion and ETL pipelines",
+        "Architected extensive cloud infrastructure on AWS",
       ],
     },
     {
       title: "Software Engineer Intern",
       company: "JPMorgan Chase & Co.",
       location: "Dallas, TX",
-      period: "Summer 2023",
+      period: "Summer 2025",
       type: "Internship",
-      description: "Developed enterprise financial systems and collaborated on large-scale applications.",
-      technologies: ["Java", "Python", "Spring Framework", "SQL"],
+      description: "Developed maintenance features by extensively integrating existing systems for the external account import page to automate manual toil.",
+      technologies: ["React", "Typescript", "Java", "Spring Framework", "SQL"],
       highlights: [
         "Delivered features for critical systems",
         "Improved system performance",
@@ -35,14 +52,32 @@ export default function ExperiencePage() {
       ],
     },
     {
-      title: "Freelance Developer",
-      company: "Independent",
+      title: "Fullstack Software Developer Intern",
+      company: "Verizon",
       location: "Dallas, TX",
-      period: "Ongoing",
-      type: "Freelance",
-      description: "Building custom web applications and professional websites for clients.",
-      technologies: ["React", "Next.js", "Tailwind CSS", "Vercel"],
-      highlights: ["Clinical psychologist website", "Multiple successful projects", "Long-term client relationships"],
+      period: "Summer 2024",
+      type: "Internship",
+      description: "Developed enterprise financial systems and collaborated on large-scale applications.",
+      technologies: ["React", "Node.js", "Express.js", "SQL"],
+      highlights: [
+        "Delivered features for critical systems",
+        "Improved system performance",
+        "Collaborated with senior engineers",
+      ],
+    },
+    {
+      title: "Software Developer Intern",
+      company: "Voxai Solutions",
+      location: "Dallas, TX",
+      period: "Summer 2023 - Summer 2024",
+      type: "Internship",
+      description: "Developed enterprise financial systems and collaborated on large-scale applications.",
+      technologies: ["C#", ".NET", "Node.js", "AWS Lambda", "SQL"],
+      highlights: [
+        "Delivered features for critical systems",
+        "Improved system performance",
+        "Collaborated with senior engineers",
+      ],
     },
   ]
 
@@ -91,7 +126,7 @@ export default function ExperiencePage() {
                       <div className="grid gap-2">
                         {exp.highlights.map((highlight, idx) => (
                           <div key={idx} className="flex items-start gap-2">
-                            <div className="w-1.5 h-1.5 bg-gradient-to-r from-primary to-secondary rounded-full mt-2 flex-shrink-0" />
+                            <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
                             <span className="text-sm">{highlight}</span>
                           </div>
                         ))}
