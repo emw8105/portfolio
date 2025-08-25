@@ -47,18 +47,18 @@ export default function AboutPage() {
                   <h2 className="text-2xl font-bold font-serif mb-4">My Journey</h2>
                   <div className="space-y-4 text-foreground leading-relaxed">
                     <p>
-                      I'm Evan, a CS graduate student at UTD with a passion for building systems that matter. Currently
+                      I&apos;m Evan, a CS graduate student at UTD with a passion for building systems that matter. Currently
                       serving as Director of Development at ACM UTD, where I lead technical initiatives and mentor
                       fellow developers.
                     </p>
                     <p>
                       My experience spans from enterprise systems at JPMorgan Chase to personal projects like Wallify
-                      and freelance work. I'm drawn to the intersection of elegant code and real-world impact, whether
-                      that's optimizing financial systems or turning Spotify playlists into art.
+                      and freelance work. I&apos;m drawn to the intersection of elegant code and real-world impact, whether
+                      that&apos;s optimizing financial systems or turning Spotify playlists into art.
                     </p>
                     <p>
                       I believe in continuous learning, clean architecture, and building software that people actually
-                      want to use. When I'm not coding, you'll find me exploring new technologies or working on side
+                      want to use. When I&apos;m not coding, you&apos;ll find me exploring new technologies or working on side
                       projects that solve interesting problems.
                     </p>
                   </div>
@@ -73,7 +73,7 @@ export default function AboutPage() {
                 </div>
                 <h3 className="text-2xl font-bold font-serif">Core Expertise</h3>
               </div>
-              <p className="text-muted-foreground mb-6">Technologies I'm truly skilled with and use regularly</p>
+              <p className="text-muted-foreground mb-6">Technologies I&apos;m truly skilled with and use regularly</p>
               <div className="flex flex-wrap gap-3">
                 {coreSkills.map((skill) => (
                   <Badge

@@ -383,7 +383,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <Card className="glass-card p-8">
             <h3 className="text-xl font-bold font-serif mb-4">Future Enhancements</h3>
             <p className="text-muted-foreground mb-4">
-              Here are some ideas I'm considering for future versions of this project:
+              Here are some ideas I&apos;m considering for future versions of this project:
             </p>
             <ul className="space-y-3">
               {project.futureEnhancements.map((enhancement, index) => (

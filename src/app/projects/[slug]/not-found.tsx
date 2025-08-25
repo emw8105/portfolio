@@ -18,7 +18,7 @@ export default function ProjectNotFound() {
 
             <h1 className="text-3xl font-bold font-serif mb-4">Project Not Found</h1>
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              The project you're looking for doesn't exist or may have been moved. Check out my other projects or return
+              The project you&apos;re looking for doesn&apos;t exist or may have been moved. Check out my other projects or return
               to the main projects page.
             </p>
 
