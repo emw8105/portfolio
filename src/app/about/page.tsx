@@ -2,6 +2,7 @@ import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { User, Heart, Code2 } from "lucide-react"
+import Image from "next/image"
 
 export default function AboutPage() {
   const coreSkills = [
@@ -44,19 +45,28 @@ export default function AboutPage() {
 
           <div className="space-y-12">
             <Card className="glass-card p-8 glow-hover transition-all duration-500">
-              <div className="flex items-start gap-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center flex-shrink-0 glow">
-                  <User className="h-6 w-6 text-white" />
+              <div className="flex flex-col sm:flex-row items-start gap-6">
+                <div className="relative flex-shrink-0 mx-auto sm:mx-0">
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-gradient-to-br from-purple-500 to-pink-500 glow">
+                    <Image
+                      src="/images/profile.jpg"
+                      alt="Evan Wright"
+                      width={160}
+                      height={160}
+                      className="w-full h-full object-cover"
+                      priority
+                    />
+                  </div>
+                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 -z-10 blur-xl" />
                 </div>
-                <div>
+
+                <div className="flex-1 text-center sm:text-left">
                   <h2 className="text-2xl font-bold font-serif mb-4">Hi There! 👋</h2>
                   <div className="space-y-4 text-foreground leading-relaxed">
-                    <p>
-                      My name is Evan Wright, I&apos;m an experienced software engineer currently pursuing my Master&apos;s in Computer Science studying Intelligent Systems at UT Dallas.
-                    </p>
-                    <p>
-                      I serve as the Director of Development for ACM UTD, the largest student organization on campus, where I lead my division of 45 officers to build and maintain web applications that support our members, officers, and the student body.
-                    </p>
+                    <p>🎓 CS grad student @ UT Dallas (Intelligent Systems)</p>
+                    <p>👥 Director of Development @ ACM UTD (leading 45 officers)</p>
+                    <p>💻 Full-stack + cloud systems → love building useful stuff</p>
+                    <p>🎲 D&D nerd, music curator, community builder</p>
                   </div>
                 </div>
               </div>
