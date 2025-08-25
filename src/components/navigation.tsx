@@ -64,7 +64,7 @@ export function Navigation() {
                                 </a>
                             </Button>
                             <Button variant="ghost" size="sm" asChild>
-                                <a href="mailto:evan@example.com">
+                                <a href="mailto:evanmatt.wright@gmail.com">
                                     <Mail className="h-4 w-4" />
                                 </a>
                             </Button>
@@ -108,7 +108,7 @@ export function Navigation() {
                                     </a>
                                 </Button>
                                 <Button variant="ghost" size="sm" asChild>
-                                    <a href="mailto:evan@example.com">
+                                    <a href="mailto:evanmatt.wright@gmail.com">
                                         <Mail className="h-4 w-4" />
                                     </a>
                                 </Button>
