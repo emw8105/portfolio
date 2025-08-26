@@ -18,6 +18,7 @@ import {
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { projectsData } from "@/lib/projects"
+import ProjectGallery from "@/components/ui/project-gallery"
 
 interface ProjectPageProps {
   params: {
@@ -98,22 +99,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </Card>
 
           {/* Project Images */}
-          <Card className="glass-card p-8 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-              <ImageIcon className="h-6 w-6 text-primary" />
-              <h2 className="text-2xl font-bold font-serif">Project Gallery</h2>
-            </div>
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.images && project.images.map((image, index) => (
-                <div key={index} className="space-y-3">
-                  <div className="aspect-video bg-muted rounded-lg overflow-hidden">
-                    <img src={image.url || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
-                  </div>
-                  <p className="text-sm text-muted-foreground">{image.caption}</p>
-                </div>
-              ))}
-            </div>
-          </Card>
+          <ProjectGallery project={project} />
 
           {/* Development Journey */}
           <Card className="glass-card p-8 mb-8">
