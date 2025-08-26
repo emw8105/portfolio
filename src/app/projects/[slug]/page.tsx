@@ -17,182 +17,7 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-
-const projectsData = {
-  wallify: {
-    id: "wallify",
-    title: "Wallify",
-    subtitle: "Transform Your Spotify Playlists into Beautiful Wallpapers",
-    description:
-      "A web application that connects to your Spotify account and integrates your top listening activity to generate customized wallpapers.",
-    category: "Web Application",
-    status: "Completed",
-    year: "Fall 2024",
-    duration: "3 months",
-    team: "Solo Project",
-    technologies: ["Typescript", "React", "Node.js", "Express.js", "Go", "AWS EC2", "AWS DynamoDB", "Docker", "Spotify API", "OAuth 2.0"],
-    githubUrl: "https://github.com/emw8105/Wallify",
-    liveUrl: "https://wallify.doypid.com/",
-    images: [
-      {
-        url: "/projects/wallify-login.png",
-        alt: "Login screen",
-        caption: "Login screen with Spotify OAuth integration",
-      },
-      {
-        url: "/projects/wallify-options-menu.png",
-        alt: "Wallify main interface",
-        caption: "Main interface showing style selection and customization options",
-      },
-      {
-        url: "/projects/wallify-grid-andrew.png",
-        alt: "Generated wallpaper example",
-        caption: "Example of generated wallpaper using playlist album artwork",
-      },
-    ],
-    overview:
-      "The idea for Wallify began when a friend asked me to make an app to generate a phone background using his top Spotify activity. I started with writing a Node.js script to perform the Spotify API OAuth flow and fetch the user's top playlists and tracks, and then I realized the concept could be expanded into a full web application.",
-    challenge:
-      "There were several challenges involved with this project. When creating the frontend, I had to follow strict Spotify branding guidelines to ensure the app would be approved for public use. On the backend, the OAuth flow was quite tricky once implemented as a full-stack application rather than standalone, and I even rewrote the original Express.js server into Go, which I had never used before. Deploying the Go server to AWS EC2 was also a new experience for me, I had to work with nginx reverse proxies, buy my cloudflare domain (doypid.com), handle AWS IAM roles and EC2 configurations, write deployment scripts, work with Docker to containerize my application, and so much more.",
-    solution:
-      "The app was built using React and Typescript with tailwind for the frontend, with a Dockerized Go server deployed to an EC2 instance, storing data in DynamoDB and allowing users to modify their displayed data to customize their own wallpapers. Users can download the React fragment that contains the generated wallpaper and use it as their background or just as a collection to see their top listening activity.",
-    learnings: [
-      "Deep dive into the Spotify Web API and OAuth 2.0 authentication flow",
-      "AWS EC2 deployment, nginx configuration, and Docker containerization",
-      "Go programming language and ecosystem",
-      "Cloudflare domain management and DNS configuration",
-    ],
-    features: [
-      "Spotify OAuth 2.0 authentication for secure user login",
-      "Fetch and display user's top playlists and tracks",
-      "Multiple wallpaper styles and customization options",
-      "Responsive design for mobile and desktop",
-      "High-resolution wallpaper generation and download",
-      "Activity data cached for quick retrieval and reduced API calls",
-    ],
-    futureEnhancements: [
-      "Add cookie or account-based user profiles for saving preferences",
-      "Improve the mobile experience with a dedicated mobile layout",
-      "Petition the API to allow public app access without review",
-    ],
-  },
-  "wordle-solver": {
-    id: "wordle-solver",
-    title: "Wordle Solver",
-    subtitle: "Smart Strategy Tool for Daily Wordle Puzzles",
-    description:
-      "An intelligent web application that helps solve Wordle puzzles using optimal strategies, letter frequency analysis, and probability calculations.",
-    category: "Web Application",
-    status: "Completed",
-    year: "2024",
-    duration: "2 months",
-    team: "Solo Project",
-    technologies: ["JavaScript", "React", "Algorithm Design", "Data Analysis", "CSS3"],
-    githubUrl: "https://github.com/emw8105/wordle-solver",
-    liveUrl: null,
-    images: [
-      {
-        url: "/example.png",
-        alt: "Wordle Solver main interface",
-        caption: "Main solving interface with letter frequency visualization",
-      },
-      {
-        url: "/example.png",
-        alt: "Algorithm visualization",
-        caption: "Algorithm visualization showing word suggestion process",
-      },
-      {
-        url: "/example.png",
-        alt: "Statistics dashboard",
-        caption: "Performance statistics and solving pattern analysis",
-      },
-    ],
-    overview:
-      "After getting frustrated with my inconsistent Wordle performance (and watching my friend Brian consistently solve puzzles faster than me), I decided to build a tool that could help me understand the optimal strategies for word guessing games. This project became an exploration into probability, linguistics, and game theory.",
-    challenge:
-      "The main challenge was developing an algorithm that could balance multiple factors: letter frequency in English, positional probability, and the elimination of impossible words based on previous guesses. I needed to create a system that could think several moves ahead while remaining fast enough for real-time suggestions.",
-    solution:
-      "I implemented a scoring system that weighs each potential guess based on information theory principles. The algorithm calculates the expected information gain for each possible word, considering letter frequency, position probability, and the current game state. The interface provides real-time suggestions and explains the reasoning behind each recommendation.",
-    learnings: [
-      "Information theory and entropy calculations for optimal decision making",
-      "English language statistics and letter frequency analysis",
-      "Algorithm optimization for real-time performance",
-      "Game theory principles applied to word puzzle solving",
-    ],
-    features: [
-      "Real-time optimal word suggestions based on current game state",
-      "Letter frequency analysis and visualization",
-      "Multiple solving strategies (conservative, aggressive, balanced)",
-      "Performance tracking and statistics",
-      "Educational mode explaining the reasoning behind suggestions",
-      "Custom word list support for different puzzle variations",
-    ],
-    futureEnhancements: [
-      "Add support for other word games like Absurdle and Quordle",
-      "Implement machine learning to improve suggestions based on user success",
-      "Create a practice mode with unlimited puzzles",
-      "Add multiplayer features for competitive solving",
-    ],
-  },
-  "form-autocomplete-ext": {
-    id: "form-autocomplete-ext",
-    title: "Form Autocomplete Extension",
-    subtitle: "Streamlining UTD Administrative Processes",
-    description:
-      "A Chrome extension designed for UTD club officers to automate the tedious special room request process through intelligent form filling.",
-    category: "Browser Extension",
-    status: "Completed",
-    year: "2024",
-    duration: "1 month",
-    team: "ACM UTD Development Team",
-    technologies: ["JavaScript", "Chrome Extension APIs", "HTML/CSS", "Manifest V3", "Local Storage"],
-    githubUrl: "https://github.com/acmutd/form-autocomplete-ext",
-    liveUrl: null,
-    images: [
-      {
-        url: "/example.png",
-        alt: "Extension popup interface",
-        caption: "Extension popup showing saved form data and settings",
-      },
-      {
-        url: "/example.png",
-        alt: "Automated form filling",
-        caption: "Demonstration of automatic form filling in action",
-      },
-      {
-        url: "/example.png",
-        alt: "Settings and customization",
-        caption: "Settings page for customizing form data and preferences",
-      },
-    ],
-    overview:
-      "As part of my role as Director of Development at ACM UTD, I noticed that our officers were spending significant time filling out repetitive room request forms for events. The process involved the same information being entered multiple times across different forms, which was both time-consuming and error-prone.",
-    challenge:
-      "The challenge was creating a browser extension that could intelligently detect and fill UTD's specific form fields while being flexible enough to handle form updates and variations. I also needed to ensure the extension was secure, user-friendly, and compliant with Chrome's Manifest V3 requirements.",
-    solution:
-      "I developed a Chrome extension that stores commonly used information (club details, officer information, event types) and automatically populates form fields when detected. The extension uses content scripts to identify form patterns and provides a simple interface for managing saved data and customizing auto-fill behavior.",
-    learnings: [
-      "Chrome Extension development with Manifest V3 architecture",
-      "Content script injection and DOM manipulation techniques",
-      "Browser security models and permission management",
-      "User experience design for productivity tools",
-    ],
-    features: [
-      "Automatic detection and filling of UTD room request forms",
-      "Secure local storage of frequently used information",
-      "Customizable form field mapping and data management",
-      "One-click form completion with review option",
-      "Support for multiple user profiles and club information",
-      "Privacy-focused design with no external data transmission",
-    ],
-    futureEnhancements: [
-      "Expand support to other UTD administrative forms",
-      "Add form template creation for custom scenarios",
-      "Implement data export/import for team sharing",
-      "Create analytics dashboard for form completion tracking",
-    ],
-  },
-}
+import { projectsData } from "@/lib/projects"
 
 interface ProjectPageProps {
   params: {
@@ -279,7 +104,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <h2 className="text-2xl font-bold font-serif">Project Gallery</h2>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {project.images.map((image, index) => (
+              {project.images && project.images.map((image, index) => (
                 <div key={index} className="space-y-3">
                   <div className="aspect-video bg-muted rounded-lg overflow-hidden">
                     <img src={image.url || "/placeholder.svg"} alt={image.alt} className="w-full h-full object-cover" />
@@ -322,7 +147,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               <div>
                 <h3 className="text-lg font-semibold mb-3">Key Learnings</h3>
                 <ul className="space-y-2">
-                  {project.learnings.map((learning, index) => (
+                  {project.learnings && project.learnings.map((learning, index) => (
                     <li key={index} className="flex items-start gap-2">
                       <div className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 flex-shrink-0" />
                       <span className="text-foreground">{learning}</span>
@@ -367,7 +192,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           <Card className="glass-card p-8 mb-8">
             <h3 className="text-xl font-bold font-serif mb-4">Complete Feature Set</h3>
             <div className="grid md:grid-cols-2 gap-4">
-              {project.features.map((feature, index) => (
+              {project.features && project.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
                   <span className="text-sm text-foreground">{feature}</span>
@@ -383,7 +208,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               Here are some ideas I&apos;m considering for future versions of this project:
             </p>
             <ul className="space-y-3">
-              {project.futureEnhancements.map((enhancement, index) => (
+              {project.futureEnhancements && project.futureEnhancements.map((enhancement, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full mt-2 flex-shrink-0" />
                   <span className="text-foreground">{enhancement}</span>
