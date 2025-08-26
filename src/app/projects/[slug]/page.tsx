@@ -24,57 +24,56 @@ const projectsData = {
     title: "Wallify",
     subtitle: "Transform Your Spotify Playlists into Beautiful Wallpapers",
     description:
-      "A web application that connects to your Spotify account and transforms your favorite playlists into stunning, personalized wallpapers using album artwork and color analysis.",
+      "A web application that connects to your Spotify account and integrates your top listening activity to generate customized wallpapers.",
     category: "Web Application",
-    status: "In Progress",
-    year: "2024",
+    status: "Completed",
+    year: "Fall 2024",
     duration: "3 months",
     team: "Solo Project",
-    technologies: ["JavaScript", "React", "Node.js", "Spotify API", "Canvas API", "Express", "OAuth 2.0"],
+    technologies: ["Typescript", "React", "Node.js", "Express.js", "Go", "AWS EC2", "AWS DynamoDB", "Docker", "Spotify API", "OAuth 2.0"],
     githubUrl: "https://github.com/emw8105/Wallify",
-    liveUrl: null,
+    liveUrl: "https://wallify.doypid.com/",
     images: [
       {
-        url: "/example.png",
-        alt: "Wallify main interface",
-        caption: "Main interface showing playlist selection and preview",
+        url: "/projects/wallify-login.png",
+        alt: "Login screen",
+        caption: "Login screen with Spotify OAuth integration",
       },
       {
-        url: "/example.png",
+        url: "/projects/wallify-options-menu.png",
+        alt: "Wallify main interface",
+        caption: "Main interface showing style selection and customization options",
+      },
+      {
+        url: "/projects/wallify-grid-andrew.png",
         alt: "Generated wallpaper example",
         caption: "Example of generated wallpaper using playlist album artwork",
       },
-      {
-        url: "/example.png",
-        alt: "Color analysis feature",
-        caption: "Color palette extraction and analysis from album covers",
-      },
     ],
     overview:
-      "Wallify was born from my love of music and design. I wanted to create something that could bridge the gap between my Spotify listening habits and my desktop aesthetic. The idea was simple: take the visual elements from my favorite playlists and turn them into beautiful wallpapers that reflect my musical taste.",
+      "The idea for Wallify began when a friend asked me to make an app to generate a phone background using his top Spotify activity. I started with writing a Node.js script to perform the Spotify API OAuth flow and fetch the user's top playlists and tracks, and then I realized the concept could be expanded into a full web application.",
     challenge:
-      "The main challenge was working with the Spotify API to fetch playlist data and album artwork, then processing these images to create cohesive, visually appealing wallpapers. I had to learn about color theory, image processing, and canvas manipulation to make the generated wallpapers look professional rather than just random collages.",
+      "There were several challenges involved with this project. When creating the frontend, I had to follow strict Spotify branding guidelines to ensure the app would be approved for public use. On the backend, the OAuth flow was quite tricky once implemented as a full-stack application rather than standalone, and I even rewrote the original Express.js server into Go, which I had never used before. Deploying the Go server to AWS EC2 was also a new experience for me, I had to work with nginx reverse proxies, buy my cloudflare domain (doypid.com), handle AWS IAM roles and EC2 configurations, write deployment scripts, work with Docker to containerize my application, and so much more.",
     solution:
-      "I built a system that analyzes the dominant colors in album artwork, creates harmonious color palettes, and arranges the images using various layout algorithms. The app uses the HTML5 Canvas API for image manipulation and provides multiple layout options including grid, mosaic, and gradient overlay styles.",
+      "The app was built using React and Typescript with tailwind for the frontend, with a Dockerized Go server deployed to an EC2 instance, storing data in DynamoDB and allowing users to modify their displayed data to customize their own wallpapers. Users can download the React fragment that contains the generated wallpaper and use it as their background or just as a collection to see their top listening activity.",
     learnings: [
       "Deep dive into the Spotify Web API and OAuth 2.0 authentication flow",
-      "Image processing techniques using Canvas API and color analysis algorithms",
-      "Responsive design patterns for complex interactive applications",
-      "User experience design for creative tools and customization interfaces",
+      "AWS EC2 deployment, nginx configuration, and Docker containerization",
+      "Go programming language and ecosystem",
+      "Cloudflare domain management and DNS configuration",
     ],
     features: [
-      "Spotify playlist integration with OAuth authentication",
-      "Multiple wallpaper layout options (grid, mosaic, gradient)",
-      "Color palette extraction and harmony analysis",
-      "Custom resolution support for different screen sizes",
-      "Real-time preview with adjustable parameters",
-      "Export functionality for high-quality wallpapers",
+      "Spotify OAuth 2.0 authentication for secure user login",
+      "Fetch and display user's top playlists and tracks",
+      "Multiple wallpaper styles and customization options",
+      "Responsive design for mobile and desktop",
+      "High-resolution wallpaper generation and download",
+      "Activity data cached for quick retrieval and reduced API calls",
     ],
     futureEnhancements: [
-      "Add support for Apple Music and other streaming services",
-      "Implement AI-powered layout suggestions based on music genre",
-      "Create mobile app version for on-the-go wallpaper generation",
-      "Add social sharing features to showcase created wallpapers",
+      "Add cookie or account-based user profiles for saving preferences",
+      "Improve the mobile experience with a dedicated mobile layout",
+      "Petition the API to allow public app access without review",
     ],
   },
   "wordle-solver": {
@@ -335,22 +334,21 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </Card>
 
           {/* Technical Details */}
-          <div className="grid lg:grid-cols-2 gap-8 mb-8">
-            <Card className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <Code className="h-5 w-5 text-accent" />
-                <h3 className="text-xl font-bold font-serif">Technologies Used</h3>
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech) => (
-                  <Badge key={tech} variant="secondary" className="text-sm">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </Card>
+          <Card className="glass-card p-8 mb-8">
+            <div className="flex items-center gap-3 mb-4">
+              <Code className="h-5 w-5 text-accent" />
+              <h3 className="text-xl font-bold font-serif">Technologies Used</h3>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {project.technologies.map((tech) => (
+                <Badge key={tech} variant="secondary" className="text-sm">
+                  {tech}
+                </Badge>
+              ))}
+            </div>
+          </Card>
 
-            <Card className="glass-card p-6">
+          {/* <Card className="glass-card p-6">
               <div className="flex items-center gap-3 mb-4">
                 <Rocket className="h-5 w-5 text-primary" />
                 <h3 className="text-xl font-bold font-serif">Key Features</h3>
@@ -363,8 +361,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                   </li>
                 ))}
               </ul>
-            </Card>
-          </div>
+            </Card> */}
 
           {/* All Features */}
           <Card className="glass-card p-8 mb-8">
