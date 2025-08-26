@@ -12,8 +12,6 @@ import {
   Target,
   Lightbulb,
   Code,
-  Rocket,
-  ImageIcon,
 } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"

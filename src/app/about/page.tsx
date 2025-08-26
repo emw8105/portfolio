@@ -1,7 +1,7 @@
 import { Navigation } from "@/components/navigation"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { User, Heart, Code2 } from "lucide-react"
+import { Heart, Code2 } from "lucide-react"
 import Image from "next/image"
 
 export default function AboutPage() {

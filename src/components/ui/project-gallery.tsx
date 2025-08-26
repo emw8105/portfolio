@@ -1,5 +1,6 @@
 "use client"
 import { useState } from "react"
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
@@ -7,7 +8,22 @@ import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
-export default function ProjectGallery({ project }: { project: any }) {
+// Define proper types
+interface ProjectImage {
+    url: string
+    alt: string
+    caption: string
+}
+
+interface Project {
+    images?: ProjectImage[]
+}
+
+interface ProjectGalleryProps {
+    project: Project
+}
+
+export default function ProjectGallery({ project }: ProjectGalleryProps) {
     const [selectedImage, setSelectedImage] = useState<null | number>(null)
 
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
@@ -37,17 +53,19 @@ export default function ProjectGallery({ project }: { project: any }) {
                 <div className="relative">
                     {/* Carousel */}
                     <div ref={sliderRef} className="keen-slider">
-                        {project.images.map((image: any, index: number) => (
+                        {project.images.map((image: ProjectImage, index: number) => (
                             <div
                                 key={index}
                                 className="keen-slider__slide cursor-pointer"
                                 onClick={() => setSelectedImage(index)}
                             >
-                                <div className="aspect-video rounded-lg overflow-hidden bg-muted">
-                                    <img
+                                <div className="aspect-video rounded-lg overflow-hidden bg-muted relative">
+                                    <Image
                                         src={image.url || "/placeholder.svg"}
                                         alt={image.alt}
-                                        className="w-full h-full object-cover"
+                                        fill
+                                        className="object-cover"
+                                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                                     />
                                 </div>
                                 <p className="text-sm text-muted-foreground mt-2">{image.caption}</p>
@@ -80,13 +98,17 @@ export default function ProjectGallery({ project }: { project: any }) {
             {/* Lightbox Modal */}
             <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
                 <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 flex items-center justify-center bg-black">
-                    {selectedImage !== null && (
+                    {selectedImage !== null && project.images && (
                         <div className="flex flex-col items-center w-full">
-                            <img
-                                src={project.images[selectedImage].url}
-                                alt={project.images[selectedImage].alt}
-                                className="w-auto h-auto max-w-[90vw] max-h-[85vh] object-contain"
-                            />
+                            <div className="relative max-w-[90vw] max-h-[85vh]">
+                                <Image
+                                    src={project.images[selectedImage].url}
+                                    alt={project.images[selectedImage].alt}
+                                    width={800}
+                                    height={600}
+                                    className="w-auto h-auto max-w-[90vw] max-h-[85vh] object-contain"
+                                />
+                            </div>
                             <p className="text-sm text-muted-foreground mt-2 px-4 text-center max-w-[80ch]">
                                 {project.images[selectedImage].caption}
                             </p>
