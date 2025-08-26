@@ -49,7 +49,7 @@ export default function AboutPage() {
                 <div className="relative flex-shrink-0 mx-auto sm:mx-0">
                   <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-gradient-to-br from-purple-500 to-pink-500 glow">
                     <Image
-                      src="/images/profile.jpg"
+                      src="/images/EvanWright_headshot.jpg"
                       alt="Evan Wright"
                       width={160}
                       height={160}
@@ -65,8 +65,7 @@ export default function AboutPage() {
                   <div className="space-y-4 text-foreground leading-relaxed">
                     <p>🎓 CS grad student @ UT Dallas (Intelligent Systems)</p>
                     <p>👥 Director of Development @ ACM UTD (leading 45 officers)</p>
-                    <p>💻 Full-stack + cloud systems → love building useful stuff</p>
-                    <p>🎲 D&D nerd, music curator, community builder</p>
+                    <p>💻 Full-stack + cloud systems → I like building stuff</p>
                   </div>
                 </div>
               </div>
