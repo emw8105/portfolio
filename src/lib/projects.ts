@@ -37,7 +37,7 @@ export const projectsData: Record<string, Project> = {
         duration: "2 months",
         team: "Solo Project",
         technologies: [
-            "Go",
+            "Golang",
             "Python",
             "PyInstaller",
             "Next.js",
@@ -53,6 +53,11 @@ export const projectsData: Record<string, Project> = {
         githubUrl: "https://github.com/emw8105/keylogger",
         liveUrl: "http://keylogger-site.doypid.com/",
         images: [
+            {
+                url: "/projects/keylogger-architecture.png",
+                alt: "System Architecture Diagram",
+                caption: "Architectural overview showing client-server communication and cloud services.",
+            },
             {
                 url: "/projects/keylogger-landing.png",
                 alt: "Web Client UI",
