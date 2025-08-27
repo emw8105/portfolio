@@ -19,6 +19,9 @@ const spaceGrotesk = Space_Grotesk({
 
 export const metadata: Metadata = {
   title: "Evan Wright - Software Engineer Portfolio",
+  icons: {
+    icon: "/favicon.ico",
+  },
   description:
     "Portfolio showcasing software engineering projects and experience by Evan Wright",
 }
