@@ -25,6 +25,77 @@ export interface Project {
 }
 
 export const projectsData: Record<string, Project> = {
+    keylogger: {
+        id: "keylogger",
+        title: "Remote Keylogger System (PoC)",
+        subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System",
+        description:
+            "A system that collects, encrypts, and stores system information and key inputs from a client, utilizing secure data transmission, cloud-based storage, and web-based monitoring. Built for educational purposes.",
+        category: "System Engineering / Cloud System",
+        status: "Completed",
+        year: "Summer 2025",
+        duration: "2 months",
+        team: "Solo Project",
+        technologies: [
+            "Go",
+            "Python",
+            "PyInstaller",
+            "Next.js",
+            "Typescript",
+            "TailwindCSS",
+            "AWS EC2",
+            "AWS S3",
+            "Firebase",
+            "Linux/Bash Scripting",
+            "Cryptography (AES-GCM, RSA-OAEP)",
+            "Docker",
+        ],
+        githubUrl: "https://github.com/emw8105/keylogger",
+        liveUrl: "http://keylogger-site.doypid.com/",
+        images: [
+            {
+                url: "/projects/keylogger-landing.png",
+                alt: "Web Client UI",
+                caption: "The Next.js client homepage for downloading the executable and viewing logs.",
+            },
+            {
+                url: "/projects/keylogger-page.png",
+                alt: "Live Logs Dashboard",
+                caption: "The web interface displaying live, decrypted logs from connected systems.",
+            },
+            {
+                url: "/projects/keylogger-logs.png",
+                alt: "Log Data Example",
+                caption: "Example of decrypted log data showing keystrokes and system info.",
+            }
+        ],
+        overview:
+            "This project started as an exploration into secure client-server communication and a desire to understand tracking systems. The goal was to build a secure pipeline to capture system inputs and transmit them to a central server, by building a pipeline from the system-level client to the public-facing web interface.",
+        challenge:
+            "The primary challenge was ensuring end-to-end security. This involved implementing a robust cryptographic scheme (RSA for key exchange, AES-GCM for data encryption) to prevent the log contents from being accessible over a network during transmission. Since the client was written in Python and the server was written in Go, I had to work with different cryptography packages for encryption and decryption. I also had to manage multiple distinct parts of the system—a Python client that required compilation into a Windows executable, a Go server for secure API handling, and a Next.js frontend for data visualization and distribution. Each component introduced its own set of challenges, including environment variable management, cross-language data serialization, and cloud infrastructure setup on AWS.",
+        solution:
+            "The solution is a multi-layered system. The lightweight Python client, packaged with PyInstaller, securely captures keystrokes and system info. It performs a cryptographic handshake with the Go server to establish a secure AES session. The encrypted logs are then sent via an API endpoint to the Go server, which decrypts them and stores them in Firestore (Firebase database). A Next.js web client then fetches this data to provide a live, transparent view of the logs, while also serving the compiled client executable directly from an AWS S3 bucket.",
+        learnings: [
+            "Advanced cryptography concepts and their implementation (AES-GCM, RSA-OAEP)",
+            "Troubleshooting complex issues across different technology stacks (e.g., JSON unmarshaling, API routing)",
+            "Building, packaging, and distributing standalone applications (PyInstaller)",
+            "Generating executables from Python scripts with special configurations (e.g. run in the background)",
+        ],
+        features: [
+            "Secure end-to-end encryption using a hybrid cryptographic approach",
+            "Centralized log storage and management in Firebase Firestore",
+            "Public-facing web client built with Next.js for transparent log viewing",
+            "Multi-platform API server and client (Linux server, Windows client)",
+            "Automated deployment scripts for both client and server",
+            "Scalable system architecture capable of handling multiple clients simultaneously",
+        ],
+        futureEnhancements: [
+            "Rewrite the client in Go for improved cross-platform support and performance",
+            "Create a macOS/Linux client to broaden platform support",
+            "Add visual dashboards to analyze keyboard activity and system trends",
+            "Integrate a live-updating WebSocket connection for real-time log display",
+        ],
+    },
     sage: {
         id: "sage",
         title: "SAGE",
