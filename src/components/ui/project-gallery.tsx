@@ -8,7 +8,6 @@ import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
-// Define proper types
 interface ProjectImage {
     url: string
     alt: string
@@ -49,17 +48,19 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 <h2 className="text-2xl font-bold font-serif">Project Gallery</h2>
             </div>
 
+
             {project.images && project.images.length > 0 ? (
-                <div className="relative">
+                <div className="relative  px-8">
                     {/* Carousel */}
                     <div ref={sliderRef} className="keen-slider">
                         {project.images.map((image: ProjectImage, index: number) => (
                             <div
                                 key={index}
-                                className="keen-slider__slide cursor-pointer"
+                                className="keen-slider__slide cursor-pointer group"
                                 onClick={() => setSelectedImage(index)}
                             >
-                                <div className="aspect-video rounded-lg overflow-hidden bg-muted relative">
+                                <div
+                                    className="aspect-video rounded-lg overflow-hidden bg-muted relative transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/30">
                                     <Image
                                         src={image.url || "/placeholder.svg"}
                                         alt={image.alt}
@@ -73,11 +74,10 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                         ))}
                     </div>
 
-                    {/* Nav buttons */}
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute top-1/2 left-2 -translate-y-1/2 bg-background/70"
+                        className="absolute top-1/2 -left-4 -translate-y-1/2 bg-background/80 shadow-md hover:shadow-lg rounded-full"
                         onClick={() => instanceRef.current?.prev()}
                     >
                         <ChevronLeft className="h-5 w-5" />
@@ -85,7 +85,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute top-1/2 right-2 -translate-y-1/2 bg-background/70"
+                        className="absolute top-1/2 -right-4 -translate-y-1/2 bg-background/80 shadow-md hover:shadow-lg rounded-full"
                         onClick={() => instanceRef.current?.next()}
                     >
                         <ChevronRight className="h-5 w-5" />
@@ -97,19 +97,19 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
 
             {/* Lightbox Modal */}
             <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-                <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 flex items-center justify-center bg-black">
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex items-center justify-center bg-black border-none shadow-none">
                     {selectedImage !== null && project.images && (
                         <div className="flex flex-col items-center w-full">
-                            <div className="relative max-w-[90vw] max-h-[85vh]">
+                            <div className="relative w-full h-full flex items-center justify-center">
                                 <Image
                                     src={project.images[selectedImage].url}
                                     alt={project.images[selectedImage].alt}
-                                    width={800}
-                                    height={600}
-                                    className="w-auto h-auto max-w-[90vw] max-h-[85vh] object-contain"
+                                    width={1600}
+                                    height={1200}
+                                    className="w-auto h-auto max-w-[95vw] max-h-[85vh] object-contain rounded-lg"
                                 />
                             </div>
-                            <p className="text-sm text-muted-foreground mt-2 px-4 text-center max-w-[80ch]">
+                            <p className="text-sm text-muted-foreground mt-4 px-4 text-center max-w-[80ch]">
                                 {project.images[selectedImage].caption}
                             </p>
                         </div>
