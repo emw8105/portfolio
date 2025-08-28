@@ -126,20 +126,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 <h3 className="text-lg font-semibold mb-3">My Solution</h3>
                 <p className="text-foreground leading-relaxed">{project.solution}</p>
               </div>
-
-              <Separator />
-
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Key Learnings</h3>
-                <ul className="space-y-2">
-                  {project.learnings && project.learnings.map((learning, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <div className="w-1.5 h-1.5 bg-secondary rounded-full mt-2 flex-shrink-0" />
-                      <span className="text-foreground">{learning}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
             </div>
           </Card>
 
