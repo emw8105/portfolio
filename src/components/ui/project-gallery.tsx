@@ -1,8 +1,7 @@
-"use client"
 import { useState } from "react"
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
 import { useKeenSlider } from "keen-slider/react"
@@ -97,15 +96,15 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
 
             {/* Lightbox Modal */}
             <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex items-center justify-center bg-black border-none shadow-none">
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex flex-col items-center justify-center bg-black">
                     {selectedImage !== null && project.images && (
                         <div className="flex flex-col items-center w-full">
-                            <div className="relative w-full h-full flex items-center justify-center">
+                            <div className="flex items-center justify-center w-full h-full">
                                 <Image
                                     src={project.images[selectedImage].url}
                                     alt={project.images[selectedImage].alt}
-                                    width={1600}
-                                    height={1200}
+                                    width={3200}
+                                    height={2400}
                                     className="w-auto h-auto max-w-[95vw] max-h-[85vh] object-contain rounded-lg"
                                 />
                             </div>
