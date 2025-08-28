@@ -214,57 +214,54 @@ export const projectsData: Record<string, Project> = {
         "Petition the API to allow public app access without review",
         ],
   },
-
   "wordle-solver": {
     id: "wordle-solver",
     title: "Wordle Solver",
-    subtitle: "Smart Strategy Tool for Daily Wordle Puzzles",
+    subtitle: "Optimization Tool for Daily Wordle Puzzles",
     description:
-      "An intelligent web application that helps solve Wordle puzzles using optimal strategies, letter frequency analysis, and probability calculations.",
+      "A web application that helps solve Wordle puzzles by analyzing existing guesses and resulting hints to provide optimal suggestions.",
     category: "Web Application",
     status: "Completed",
     year: "2024",
     duration: "2 months",
     team: "Solo Project",
-    technologies: ["JavaScript", "React", "Algorithm Design", "Data Analysis", "CSS3"],
+    technologies: ["JavaScript", "Typescript", "React", "Algorithm Design", "Data Analysis",],
     githubUrl: "https://github.com/emw8105/wordle-solver",
     liveUrl: undefined,
     images: [
       {
-        url: "/example.png",
+        url: "/projects/wordle.png",
         alt: "Wordle Solver main interface",
-        caption: "Main solving interface with letter frequency visualization",
+        caption: "Main solving interface with existing suggestions",
       },
       {
-        url: "/example.png",
+        url: "/projects/wordle-solution.png",
         alt: "Algorithm visualization",
-        caption: "Algorithm visualization showing word suggestion process",
+        caption: "Algorithm narrows down suggestions based on guesses and hints",
       },
       {
-        url: "/example.png",
-        alt: "Statistics dashboard",
-        caption: "Performance statistics and solving pattern analysis",
+        url: "/projects/wordle-completed.png",
+        alt: "Wordle site",
+        caption: "Suggestions can be entered into the Wordle game to complete the puzzle.",
       },
     ],
     overview:
-      "After getting frustrated with my inconsistent Wordle performance (and watching my friend Brian consistently solve puzzles faster than me), I decided to build a tool that could help me understand the optimal strategies for word guessing games. This project became an exploration into probability, linguistics, and game theory.",
+      "Every day, my coworker Brian would send me the results of his daily games, and he would always beat me in the Wordle. I also took forever to make guesses, it feels like I was brute forcing every possible solution. So I decided to build a crutch tool to beat Brian, and I also wanted an excuse to practice React.",
     challenge:
-      "The main challenge was developing an algorithm that could balance multiple factors: letter frequency in English, positional probability, and the elimination of impossible words based on previous guesses. I needed to create a system that could think several moves ahead while remaining fast enough for real-time suggestions.",
+      "The main challenge was finding a way to analyze the game state and provide real-time suggestions. Part of this was the UI, I felt like existing tools didn't take into account the context of the guessed colors. For example, there might be 3 M's in the word 'MOMMY', but we can have one M as green, one as yellow, and one as gray, which tells us that there are 2 M's in the solution, and one of them is in the right place, whereas the other is located somewhere else. Coming up with an algorithm for applying these conditions on a list of possible solution words was the other primary challenge.",
     solution:
-      "I implemented a scoring system that weighs each potential guess based on information theory principles. The algorithm calculates the expected information gain for each possible word, considering letter frequency, position probability, and the current game state. The interface provides real-time suggestions and explains the reasoning behind each recommendation.",
+      "I was able to develop a tool that takes in the existing guesses and their resulting hints, and applies a series of filters to narrow down the list of possible solutions. The algorithm considers letter frequency, position, and exclusion criteria to suggest the most optimal next guess. The frontend was built using React and Typescript, with a focus on usability and clarity.",
     features: [
       "Real-time optimal word suggestions based on current game state",
-      "Letter frequency analysis and visualization",
-      "Multiple solving strategies (conservative, aggressive, balanced)",
-      "Performance tracking and statistics",
-      "Educational mode explaining the reasoning behind suggestions",
       "Custom word list support for different puzzle variations",
+      "Intuitive UI with letter color coding and feedback",
     ],
     futureEnhancements: [
-      "Add support for other word games like Absurdle and Quordle",
-      "Implement machine learning to improve suggestions based on user success",
-      "Create a practice mode with unlimited puzzles",
-      "Add multiplayer features for competitive solving",
+      "Rewrite as a Deno/Preact application to learn more about Deno (see https://github.com/emw8105/wordle-solver-v2)",
+      "Performance tracking and analytics",
+      "User account system for saving preferences and history",
+      "Enhanced mobile experience with responsive design",
+      "Integration as a browser extension that can read existing guesses"
     ],
   },
   "form-autocomplete-ext": {
