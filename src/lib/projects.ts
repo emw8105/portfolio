@@ -24,7 +24,7 @@ export interface Project {
 }
 
 export const projectsData: Record<string, Project> = {
-    keylogger: {
+    "keylogger": {
         id: "keylogger",
         title: "Remote Keylogger System (PoC)",
         subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System",
@@ -94,7 +94,7 @@ export const projectsData: Record<string, Project> = {
             "Integrate a live-updating WebSocket connection for real-time log display",
         ],
     },
-    sage: {
+    "sage": {
         id: "sage",
         title: "SAGE",
         subtitle: "Automated Degree Plan Evaluator and Advising Platform",
@@ -163,7 +163,72 @@ export const projectsData: Record<string, Project> = {
             "Role-based dashboards for officers and developers to improve maintainability",
         ],
     },
-    wallify: {
+    "rating-script": {
+        id: "rating-script",
+        title: "Professor Ratings Data Aggregator",
+        subtitle: "Combining RateMyProfessors and UTD Grade Data for More Comprehensive Insights",
+        description: "A Python script that aggregates and matches professor ratings from RateMyProfessors with UTD grade distributions, handling name inconsistencies and duplicates for more accurate professor profiles.",
+        category: "Data Engineering",
+        status: "Completed",
+        year: "Spring 2025",
+        duration: "2 Months",
+        team: "Solo",
+        technologies: [
+          "Python",
+          "Selenium",
+          "BeautifulSoup",
+          "Regex",
+          "FuzzyWuzzy",
+        ],
+        githubUrl: "https://github.com/emw8105/professor-ratings-script",
+        images: [
+            {
+            url: "/projects/ratings-script-utdgrades.png",
+            alt: "UTD Grades ratings integration",
+            caption: "UTD Grades site enhanced with professor ratings data",
+            },
+            {
+            url: "/projects/sage-chatbot-course.png",
+            alt: "SAGE chatbot course recommendations",
+            caption: "RAG chatbot suggesting courses based on RMP/grades data",
+            },
+            {
+            url: "/projects/ratings-script-logs.png",
+            alt: "Professor ratings script logs",
+            caption: "Logs & metrics from the professor ratings data aggregation script",
+            },
+            {
+            url: "/projects/ratings-script-json.png",
+            alt: "Professor ratings script JSON output",
+            caption: "Structured JSON output from the professor ratings data aggregation script",
+            },
+        ],
+        featured: true,
+        highlights: [
+          "Combines RMP and UTD grade data for comprehensive professor profiles",
+          "Handles name inconsistencies and duplicates with normalization and fuzzy matching",
+          "Supports manual mapping for edge cases",
+          "Outputs structured JSON for easy integration",
+          "Automates data scraping from RateMyProfessors"
+        ],
+        overview: "For many years, my organization, ACM UTD, has managed UTD Grades, the premier site for course optimization through grade visualization. However, I felt as though grades don't tell the full story. Many professors I've taken were tough, but I learned the most from them and appreciated them much more than courses which I had sailed by with an easy A in. I decided during the creation of SAGE's course optimizer that I would find a way to integrate more insights. The site I looked towards was RMP.",
+        challenge: "Existing solutions struggled with inconsistent professor names, duplicate names and duplicate student-created RMP profiles, professors whose names have changed during their tenure, and incomplete data when merging RMP and grade sources. Similarly, RMP uses internal ids for each professor's URL, so we can't easily webscrape them. My initial approach used Selenium to navigate to the UTD page of RMP and then click the 'Show More' button to list professors until it wasn't available. However, each button click would take about 2 seconds to retrieve more professors, causing the full scrape to take several minutes. After some other attempts to speed up this process, Michael Zhao (https://www.michaelzhao.xyz/) showed me a program he had written that uses the internal GraphQL API of the RMP site to query for 1000 professors at once, drastically speeding up my RMP data sourcing.",
+        solution: "The GraphQL API implementation was a huge improvement to the overall speed of the retrieval, reducing the time taken to gather data by over 95% (Selenium startup being the majority of the remainder). In addition to that, the solution implemented robust name normalization, fuzzy matching, and course overlap logic, plus manual mapping, to accurately match and merge professor data. Subsequent data obtained 20% more successful matches due to improved edge case handling and was used to enhance SAGE and UTD Grades, applications that receive tens of thousands of students worth of network traffic every semester",
+        features: [
+          "Enhanced professor matching (normalization, fuzzy, manual, and course overlap)",
+          "Duplicate entry resolution",
+          "Comprehensive JSON output with RMP and grade data",
+          "Automated scraping of RMP using Selenium and GraphQL",
+          "Handles unmatched data gracefully"
+        ],
+        futureEnhancements: [
+          "Improve handling of missing or partial RMP data",
+          "Add a web interface for manual mapping and review",
+          "Support additional universities or data sources",
+          "Automate regular data updates",
+        ]
+    },
+    "wallify": {
         id: "wallify",
         title: "Wallify",
         subtitle: "Transform Your Spotify Playlists into Beautiful Wallpapers",
