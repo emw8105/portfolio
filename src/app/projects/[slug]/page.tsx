@@ -98,7 +98,9 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           </Card>
 
           {/* Project Images */}
-          <ProjectGallery project={project} />
+          {project.images && project.images.length > 0 && (
+            <ProjectGallery project={project} />
+          )}
 
           {/* Development Journey */}
           <Card className="glass-card p-8 mb-8">
@@ -143,21 +145,6 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               ))}
             </div>
           </Card>
-
-          {/* <Card className="glass-card p-6">
-              <div className="flex items-center gap-3 mb-4">
-                <Rocket className="h-5 w-5 text-primary" />
-                <h3 className="text-xl font-bold font-serif">Key Features</h3>
-              </div>
-              <ul className="space-y-2">
-                {project.features.slice(0, 4).map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2 text-sm">
-                    <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0" />
-                    <span>{feature}</span>
-                  </li>
-                ))}
-              </ul>
-            </Card> */}
 
           {/* All Features */}
           <Card className="glass-card p-8 mb-8">

@@ -343,23 +343,23 @@ export const projectsData: Record<string, Project> = {
     technologies: ["JavaScript", "Chrome Extension APIs", "HTML/CSS", "Manifest V3", "Local Storage"],
     githubUrl: "https://github.com/acmutd/form-autocomplete-ext",
     liveUrl: undefined,
-    images: [
-      {
-        url: "/example.png",
-        alt: "Extension popup interface",
-        caption: "Extension popup showing saved form data and settings",
-      },
-      {
-        url: "/example.png",
-        alt: "Automated form filling",
-        caption: "Demonstration of automatic form filling in action",
-      },
-      {
-        url: "/example.png",
-        alt: "Settings and customization",
-        caption: "Settings page for customizing form data and preferences",
-      },
-    ],
+    // images: [
+    //   {
+    //     url: "/example.png",
+    //     alt: "Extension popup interface",
+    //     caption: "Extension popup showing saved form data and settings",
+    //   },
+    //   {
+    //     url: "/example.png",
+    //     alt: "Automated form filling",
+    //     caption: "Demonstration of automatic form filling in action",
+    //   },
+    //   {
+    //     url: "/example.png",
+    //     alt: "Settings and customization",
+    //     caption: "Settings page for customizing form data and preferences",
+    //   },
+    // ],
     overview:
       "As part of my role as Director of Development at ACM UTD, I noticed that our officers were spending significant time filling out repetitive room request forms for events. The process involved the same information being entered multiple times across different forms, which was both time-consuming and error-prone.",
     challenge:
