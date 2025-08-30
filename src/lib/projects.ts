@@ -329,56 +329,57 @@ export const projectsData: Record<string, Project> = {
       "Integration as a browser extension that can read existing guesses"
     ],
   },
-  "form-autocomplete-ext": {
-    id: "form-autocomplete-ext",
-    title: "Form Autocomplete Extension",
-    subtitle: "Streamlining UTD Administrative Processes",
+  "astra-extension": {
+    id: "astra-extension",
+    title: "Astra Autofill Chrome Extension",
+    subtitle: "Automated Form Filler for UTD Room Requests",
     description:
-      "A Chrome extension designed for UTD club officers to automate the tedious special room request process through intelligent form filling.",
+      "A Chrome extension that streamlines the process of filling out the UTD Astra room request form by storing and automatically entering frequently used information and handling dynamic form questions.",
     category: "Browser Extension",
     status: "Completed",
-    year: "2024",
+    year: "2025",
     duration: "1 month",
-    team: "ACM UTD Development Team",
-    technologies: ["JavaScript", "Chrome Extension APIs", "HTML/CSS", "Manifest V3", "Local Storage"],
+    team: "Me & Michael Zhao",
+    technologies: [
+      "JavaScript",
+      "Chrome Extensions API",
+      "HTML",
+      "CSS",
+      "MutationObserver",
+      "Browser Storage"
+    ],
     githubUrl: "https://github.com/acmutd/form-autocomplete-ext",
     liveUrl: undefined,
-    // images: [
-    //   {
-    //     url: "/example.png",
-    //     alt: "Extension popup interface",
-    //     caption: "Extension popup showing saved form data and settings",
-    //   },
-    //   {
-    //     url: "/example.png",
-    //     alt: "Automated form filling",
-    //     caption: "Demonstration of automatic form filling in action",
-    //   },
-    //   {
-    //     url: "/example.png",
-    //     alt: "Settings and customization",
-    //     caption: "Settings page for customizing form data and preferences",
-    //   },
-    // ],
+    images: [
+      {
+        url: "/projects/astra-extension.png",
+        alt: "Astra Autofill popup interface",
+        caption: "Extension popup for entering and saving user information",
+      },
+      {
+        url: "/projects/astra-extension-form.png",
+        alt: "Astra form autofilled",
+        caption: "Astra form with fields automatically filled by the extension and inputs recognized",
+      }
+    ],
     overview:
-      "As part of my role as Director of Development at ACM UTD, I noticed that our officers were spending significant time filling out repetitive room request forms for events. The process involved the same information being entered multiple times across different forms, which was both time-consuming and error-prone.",
+      "For directors at ACM UTD, filling out the UTD Astra room request form for student organizations is a repetitive and time-consuming task, especially when most answers remain the same for each submission (Name, email phone #, President's name, email phone #, advisor's name, email, phone #, RUO's name, email, phone #, etc.). This extension was built to automate the process, saving time and reducing errors.",
     challenge:
-      "The challenge was creating a browser extension that could intelligently detect and fill UTD's specific form fields while being flexible enough to handle form updates and variations. I also needed to ensure the extension was secure, user-friendly, and compliant with Chrome's Manifest V3 requirements.",
+      "The main challenge was handling the dynamic nature of the form, where new questions appear based on previous answers. Additionally, directly setting input values did not always update the form's internal state. The original form was likely built with a framework like React, so the extension needed to integrate with the framework's event handlers to register that the input fields had been filled out. Ensuring compatibility and reliability required simulating real user input and observing DOM changes.",
     solution:
-      "I developed a Chrome extension that stores commonly used information (club details, officer information, event types) and automatically populates form fields when detected. The extension uses content scripts to identify form patterns and provides a simple interface for managing saved data and customizing auto-fill behavior.",
+      "The extension uses a combination of Chrome's scripting API and a MutationObserver to detect and fill both static and dynamically loaded questions. For text fields, it simulates user input to ensure the form's state is updated correctly. User information is stored in Chrome storage for quick reuse. Dynamic questions are iterated over to fill each one in as it appears, effectively instantly filling out 80% of the form for every request.",
     features: [
-      "Automatic detection and filling of UTD room request forms",
-      "Secure local storage of frequently used information",
-      "Customizable form field mapping and data management",
-      "One-click form completion with review option",
-      "Support for multiple user profiles and club information",
-      "Privacy-focused design with no external data transmission",
+      "One-click autofill for all static and dynamic form questions",
+      "Persistent storage of user and organization information",
+      "Handles dynamic form elements that appear based on previous answers",
+      "Easy to use popup interface"
     ],
     futureEnhancements: [
-      "Expand support to other UTD administrative forms",
-      "Add form template creation for custom scenarios",
-      "Implement data export/import for team sharing",
-      "Create analytics dashboard for form completion tracking",
+      "Support for additional forms and custom field mapping",
+      "Cloud-based storage for user data (e.g., Firebase integration)",
+      "Options for multiple user profiles and organization settings",
+      "Improved error handling and feedback for unsupported form changes",
+      "Publish the extension to the Chrome Web Store for wider distribution"
     ],
-  },
+  }
 }
