@@ -25,19 +25,30 @@ interface ProjectGalleryProps {
 export default function ProjectGallery({ project }: ProjectGalleryProps) {
     const [selectedImage, setSelectedImage] = useState<null | number>(null)
 
+    const count = project.images?.length ?? 0
+
+    let renderImages: ProjectImage[] = []
+    if (count === 1) {
+        renderImages = [...project.images!, ...project.images!, ...project.images!] // triple it
+    } else if (count === 2) {
+        renderImages = [...project.images!, ...project.images!] // double it
+    } else {
+        renderImages = project.images!
+    }
+
     const [sliderRef, instanceRef] = useKeenSlider<HTMLDivElement>({
-        loop: true,
+        loop: count > 1, // loop only if we have more than 1 image
         mode: "snap",
         slides: {
-            perView: 3,
+            perView: Math.min(3, count),
             spacing: 16,
         },
         breakpoints: {
             "(max-width: 1024px)": {
-                slides: { perView: 2, spacing: 12 },
+                slides: { perView: Math.min(2, count), spacing: 12 },
             },
             "(max-width: 768px)": {
-                slides: { perView: 1, spacing: 8 },
+                slides: { perView: 1, spacing: 8 }, // always just 1 on mobile
             },
         },
     })
@@ -73,11 +84,11 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 <div className="relative px-8">
                     {/* Carousel */}
                     <div ref={sliderRef} className="keen-slider">
-                        {project.images!.map((image, index) => (
+                        {renderImages.map((image, index) => (
                             <div
                                 key={index}
                                 className="keen-slider__slide cursor-pointer group"
-                                onClick={() => setSelectedImage(index)}
+                                onClick={() => setSelectedImage(index % count)} // map back to real index
                             >
                                 <div className="aspect-video rounded-lg overflow-hidden bg-muted relative transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/30">
                                     <Image
@@ -89,9 +100,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                         draggable={false}
                                     />
                                 </div>
-                                <p className="text-sm text-muted-foreground mt-2">
-                                    {image.caption}
-                                </p>
+                                <p className="text-sm text-muted-foreground mt-2">{image.caption}</p>
                             </div>
                         ))}
                     </div>
