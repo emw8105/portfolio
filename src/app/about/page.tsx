@@ -23,12 +23,12 @@ export default function AboutPage() {
   ]
 
   const interests = [
-    "Creating D&D Campaigns",
-    "Hitting the gym",
-    "Organizing music playlists",
-    "Playing video games",
-    "Building personal projects",
-    "Cooking and baking",
+    "Cooking and baking 😋🍽️",
+    "Creating bad d&d characters 🎲",
+    "Finding an excuse to learn Rust 🦀",
+    "Building personal projects 💻",
+    "Planning my hackathon victory lap 🏆",
+    "Everything ACM UTD 😺",
   ]
 
   return (
@@ -38,7 +38,7 @@ export default function AboutPage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-primary via-pink-500 to-blue-500 bg-clip-text text-transparent">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-primary via-pink-500 to-blue-500 bg-clip-text text-transparent py-2">
               About Me
             </h1>
           </div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-blue-500 rounded-full flex items-center justify-center glow">
                   <Heart className="h-6 w-6 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold font-serif">Outside of work, I&apos;m interested in...</h3>
+                <h3 className="text-2xl font-bold font-serif">Current Interests</h3>
               </div>
               <div className="grid md:grid-cols-2 gap-6">
                 {interests.map((interest) => (
