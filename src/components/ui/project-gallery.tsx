@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
@@ -42,6 +42,26 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
         },
     })
 
+    useEffect(() => {
+        if (selectedImage === null) return
+
+        const handleKeyDown = (e: KeyboardEvent) => {
+            if (!project.images) return
+            if (e.key === "ArrowRight") {
+                setSelectedImage((prev) => (prev! + 1) % project.images!.length)
+            } else if (e.key === "ArrowLeft") {
+                setSelectedImage((prev) =>
+                    prev! === 0 ? project.images!.length - 1 : prev! - 1
+                )
+            } else if (e.key === "Escape") {
+                setSelectedImage(null)
+            }
+        }
+
+        window.addEventListener("keydown", handleKeyDown)
+        return () => window.removeEventListener("keydown", handleKeyDown)
+    }, [selectedImage, project.images])
+
     return (
         <Card className="glass-card p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
@@ -53,7 +73,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 <div className="relative px-8">
                     {/* Carousel */}
                     <div ref={sliderRef} className="keen-slider">
-                        {project.images.map((image, index) => (
+                        {project.images!.map((image, index) => (
                             <div
                                 key={index}
                                 className="keen-slider__slide cursor-pointer group"
@@ -103,13 +123,12 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                 <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex flex-col items-center justify-center bg-black">
                     {selectedImage !== null && project.images && (
                         <div className="flex flex-col items-center w-full">
-                            <div className="flex items-center justify-center w-full h-full">
+                            <div className="relative w-[95vw] h-[85vh] flex items-center justify-center">
                                 <Image
                                     src={project.images[selectedImage].url}
                                     alt={project.images[selectedImage].alt}
-                                    width={3200}
-                                    height={2400}
-                                    className="w-auto h-auto max-w-[95vw] max-h-[85vh] object-contain rounded-lg"
+                                    fill
+                                    className="object-contain rounded-lg"
                                     draggable={false}
                                 />
                             </div>
