@@ -21,7 +21,11 @@ export default function HomePage() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-6 justify-center opacity-0 animate-fade-in-up animation-delay-400">
-              <Button asChild size="lg" className="text-lg px-10 py-4 glow-hover transition-all duration-300">
+              <Button
+                asChild
+                size="lg"
+                className="text-lg px-10 py-4 glow-hover transition-all duration-300 border-2 border-primary bg-primary text-primary-foreground hover:bg-primary/90 hover:border-primary/80"
+              >
                 <Link href="/projects">
                   View Projects <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -29,7 +33,7 @@ export default function HomePage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-lg px-10 py-4 bg-transparent hover:bg-white/10 transition-all duration-300"
+                className="text-lg px-10 py-4 border-2 border-primary text-primary hover:bg-primary/30 hover:text-primary-foreground hover:border-primary/80 transition glow-hover bg-tertiary"
                 asChild
               >
                 <Link href="/about">About Me</Link>

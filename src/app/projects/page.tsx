@@ -61,7 +61,7 @@ export default function ProjectsPage() {
                           variant="outline"
                           size="sm"
                           asChild
-                          className="flex-1 bg-transparent"
+                          className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <a
@@ -79,7 +79,7 @@ export default function ProjectsPage() {
                             variant="outline"
                             size="sm"
                             asChild
-                            className="flex-1 bg-transparent"
+                            className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
                             onClick={(e) => e.stopPropagation()}
                           >
                             <a

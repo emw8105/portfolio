@@ -105,7 +105,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* Development Journey */}
           <Card className="glass-card p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
-              <Lightbulb className="h-6 w-6 text-secondary" />
+              <Lightbulb className="h-6 w-6 text-primary" />
               <h2 className="text-2xl font-bold font-serif">Development Journey</h2>
             </div>
 
