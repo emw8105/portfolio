@@ -34,8 +34,21 @@ export function Navigation() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
-                    <Link href="/" className="font-bold text-xl font-serif text-primary hover:text-secondary transition-colors">
-                        Evan Wright
+                    <Link href="/" className="flex items-center group" aria-label="Home">
+                        <span className="relative w-16 h-16 block">
+                            <img
+                                src="/assets/nojima-static.png"
+                                alt="Nojima Cat"
+                                className="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 group-hover:opacity-0"
+                                draggable={false}
+                            />
+                            <img
+                                src="/assets/nojima-loading.gif"
+                                alt="Nojima Cat Animated"
+                                className="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-200"
+                                draggable={false}
+                            />
+                        </span>
                     </Link>
 
                     {/* Desktop Navigation */}
