@@ -17,13 +17,14 @@ export const experiences: Experience[] = [
     period: "May 2025 - Present",
     type: "Organization Role",
     description:
-      "Leads ACM UTD's engineering division, overseeing multiple project teams and officers in developing software for over 2,500 university members, with a focus on architectural strategy and technical mentorship.",
+        "Oversee ACM UTD's largest division, managing 6 project teams and 45 officers to build and maintain software serving 2,500+ ACM members while driving recruiting, planning, and cross-divisional initiatives.",
     technologies: ["JavaScript", "TypeScript", "React", "Python", "Golang", "AWS", "GCP", "Firebase", "GitHub"],
     highlights: [
-      "Led engineering division, maintaining software for 2,500+ members.",
-      "Provided architectural guidance and technical mentorship to project teams.",
-      "Recruited skilled developers and team leads.",
-      "Served on the ACM Board of Directors, aligning technical projects with organizational strategy.",
+        "Directed engineering operations, ensuring delivery and maintainability of software used by thousands of UTD students.",
+        "Provided architectural guidance and technical mentorship to project teams, reviewing designs and code contributions.",
+        "Recruited skilled developers and team leads by reviewing 200+ applications and conducting 80+ interviews.",
+        "Launched division-wide initiatives to improve project maintainability, including building an officer database and leading development of an ACM API that centralizes university and third-party data.",
+        "Designed the ACM API as a shared infrastructure to enable cross-divisional collaboration, powering projects within ACM Development and other ACM divisions such as HackUTD, the largest collegiate hackathon in North America (1200+ participants).",
     ],
   },
   {
@@ -33,13 +34,13 @@ export const experiences: Experience[] = [
     period: "Jun 2025 - Aug 2025",
     type: "Internship",
     description:
-      "Engineered an automated maintenance scheduling system for Connected Banking, significantly reducing manual deployments and engineer intervention.",
+        "Worked on the Connected Banking Import Aggregation team, delivering backend and full-stack solutions to improve vendor outage handling, system reliability, and engineer efficiency.",
     technologies: ["Java", "Spring Boot", "React", "TypeScript", "SQL", "Oracle DB", "Jira", "Bitbucket", "JUnit"],
     highlights: [
-      "Automated maintenance scheduling, eliminating manual deployments.",
-      "Enhanced Java microservices to query Oracle DB for dynamic splash page activation.",
-      "Developed full-stack features for internal admin and customer-facing web apps.",
-      "Created comprehensive JUnit test suites for backend endpoints, ensuring robustness.",
+        "Automated maintenance scheduling, eliminating manual weekend and late-night deployments and saving 300+ engineer hours annually.",
+        "Enhanced Java microservices to query Oracle DB and return structured outage data for dynamic splash page activation.",
+        "Developed React + TypeScript features for both internal admin and customer-facing web apps, enabling API-driven outage handling.",
+        "Created comprehensive JUnit test suites for backend endpoints, ensuring robustness and reducing production issues.",
     ],
   },
   {
@@ -49,13 +50,13 @@ export const experiences: Experience[] = [
     period: "Dec 2024 - May 2025",
     type: "Organization Role",
     description:
-      "Directed the full-stack development of SAGE, an AI-powered academic advising platform for UT Dallas students, managing architecture, sprint planning, and code quality.",
+        "Led end-to-end development of SAGE, an AI-powered academic advising platform, overseeing system design, sprint planning, and team coordination while ensuring scalability and maintainability.",
     technologies: ["TypeScript", "React", "Python", "AWS Lambda", "AWS S3", "LangChain", "Pinecone"],
     highlights: [
-      "Led end-to-end development of SAGE, an AI-powered academic advising platform.",
-      "Developed RAG-based chatbot with advanced AI models for academic queries.",
-      "Designed scalable AWS infrastructure with automated CI/CD.",
-      "Created custom asynchronous pipelines for university data, enhancing maintainability.",
+        "Directed architecture and development of SAGE, delivering an AI-powered advising platform for UT Dallas students.",
+        "Developed a RAG-based chatbot with advanced AI models to answer complex academic queries.",
+        "Designed scalable AWS infrastructure with automated CI/CD pipelines to support multiple deployments.",
+        "Built custom asynchronous data pipelines to process university catalog data, improving accuracy and maintainability.",
     ],
   },
   {
@@ -65,13 +66,13 @@ export const experiences: Experience[] = [
     period: "Jun 2024 - Aug 2024",
     type: "Internship",
     description:
-      "Developed a self-service Oracle AWR Report generation tool using React.js and Express.js, improving database analysis efficiency and resource optimization.",
+        "Worked on the Database Engineering team to improve observability and database performance analysis through self-service tools, automation, and compliance-focused solutions.",
     technologies: ["React.js", "Node.js", "Express.js", "SQL", "Oracle DB"],
     highlights: [
-      "Developed a self-service reporting solution, improving database analysis and resource usage.",
-      "Integrated New Relic agents into servers, enhancing database observability.",
-      "Enabled secure report generation for offshore teams, ensuring regulatory compliance.",
-      "Implemented self-help and automation workflows, reducing operational toil.",
+        "Developed a self-service Oracle AWR reporting solution, reducing analysis time by 60% and optimizing resource usage by 40%.",
+        "Integrated New Relic agents into servers, enhancing monitoring and database observability through centralized dashboards.",
+        "Enabled secure report generation for offshore teams accessing regulated databases, ensuring compliance with data restrictions.",
+        "Implemented self-help automation workflows, significantly reducing repetitive engineering tasks and operational toil.",
     ],
   },
   {
@@ -81,13 +82,13 @@ export const experiences: Experience[] = [
     period: "Jun 2023 - Jun 2024",
     type: "Internship",
     description:
-      "Built C# tools to automate Genesys OnPrem to Genesys Cloud migrations and developed AWS Lambda functions in Node.js and Python for payment processing and data transfer services.",
+        "Worked on the .NET Development team building migration tools, AWS serverless functions, and custom front-end solutions to support enterprise contact center clients transitioning to Genesys Cloud.",
     technologies: ["C#", ".NET", "Node.js", "Python", "AWS Lambda", "SQL", "Microsoft SQL Server", "Azure"],
     highlights: [
-      "Constructed C# tools for automated CX cloud migration, enabling reliable data transfer.",
-      "Created AWS Lambda functions in Node.js for secure payment workflows and automated call flow procedures.",
-      "Designed custom front-end web forms with HTML/CSS/JavaScript for Genesys CX functionality.",
-      "Boosted migration tool performance through test-driven profiling and optimizations.",
+        "Built C# tools to automate OnPrem → Cloud migrations, enabling reliable and scalable CX data transfer.",
+        "Created AWS Lambda functions in Node.js for secure payment workflows and automated call flow procedures.",
+        "Designed front-end web forms with HTML/CSS/JavaScript for custom Genesys CX integrations.",
+        "Improved migration tool performance through test-driven profiling, boosting execution speed by 70%.",
     ],
   },
 ];
