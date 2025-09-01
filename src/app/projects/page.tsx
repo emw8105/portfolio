@@ -11,6 +11,10 @@ export default function ProjectsPage() {
   const router = useRouter()
   const projects = Object.values(projectsData)
 
+  // Find the most recent project by year (and optionally by order)
+  const mostRecentYear = Math.max(...projects.map(p => parseInt(p.year.match(/\d{4}/)?.[0] || '0')))
+  const mostRecentProject = projects.find(p => p.year.includes(mostRecentYear.toString()))
+
   const handleCardClick = (projectId: string) => {
     router.push(`/projects/${projectId}`)
   }
@@ -32,7 +36,16 @@ export default function ProjectsPage() {
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
-              <div key={project.id} onClick={() => handleCardClick(project.id)}>
+              <div key={project.id} onClick={() => handleCardClick(project.id)} className="relative">
+                {/* put the "NEW" Nojima gif on the newest project in the list */}
+                {mostRecentProject && project.id === mostRecentProject.id && (
+                  <img
+                    src="/assets/nojima-new.gif"
+                    alt="New!"
+                    className="absolute -top-6 -right-6 w-20 h-20 z-20 drop-shadow-xl pointer-events-none select-none"
+                    draggable={false}
+                  />
+                )}
                 <Card className="glass-card overflow-hidden hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
                   <div className="p-8 h-full flex flex-col">
                     <div className="flex items-start justify-between mb-6">

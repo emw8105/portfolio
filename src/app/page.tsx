@@ -2,13 +2,15 @@ import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
+import { quotes } from "@/lib/quotes"
 
 export default function HomePage() {
+  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen flex flex-col">
       <Navigation />
 
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8">
+      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-1">
         <div className="max-w-4xl mx-auto text-center">
           <div className="glass-card rounded-2xl p-12 sm:p-16 mb-12 glow-hover transition-all duration-500 opacity-0 animate-fade-in-up">
             <h1 className="text-5xl sm:text-7xl font-bold font-serif mb-8 text-foreground opacity-0 animate-slide-in-left animation-delay-200">
@@ -40,8 +42,29 @@ export default function HomePage() {
               </Button>
             </div>
           </div>
+          {/* Nojima Coffee Divider */}
+          <div className="flex justify-center mt-20">
+            <img
+              src="/assets/nojima-coffee.gif"
+              alt="Nojima drinking coffee"
+              className="w-full max-w-2xl h-20 object-contain select-none pointer-events-none opacity-80"
+              draggable={false}
+              aria-hidden="true"
+            />
+          </div>
         </div>
       </section>
+      {/* Footer with random quote and artist credit */}
+      <footer className="w-full py-8 px-4 bg-background/80 border-t border-border mt-auto">
+        <div className="max-w-4xl mx-auto flex flex-col items-center gap-4 text-center">
+          <blockquote className="italic text-muted-foreground">“{randomQuote}”</blockquote>
+          <div className="text-xs text-muted-foreground">
+            Nojima GIFs by <a href="https://giphy.com/arisa0905m" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">arisa0905m</a>
+            {" "}
+            (<a href="https://arisa0905m.tumblr.com/" target="_blank" rel="noopener noreferrer" className="underline hover:text-primary">tumblr</a>)
+          </div>
+        </div>
+      </footer>
     </div>
   )
 }
