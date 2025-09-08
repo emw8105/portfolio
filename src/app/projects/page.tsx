@@ -54,19 +54,14 @@ export default function ProjectsPage() {
 
                       {/* category gets its own line because of length variability */}
                       <div className="mb-2">
-                        <Badge
-                          variant="outline"
-                          className="bg-muted/30 rounded-lg px-2 py-1 whitespace-normal break-words"
-                        >
+                        <Badge variant="black">
                           {project.category}
                         </Badge>
                       </div>
 
                       {/* status + year get a line */}
                       <div className="flex items-center gap-2 text-sm">
-                        <Badge
-                          variant={project.status === "Completed" ? "default" : "secondary"}
-                        >
+                        <Badge variant={project.status === "Completed" ? "default" : "accent"}>
                           {project.status}
                         </Badge>
                         <span className="text-muted-foreground">{project.year}</span>
