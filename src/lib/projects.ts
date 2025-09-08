@@ -26,8 +26,8 @@ export interface Project {
 export const projectsData: Record<string, Project> = {
   "keylogger": {
     id: "keylogger",
-    title: "Remote Keylogger System (PoC)",
-    subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System",
+    title: "Keylogger System",
+    subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System (PoC)",
     description:
         "A system that collects, encrypts, and stores system information and key inputs from a client, utilizing secure data transmission, cloud-based storage, and web-based monitoring. Built for educational purposes.",
     category: "System Engineering / Cloud System",
@@ -266,7 +266,7 @@ export const projectsData: Record<string, Project> = {
   },
   "rating-script": {
     id: "rating-script",
-    title: "Professor Ratings Data Aggregator",
+    title: "Professor Data Script",
     subtitle: "Combining RateMyProfessors and UTD Grade Data for More Comprehensive Insights",
     description: "A Python script that aggregates and matches professor ratings from RateMyProfessors with UTD grade distributions, handling name inconsistencies and duplicates for more accurate professor profiles.",
     category: "Data Engineering",
@@ -399,7 +399,7 @@ export const projectsData: Record<string, Project> = {
   },
   "astra-extension": {
     id: "astra-extension",
-    title: "Astra Autofill Chrome Extension",
+    title: "Astra Extension",
     subtitle: "Automated Form Filler for UTD Room Requests",
     description:
       "A Chrome extension that autofills the UTD Astra Special Room Request Form by saving and entering common info, including dynamic questions.",
