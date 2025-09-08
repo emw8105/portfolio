@@ -11,10 +11,6 @@ export default function ProjectsPage() {
   const router = useRouter()
   const projects = Object.values(projectsData)
 
-  // Find the most recent project by year (and optionally by order)
-  const mostRecentYear = Math.max(...projects.map(p => parseInt(p.year.match(/\d{4}/)?.[0] || '0')))
-  const mostRecentProject = projects.find(p => p.year.includes(mostRecentYear.toString()))
-
   const handleCardClick = (projectId: string) => {
     router.push(`/projects/${projectId}`)
   }
@@ -35,10 +31,12 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project) => (
+            {projects.map((project, index) => (
               <div key={project.id} onClick={() => handleCardClick(project.id)} className="relative">
-                <Card className="glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
-                  {mostRecentProject && project.id === mostRecentProject.id && (
+                <Card className="flex flex-col glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
+
+                  {/* highlight only the newest (first) project */}
+                  {index === 0 && (
                     <img
                       src="/assets/nojima-new.gif"
                       alt="New!"
@@ -46,68 +44,79 @@ export default function ProjectsPage() {
                       draggable={false}
                     />
                   )}
-                  <div className="p-8 h-full flex flex-col">
-                    <div className="h-full flex flex-col">
-                      <div className="flex items-start justify-between mb-6">
-                        <div>
-                          <h3 className="text-2xl font-bold font-serif mb-3 group-hover:text-primary transition-colors">
-                            {project.title}
-                          </h3>
-                          <div className="flex items-center gap-3 flex-wrap">
-                            <Badge variant="outline" className="flex flex-wrap gap-2 bg-muted/30 rounded-lg px-2 py-1">
-                              {project.category}
-                            </Badge>
-                            <Badge variant={project.status === "Completed" ? "default" : "secondary"} className="text-xs">
-                              {project.status}
-                            </Badge>
-                            <span className="text-xs text-muted-foreground">{project.year}</span>
-                          </div>
-                        </div>
-                        <ArrowUpRight className="min-h-6 min-w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
+
+                  <div className="p-8 flex flex-col flex-1">
+                    {/* header */}
+                    <div className="mb-4">
+                      <h3 className="text-2xl font-bold font-serif mb-2 group-hover:text-primary transition-colors">
+                        {project.title}
+                      </h3>
+
+                      {/* category gets its own line because of length variability */}
+                      <div className="mb-2">
+                        <Badge
+                          variant="outline"
+                          className="bg-muted/30 rounded-lg px-2 py-1 whitespace-normal break-words"
+                        >
+                          {project.category}
+                        </Badge>
                       </div>
 
-                      <p className="text-foreground leading-relaxed mb-8 flex-grow">{project.description}</p>
+                      {/* status + year get a line */}
+                      <div className="flex items-center gap-2 text-sm">
+                        <Badge
+                          variant={project.status === "Completed" ? "default" : "secondary"}
+                        >
+                          {project.status}
+                        </Badge>
+                        <span className="text-muted-foreground">{project.year}</span>
+                      </div>
+                    </div>
 
-                      <div className="flex flex-col gap-4 mt-auto">
-                        <div className="flex gap-3">
-                          <Button
-                            variant="outline"
-                            size="sm"
-                            asChild
-                            className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
-                            onClick={(e) => e.stopPropagation()}
+
+                    {/* description */}
+                    <p className="text-foreground leading-relaxed mb-8 flex-grow">
+                      {project.description}
+                    </p>
+
+                    {/* footer (buttons) */}
+                    <div className="mt-auto flex gap-3">
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
+                        onClick={(e) => e.stopPropagation()}
+                      >
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-center gap-2"
+                        >
+                          <Github className="h-4 w-4" />
+                          Code
+                        </a>
+                      </Button>
+                      {project.liveUrl && (
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          asChild
+                          className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          <a
+                            href={project.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center justify-center gap-2"
                           >
-                            <a
-                              href={project.githubUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="flex items-center justify-center gap-2"
-                            >
-                              <Github className="h-4 w-4" />
-                              Code
-                            </a>
-                          </Button>
-                          {project.liveUrl && (
-                            <Button
-                              variant="outline"
-                              size="sm"
-                              asChild
-                              className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
-                              onClick={(e) => e.stopPropagation()}
-                            >
-                              <a
-                                href={project.liveUrl}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2"
-                              >
-                                <ExternalLink className="h-4 w-4" />
-                                Live
-                              </a>
-                            </Button>
-                          )}
-                        </div>
-                      </div>
+                            <ExternalLink className="h-4 w-4" />
+                            Live
+                          </a>
+                        </Button>
+                      )}
                     </div>
                   </div>
                 </Card>
