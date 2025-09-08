@@ -37,57 +37,39 @@ export default function ProjectsPage() {
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project) => (
               <div key={project.id} onClick={() => handleCardClick(project.id)} className="relative">
-                {/* put the "NEW" Nojima gif on the newest project in the list */}
-                {mostRecentProject && project.id === mostRecentProject.id && (
-                  <img
-                    src="/assets/nojima-new.gif"
-                    alt="New!"
-                    className="absolute -top-6 -right-6 w-20 h-20 z-20 drop-shadow-xl pointer-events-none select-none"
-                    draggable={false}
-                  />
-                )}
-                <Card className="glass-card overflow-hidden hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
+                <Card className="glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
+                  {mostRecentProject && project.id === mostRecentProject.id && (
+                    <img
+                      src="/assets/nojima-new.gif"
+                      alt="New!"
+                      className="absolute -top-8 -right-8 w-20 h-20 z-20 drop-shadow-xl pointer-events-none select-none"
+                      draggable={false}
+                    />
+                  )}
                   <div className="p-8 h-full flex flex-col">
-                    <div className="flex items-start justify-between mb-6">
-                      <div>
-                        <h3 className="text-2xl font-bold font-serif mb-3 group-hover:text-primary transition-colors">
-                          {project.title}
-                        </h3>
-                        <div className="flex items-center gap-3 flex-wrap">
-                          <Badge variant="outline" className="flex flex-wrap gap-2 bg-muted/30 rounded-lg px-2 py-1">
-                            {project.category}
-                          </Badge>
-                          <Badge variant={project.status === "Completed" ? "default" : "secondary"} className="text-xs">
-                            {project.status}
-                          </Badge>
-                          <span className="text-xs text-muted-foreground">{project.year}</span>
+                    <div className="h-full flex flex-col">
+                      <div className="flex items-start justify-between mb-6">
+                        <div>
+                          <h3 className="text-2xl font-bold font-serif mb-3 group-hover:text-primary transition-colors">
+                            {project.title}
+                          </h3>
+                          <div className="flex items-center gap-3 flex-wrap">
+                            <Badge variant="outline" className="flex flex-wrap gap-2 bg-muted/30 rounded-lg px-2 py-1">
+                              {project.category}
+                            </Badge>
+                            <Badge variant={project.status === "Completed" ? "default" : "secondary"} className="text-xs">
+                              {project.status}
+                            </Badge>
+                            <span className="text-xs text-muted-foreground">{project.year}</span>
+                          </div>
                         </div>
+                        <ArrowUpRight className="min-h-6 min-w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
                       </div>
-                      <ArrowUpRight className="h-6 w-6 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 group-hover:-translate-y-1 transition-all duration-300" />
-                    </div>
 
-                    <p className="text-foreground leading-relaxed mb-8 flex-grow">{project.description}</p>
+                      <p className="text-foreground leading-relaxed mb-8 flex-grow">{project.description}</p>
 
-                    <div className="flex flex-col gap-4 mt-auto">
-                      <div className="flex gap-3">
-                        <Button
-                          variant="outline"
-                          size="sm"
-                          asChild
-                          className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          <a
-                            href={project.githubUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center justify-center gap-2"
-                          >
-                            <Github className="h-4 w-4" />
-                            Code
-                          </a>
-                        </Button>
-                        {project.liveUrl && (
+                      <div className="flex flex-col gap-4 mt-auto">
+                        <div className="flex gap-3">
                           <Button
                             variant="outline"
                             size="sm"
@@ -96,16 +78,35 @@ export default function ProjectsPage() {
                             onClick={(e) => e.stopPropagation()}
                           >
                             <a
-                              href={project.liveUrl}
+                              href={project.githubUrl}
                               target="_blank"
                               rel="noopener noreferrer"
                               className="flex items-center justify-center gap-2"
                             >
-                              <ExternalLink className="h-4 w-4" />
-                              Live
+                              <Github className="h-4 w-4" />
+                              Code
                             </a>
                           </Button>
-                        )}
+                          {project.liveUrl && (
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              asChild
+                              className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
+                              onClick={(e) => e.stopPropagation()}
+                            >
+                              <a
+                                href={project.liveUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center justify-center gap-2"
+                              >
+                                <ExternalLink className="h-4 w-4" />
+                                Live
+                              </a>
+                            </Button>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
