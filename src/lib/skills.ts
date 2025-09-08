@@ -1,0 +1,16 @@
+export const skills = [
+    "JavaScript",
+    "TypeScript",
+    "React",
+    "Next.js",
+    "Python",
+    "Firebase",
+    "AWS",
+    "C#/.NET",
+    "Spring Boot",
+    "Golang",
+    "Docker",
+    "RAG + Langchain",
+    "LLM Integration",
+    "System Architecture",
+  ]

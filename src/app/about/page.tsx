@@ -3,33 +3,10 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Heart, Code2 } from "lucide-react"
 import Image from "next/image"
+import { skills } from "@/lib/skills"
+import { interests } from "@/lib/interests"
 
 export default function AboutPage() {
-  const coreSkills = [
-    "JavaScript",
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Python",
-    "Firebase",
-    "AWS",
-    "C#/.NET",
-    "Spring Boot",
-    "Golang",
-    "Docker",
-    "RAG + Langchain",
-    "LLM Integration",
-    "System Architecture",
-  ]
-
-  const interests = [
-    "Cooking and baking 😋🍽️",
-    "Creating bad d&d characters 🎲",
-    "Finding an excuse to learn Rust 🦀",
-    "Building personal projects 💻",
-    "Planning my hackathon victory lap 🏆",
-    "Everything ACM UTD 😺",
-  ]
 
   return (
     <div className="min-h-screen">
@@ -79,7 +56,7 @@ export default function AboutPage() {
                 <h3 className="text-2xl font-bold font-serif">My Core Skills & Technologies</h3>
               </div>
               <div className="flex flex-wrap gap-3">
-                {coreSkills.map((skill) => (
+                {skills.map((skill) => (
                   <Badge
                     key={skill}
                     variant="secondary"
