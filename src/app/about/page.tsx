@@ -42,7 +42,7 @@ export default function AboutPage() {
                   <div className="space-y-4 text-foreground leading-relaxed">
                     <p>🎓 CS grad student @ UT Dallas (Intelligent Systems)</p>
                     <p>👥 Director of Development @ ACM UTD (leading 45 officers)</p>
-                    <p>💻 Full-stack + cloud systems → I like building stuff</p>
+                    <p>💻 Web Development | Full-Stack Systems | Cloud Architecture</p>
                   </div>
                 </div>
               </div>

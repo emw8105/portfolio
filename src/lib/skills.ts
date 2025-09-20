@@ -1,11 +1,11 @@
 export const skills = [
-    "JavaScript",
     "TypeScript",
     "React",
     "Next.js",
     "Python",
     "Firebase",
     "AWS",
+    "GCP",
     "C#/.NET",
     "Spring Boot",
     "Golang",

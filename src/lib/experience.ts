@@ -17,10 +17,10 @@ export const experiences: Experience[] = [
     period: "May 2025 - Present",
     type: "Organization Role",
     description:
-        "Oversee ACM UTD's largest division, managing 6 project teams and 45 officers to build and maintain software serving 2,500+ ACM members while driving recruiting, planning, and cross-divisional initiatives.",
-    technologies: ["JavaScript", "TypeScript", "React", "Python", "Golang", "AWS", "GCP", "Firebase", "GitHub"],
+        "Oversee ACM UTD's largest division, managing 6 project teams and 45 officers to build and maintain software serving hundreds of ACM members and thousands of UTD students while driving recruiting, planning, and cross-divisional initiatives.",
+    technologies: ["TypeScript", "React", "Next.js", "Python", "Golang", "AWS", "GCP", "Firebase", "GitHub"],
     highlights: [
-        "Directed engineering operations, ensuring delivery and maintainability of software used by thousands of UTD students.",
+        "Directed engineering operations as both technical leader and major code contributor, ensuring delivery and maintainability of software used by thousands of UTD students.",
         "Provided architectural guidance and technical mentorship to project teams, reviewing designs and code contributions.",
         "Recruited skilled developers and team leads by reviewing 200+ applications and conducting 80+ interviews.",
         "Launched division-wide initiatives to improve project maintainability, including building an officer database and leading development of an ACM API that centralizes university and third-party data.",
