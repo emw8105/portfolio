@@ -2,11 +2,10 @@ import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-import { quotes } from "@/lib/quotes"
+import Image from "next/image"
 import { Footer } from "@/components/footer"
 
 export default function HomePage() {
-  const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
   return (
     <div className="min-h-screen flex flex-col">
       <Navigation />
@@ -45,12 +44,15 @@ export default function HomePage() {
           </div>
           {/* Nojima Coffee Divider */}
           <div className="flex justify-center mt-20">
-            <img
+            <Image
               src="/assets/nojima-coffee.gif"
               alt="Nojima drinking coffee"
+              width={800}
+              height={80}
               className="w-full max-w-2xl h-20 object-contain select-none pointer-events-none opacity-80"
               draggable={false}
               aria-hidden="true"
+              unoptimized
             />
           </div>
         </div>

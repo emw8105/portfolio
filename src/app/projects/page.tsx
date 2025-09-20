@@ -2,10 +2,11 @@
 import { Navigation } from "@/components/navigation"
 import { projectsData } from "@/lib/projects"
 import { useRouter } from "next/navigation"
+import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Github, ExternalLink, ArrowUpRight } from "lucide-react"
+import { Github, ExternalLink } from "lucide-react"
 
 export default function ProjectsPage() {
   const router = useRouter()
@@ -37,11 +38,14 @@ export default function ProjectsPage() {
 
                   {/* highlight only the newest (first) project */}
                   {index === 0 && (
-                    <img
+                    <Image
                       src="/assets/nojima-new.gif"
                       alt="New!"
+                      width={80}
+                      height={80}
                       className="absolute -top-8 -right-8 w-20 h-20 z-20 drop-shadow-xl pointer-events-none select-none"
                       draggable={false}
+                      unoptimized
                     />
                   )}
 

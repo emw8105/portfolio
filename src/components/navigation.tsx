@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { Button } from "./ui/button"
 import { Menu, X, Github, Linkedin, Mail } from "lucide-react"
@@ -36,17 +37,23 @@ export function Navigation() {
                     {/* Logo */}
                     <Link href="/" className="flex items-center group" aria-label="Home">
                         <span className="relative w-16 h-16 block">
-                            <img
+                            <Image
                                 src="/assets/nojima-static.png"
                                 alt="Nojima Cat"
+                                width={64}
+                                height={64}
                                 className="absolute inset-0 w-full h-full object-contain transition-opacity duration-200 group-hover:opacity-0"
                                 draggable={false}
+                                priority
                             />
-                            <img
+                            <Image
                                 src="/assets/nojima-loading.gif"
                                 alt="Nojima Cat Animated"
+                                width={64}
+                                height={64}
                                 className="absolute inset-0 w-full h-full object-contain opacity-0 group-hover:opacity-100 transition-opacity duration-200"
                                 draggable={false}
+                                unoptimized
                             />
                         </span>
                     </Link>
