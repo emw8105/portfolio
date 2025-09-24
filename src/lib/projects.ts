@@ -4,7 +4,7 @@ export interface Project {
   subtitle?: string
   description: string
   longDescription?: string
-  category: string
+  categories: string[]
   status: string
   year: string
   duration?: string
@@ -30,7 +30,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System (PoC)",
     description:
         "A system that collects, encrypts, and stores system information and key inputs from a client, utilizing secure data transmission, cloud-based storage, and web-based monitoring. Built for educational purposes.",
-    category: "System Engineering / Cloud System",
+    categories: ["Cloud System", "Web Application"],
     status: "Completed",
     year: "Summer 2025",
     duration: "2 months",
@@ -100,7 +100,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "Automated Degree Plan Evaluator and Advising Platform",
     description:
         "A full-stack web application designed to help UTD students evaluate their degree progress, optimize course planning, and receive AI-powered advising using a RAG chatbot.",
-    category: "Web Application / Cloud System",
+    categories: ["Web Application", "Cloud System"],
     status: "In Progress",
     year: "2025",
     duration: "Ongoing (1 year)",
@@ -169,7 +169,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "Transform Your Spotify Playlists into Beautiful Wallpapers",
     description:
     "A web application that connects to your Spotify account and integrates your top listening activity to generate customized wallpapers.",
-    category: "Web Application",
+    categories: ["Web Application", "Cloud System"],
     status: "Completed",
     year: "Fall 2024",
     duration: "3 months",
@@ -220,7 +220,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "Optimization Tool for Daily Wordle Puzzles",
     description:
       "A web application that helps solve Wordle puzzles by analyzing existing guesses and resulting hints to provide optimal suggestions.",
-    category: "Web Application",
+    categories: ["Web Application"],
     status: "Completed",
     year: "2024",
     duration: "2 months",
@@ -269,7 +269,7 @@ export const projectsData: Record<string, Project> = {
     title: "Professor Data Script",
     subtitle: "Combining RateMyProfessors and UTD Grade Data for More Comprehensive Insights",
     description: "A Python script that aggregates and matches professor ratings from RateMyProfessors with UTD grade distributions, handling name inconsistencies and duplicates for more accurate professor profiles.",
-    category: "Data Engineering",
+    categories: ["Data Engineering", "Scripting"],
     status: "Completed",
     year: "Spring 2025",
     duration: "2 Months",
@@ -335,7 +335,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "AI-Powered Credit & Loan Application Platform",
     description:
       "A web application that enables users with limited credit history to apply for credit cards and loans using alternative financial documents, powered by AI-driven document analysis, made for HackUTD 11.",
-    category: "Web Application",
+    categories: ["Web Application"],
     status: "Completed",
     year: "Fall 2024",
     duration: "24-hour Hackathon",
@@ -403,7 +403,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "Automated Form Filler for UTD Room Requests",
     description:
       "A Chrome extension that autofills the UTD Astra Special Room Request Form by saving and entering common info, including dynamic questions.",
-    category: "Browser Extension",
+    categories: ["Browser Extension"],
     status: "Completed",
     year: "Fall 2024",
     duration: "1 month",
@@ -456,7 +456,7 @@ export const projectsData: Record<string, Project> = {
     subtitle: "Automated Test Case Generation from Visio Callflows",
     description:
       "A C# tool that parses Microsoft Visio files to extract callflow data, build multi-page graphs, and generate optimal test case paths for QA automation. Designed to streamline IVR testing and facilitate integration with platforms like TestRail.",
-    category: "QA Automation Tool",
+    categories: ["Data Engineering", "Scripting"],
     status: "Completed",
     year: "2024",
     duration: "4 months",

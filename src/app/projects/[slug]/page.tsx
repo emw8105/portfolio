@@ -58,8 +58,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               </div>
 
               <div className="flex flex-wrap gap-4">
-                <div className="flex items-center gap-2">
-                  <Badge variant="outline">{project.category}</Badge>
+                <div className="flex flex-wrap items-center gap-2">
+                  {project.categories.map((category: string, idx: number) => (
+                    <Badge key={idx} variant="outline">{category}</Badge>
+                  ))}
                   <Badge variant={project.status === "Completed" ? "default" : "secondary"}>{project.status}</Badge>
                 </div>
               </div>

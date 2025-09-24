@@ -56,11 +56,13 @@ export default function ProjectsPage() {
                         {project.title}
                       </h3>
 
-                      {/* category gets its own line because of length variability */}
-                      <div className="mb-2">
-                        <Badge variant="black">
-                          {project.category}
-                        </Badge>
+                      {/* categories as tags */}
+                      <div className="flex flex-wrap gap-2 mb-2">
+                        {project.categories.map((category: string, idx: number) => (
+                          <Badge key={idx} variant="black">
+                            {category}
+                          </Badge>
+                        ))}
                       </div>
 
                       {/* status + year get a line */}
