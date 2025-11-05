@@ -16,14 +16,20 @@ export function cn(...inputs: ClassValue[]) {
  *
  * Returns an array of ReactNode so it can be rendered inline in JSX.
  */
-export function parseTextWithLinks(text: string): ReactNode[] {
+export function parseTextWithLinks(text?: string): ReactNode[] {
   if (!text) return []
 
   const nodes: ReactNode[] = []
-  // Matches either a markdown link [label](url) in group 1/2, or a plain url in group 3
-  const regex = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(https?:\/\/[\w\-./?=&%#:+,;~]+)/g
+
+  // This combined regex matches either:
+  //  - markdown links: [label](https://...)
+  //  - plain URLs: https://....
+  // It stops plain URL matches at whitespace or a closing parenthesis so trailing punctuation isn't swallowed.
+  const regex = /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)|(https?:\/\/[^)\s]+)/g
   let lastIndex = 0
   let match: RegExpExecArray | null
+
+  const trailingPunct = /[.,!?;:]+$/
 
   while ((match = regex.exec(text)) !== null) {
     const matchStart = match.index
@@ -33,7 +39,7 @@ export function parseTextWithLinks(text: string): ReactNode[] {
     }
 
     if (match[1] && match[2]) {
-      // markdown link
+      // markdown link: label in match[1], url in match[2]
       const label = match[1]
       const href = match[2]
       nodes.push(
@@ -44,8 +50,15 @@ export function parseTextWithLinks(text: string): ReactNode[] {
         ),
       )
     } else if (match[3]) {
-      // plain url
-      const href = match[3]
+      // plain url - we trim trailing punctuation from the matched URL
+      let href = match[3]
+      let trailing = ""
+      const punctMatch = href.match(trailingPunct)
+      if (punctMatch) {
+        trailing = punctMatch[0]
+        href = href.replace(trailingPunct, "")
+      }
+
       nodes.push(
         React.createElement(
           "a",
@@ -53,6 +66,10 @@ export function parseTextWithLinks(text: string): ReactNode[] {
           href,
         ),
       )
+
+      if (trailing) {
+        nodes.push(trailing)
+      }
     }
 
     lastIndex = regex.lastIndex

@@ -129,7 +129,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
               <div>
                 <h3 className="text-lg font-semibold mb-3">My Solution</h3>
-                <p className="text-foreground leading-relaxed">{project.solution}</p>
+                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.solution)}</p>
               </div>
             </div>
           </Card>
