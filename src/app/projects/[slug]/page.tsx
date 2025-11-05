@@ -18,6 +18,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { projectsData } from "@/lib/projects"
 import ProjectGallery from "@/components/ui/project-gallery"
+import { parseTextWithLinks } from "@/lib/utils"
 
 interface ProjectPageProps {
   params: {
@@ -155,7 +156,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               {project.features && project.features.map((feature, index) => (
                 <div key={index} className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-sm text-foreground">{feature}</span>
+                  <span className="text-sm text-foreground">{parseTextWithLinks(feature)}</span>
                 </div>
               ))}
             </div>
@@ -171,7 +172,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
               {project.futureEnhancements && project.futureEnhancements.map((enhancement, index) => (
                 <li key={index} className="flex items-start gap-2">
                   <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-foreground">{enhancement}</span>
+                  <span className="text-foreground">{parseTextWithLinks(enhancement)}</span>
                 </li>
               ))}
             </ul>

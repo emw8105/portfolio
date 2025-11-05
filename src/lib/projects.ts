@@ -257,7 +257,7 @@ export const projectsData: Record<string, Project> = {
       "Intuitive UI with letter color coding and feedback",
     ],
     futureEnhancements: [
-      "Rewrite as a Deno/Preact application to learn more about Deno (see https://github.com/emw8105/wordle-solver-v2)",
+      "Rewrite as a Deno/Preact application to learn more about Deno (see [here](https://github.com/emw8105/wordle-solver-v2))",
       "Performance tracking and analytics",
       "User account system for saving preferences and history",
       "Enhanced mobile experience with responsive design",
