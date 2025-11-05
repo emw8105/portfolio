@@ -58,9 +58,39 @@ export const projectsData: Record<string, Project> = {
     ],
     images: [
       {
-        url: "/projects/gemini-showcase-hero.png",
+        url: "/projects/earth2echo-apollo-landing.png",
         alt: "Gemini Showcase hero — live video to music demo",
-        caption: "Live demo handling a YouTube livestream and generating synchronized music in real time."
+        caption: "Landing page for the Gemini Developer Showcase demo of earth2echo (Apollo).",
+      },
+      {
+        url: "/projects/earth2echo-apollo-dashboard.png",
+        alt: "Gemini Showcase dashboard screenshot",
+        caption: "Dashboard showing various content for users to generate with, including videos and livestreams.",
+      },
+      {
+        url: "/projects/earth2echo-apollo-stream.png",
+        alt: "Gemini Showcase demo with Ghibli stream",
+        caption: "Live demo showcasing Lo-fi music generation from livestreamed Ghibli video content.",
+      },
+      {
+        url: "/projects/earth2echo-apollo-demo.png",
+        alt: "Gemini Showcase demo screenshot",
+        caption: "Live demo for Halloween stream featuring music changes from the alien detection",
+      },
+      {
+        url: "/projects/earth2echo-original-landing.png",
+        alt: "HackTX original landing page",
+        caption: "Original HackTX landing page for earth2echo project.",        
+      },
+      {
+        url: "/projects/earth2echo-original-dashboard.png",
+        alt: "HackTX original dashboard",
+        caption: "HackTX dashboard showing available streams and videos.",        
+      },
+      {
+        url: "/projects/earth2echo-original-stream.png",
+        alt: "HackTX demo featuring ISS livestream",
+        caption: "Music generated from live ISS stream.",        
       },
     ],
     overview: "A real-time pipeline that analyzes video frames (recorded or livestream) and composes music that reflects the visual content. The orchestrator schedules frame extraction ahead of playback, runs Gemini vision analyses, and updates Lyria prompts so the music evolves with scene changes.",
