@@ -13,77 +13,141 @@ export default function AboutPage() {
       <Navigation />
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-primary via-pink-500 to-blue-500 bg-clip-text text-transparent py-2">
-              About Me
+        <div className="max-w-6xl mx-auto">
+          {/* Header with personality */}
+          <div className="mb-16">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-4 bg-gradient-ocean bg-clip-text text-transparent inline-block">
+              A bit about me
             </h1>
+            <div className="h-1 w-32 bg-gradient-coral rounded-full"></div>
           </div>
 
-          <div className="space-y-12">
-            <Card className="glass-card p-8 glow-hover transition-all duration-500">
-              <div className="flex flex-col sm:flex-row items-start gap-6">
-                <div className="relative flex-shrink-0 mx-auto sm:mx-0">
-                  <div className="w-32 h-32 sm:w-40 sm:h-40 rounded-full overflow-hidden border-4 border-gradient-to-br from-purple-500 to-pink-500 glow">
+          {/* Asymmetric grid layout */}
+          <div className="grid lg:grid-cols-12 gap-8 mb-12">
+            {/* Left column - Profile */}
+            <div className="lg:col-span-4">
+              <Card className="glass-card p-8 glow-hover transition-all duration-500 sticky top-24">
+                <div className="relative mb-6 mx-auto w-48 h-48">
+                  <div className="absolute inset-0 rounded-2xl bg-gradient-ocean blur-xl opacity-40"></div>
+                  <div className="relative w-full h-full rounded-2xl overflow-hidden border-2 border-primary/30">
                     <Image
                       src="/assets/EvanWright_headshot.jpg"
                       alt="Evan Wright"
-                      width={160}
-                      height={160}
+                      width={192}
+                      height={192}
                       className="w-full h-full object-cover"
                       priority
                     />
                   </div>
-                  <div className="absolute inset-0 rounded-full bg-gradient-to-br from-purple-500/20 to-pink-500/20 -z-10 blur-xl" />
                 </div>
 
-                <div className="flex-1 text-center sm:text-left">
-                  <h2 className="text-2xl font-bold font-serif mb-4">Hi There! 👋</h2>
-                  <div className="space-y-4 text-foreground leading-relaxed">
-                    <p>🎓 CS grad student @ UT Dallas (Intelligent Systems)</p>
-                    <p>👥 Director of Development @ ACM UTD (leading 45 officers)</p>
-                    <p>💻 Web Development | Full-Stack Systems | Cloud Architecture</p>
+                <div className="text-center space-y-4">
+                  <div>
+                    <h2 className="text-2xl font-bold font-serif mb-2">Evan Wright</h2>
+                    <p className="text-primary font-medium">Software Engineer</p>
+                  </div>
+
+                  <div className="pt-4 border-t border-border space-y-2 text-sm">
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span>Dallas, TX</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 bg-primary rounded-full"></div>
+                      <span>CS @ UT Dallas</span>
+                    </div>
+                    <div className="flex items-center justify-center gap-2">
+                      <div className="w-2 h-2 bg-accent rounded-full"></div>
+                      <span>Director @ ACM UTD</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
 
-            <Card className="glass-card p-8 glow-hover transition-all duration-500">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full flex items-center justify-center glow">
-                  <Code2 className="h-6 w-6 text-white" />
+            {/* Right column - Content */}
+            <div className="lg:col-span-8 space-y-8">
+              {/* Introduction */}
+              <Card className="glass-card p-8 glow-hover transition-all duration-500">
+                <h3 className="text-2xl font-bold font-serif mb-6 flex items-center gap-3">
+                  <span className="w-1 h-8 bg-gradient-ocean rounded-full"></span>
+                  What I'm about
+                </h3>
+                <div className="space-y-4 text-foreground leading-relaxed">
+                  <p>
+                    I'm a CS grad student at UT Dallas specializing in Intelligent Systems, where I get to explore the intersection of
+                    software engineering and machine learning. As Director of Development at ACM UTD, I lead a team of 45 officers,
+                    building tools and experiences for our student community.
+                  </p>
+                  <p>
+                    My work spans full-stack web development, cloud architecture, and system design. I love the challenge of
+                    building scalable solutions and the satisfaction of seeing them come to life. Whether it's architecting
+                    backend systems or crafting intuitive user experiences, I'm always looking for the elegant solution.
+                  </p>
+                  <p className="text-primary/80 italic border-l-2 border-primary pl-4">
+                    When I'm not coding, you'll probably find me exploring new coffee shops or diving deep into whatever
+                    technical rabbit hole has caught my attention that week.
+                  </p>
                 </div>
-                <h3 className="text-2xl font-bold font-serif">My Core Skills & Technologies</h3>
-              </div>
-              <div className="flex flex-wrap gap-3">
-                {skills.map((skill) => (
-                  <Badge
-                    key={skill}
-                    variant="secondary"
-                    className="text-sm py-2 px-4 hover:bg-primary/20 transition-colors"
-                  >
-                    {skill}
-                  </Badge>
-                ))}
-              </div>
-            </Card>
+              </Card>
 
-            <Card className="glass-card p-8 glow-hover transition-all duration-500">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 bg-gradient-to-br from-pink-500 to-blue-500 rounded-full flex items-center justify-center glow">
-                  <Heart className="h-6 w-6 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold font-serif">Current Interests</h3>
-              </div>
-              <div className="grid md:grid-cols-2 gap-6">
-                {interests.map((interest) => (
-                  <div key={interest} className="flex items-center gap-3">
-                    <div className="w-2 h-2 bg-gradient-to-r from-purple-400 to-pink-400 rounded-full flex-shrink-0" />
-                    <p className="text-foreground">{interest}</p>
+              {/* Skills with visual flair */}
+              <Card className="glass-card p-8 glow-hover transition-all duration-500">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-ocean rounded-xl flex items-center justify-center">
+                    <Code2 className="h-6 w-6 text-background" />
                   </div>
-                ))}
-              </div>
-            </Card>
+                  <h3 className="text-2xl font-bold font-serif">Technical Arsenal</h3>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((skill, index) => (
+                    <Badge
+                      key={skill}
+                      variant="secondary"
+                      className="text-sm py-2 px-4 hover:bg-primary/20 hover:border-primary/40 transition-all cursor-default border border-border"
+                      style={{
+                        animationDelay: `${index * 50}ms`
+                      }}
+                    >
+                      {skill}
+                    </Badge>
+                  ))}
+                </div>
+              </Card>
+
+              {/* Current interests */}
+              <Card className="glass-card p-8 glow-hover transition-all duration-500 relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-coral opacity-5 rounded-full blur-3xl"></div>
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 bg-gradient-coral rounded-xl flex items-center justify-center">
+                    <Heart className="h-6 w-6 text-background" />
+                  </div>
+                  <h3 className="text-2xl font-bold font-serif">Currently exploring</h3>
+                </div>
+                <div className="grid md:grid-cols-2 gap-4">
+                  {interests.map((interest, index) => (
+                    <div key={interest} className="flex items-start gap-3 group">
+                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0 group-hover:scale-150 transition-transform"></div>
+                      <p className="text-foreground group-hover:text-primary transition-colors">{interest}</p>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+            </div>
+          </div>
+
+          {/* Fun Nojima section */}
+          <div className="mt-12 flex justify-center">
+            <div className="glass-card rounded-2xl p-6 inline-block group hover:scale-105 transition-transform duration-300">
+              <Image
+                src="/assets/nojima-stretch.gif"
+                alt="Nojima stretching"
+                width={300}
+                height={200}
+                className="rounded-xl"
+                unoptimized
+              />
+            </div>
           </div>
         </div>
       </main>

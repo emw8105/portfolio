@@ -1,6 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Space_Grotesk } from "next/font/google"
+import { Inter, Sora } from "next/font/google"
 import "./globals.css"
 
 const inter = Inter({
@@ -10,11 +10,11 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 })
 
-const spaceGrotesk = Space_Grotesk({
+const sora = Sora({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-space-grotesk",
-  weight: ["400", "500", "600", "700"],
+  variable: "--font-sora",
+  weight: ["400", "500", "600", "700", "800"],
 })
 
 export const metadata: Metadata = {
@@ -32,7 +32,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} antialiased`}>
+    <html lang="en" className={`${inter.variable} ${sora.variable} antialiased`}>
       <body className="font-sans">{children}</body>
     </html>
   )
