@@ -2,22 +2,22 @@ import { Navigation } from "@/components/navigation"
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
 import Link from "next/link"
-import Image from "next/image"
 import { Footer } from "@/components/footer"
+import { InteractiveTap } from "@/components/interactive-tap"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="h-screen flex flex-col overflow-hidden">
       <Navigation />
 
-      <section className="pt-32 pb-20 px-4 sm:px-6 lg:px-8 flex-1">
-        <div className="max-w-6xl mx-auto">
+      <section className="flex-1 flex items-center px-4 sm:px-6 lg:px-8">
+        <div className="max-w-6xl mx-auto w-full">
           {/* Asymmetric hero layout */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 mb-20">
+          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left column - Main content */}
-            <div className="lg:col-span-7 space-y-8 opacity-0 animate-fade-in-up">
-              <div className="space-y-4">
-                <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold font-serif leading-none opacity-0 animate-slide-in-left animation-delay-200">
+            <div className="lg:col-span-7 space-y-6 opacity-0 animate-fade-in-up">
+              <div className="space-y-3">
+                <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold font-serif leading-none opacity-0 animate-slide-in-left animation-delay-200">
                   <span className="block text-foreground">Evan</span>
                   <span className="block bg-gradient-ocean bg-clip-text mt-2">Wright</span>
                 </h1>
@@ -28,17 +28,16 @@ export default function HomePage() {
                 Solutions Architect
               </p>
 
-              <p className="text-lg text-muted-foreground max-w-xl leading-relaxed opacity-0 animate-fade-in-up animation-delay-600">
-                {/* Building full-stack systems and cloud architecture while leading development at ACM UTD.
-                Currently pursuing intelligent systems at UT Dallas. Still workshopping the following sentence but it seems to short for now*/}
-                Building full-stack systems and cloud architecture.
+              <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed opacity-0 animate-fade-in-up animation-delay-600">
+                Specializing in cloud architecture and full-stack development at massive scale.
+                Building intelligent systems and solutions for enterprise challenges.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up animation-delay-800">
+              <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up animation-delay-700">
                 <Button
                   asChild
                   size="lg"
-                  className="text-lg px-8 py-6 relative overflow-hidden group border-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-background transition-all duration-300"
+                  className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 relative overflow-hidden group border-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-background transition-all duration-300"
                 >
                   <Link href="/projects" className="flex items-center gap-2">
                     <span className="relative z-10">View Projects</span>
@@ -49,56 +48,17 @@ export default function HomePage() {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="text-lg px-8 py-6 border-2 border-border hover:border-accent hover:text-accent transition-all duration-300"
-                  asChild>
+                  className="text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-2 border-border hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
+                  asChild
+                >
                   <Link href="/about">About Me</Link>
                 </Button>
               </div>
             </div>
 
-            {/* Right column - Visual accent */}
+            {/* Right column - Interactive Nojima */}
             <div className="lg:col-span-5 flex items-center justify-center opacity-0 animate-fade-in-up animation-delay-600">
-              <div className="glass-card rounded-3xl p-8 relative group">
-                <div className="absolute inset-0 bg-gradient-ocean opacity-0 group-hover:opacity-10 rounded-3xl transition-opacity duration-500"></div>
-                <Image
-                  src="/assets/nojima-tap.gif"
-                  alt="Nojima tapping"
-                  width={400}
-                  height={400}
-                  className="w-full h-auto rounded-2xl"
-                  unoptimized
-                  priority
-                />
-                <div className="mt-6 space-y-3">
-                  <div className="flex gap-2 flex-wrap">
-                    <span className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30">
-                      Full-Stack
-                    </span>
-                    <span className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30">
-                      Cloud
-                    </span>
-                    <span className="px-3 py-1 text-xs rounded-full bg-accent/20 text-accent border border-accent/30">
-                      AI/ML
-                    </span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Nojima Coffee Divider */}
-          <div className="flex justify-center opacity-0 animate-fade-in-up animation-delay-1000">
-            <div className="relative group">
-              <Image
-                src="/assets/nojima-coffee.gif"
-                alt="Nojima drinking coffee"
-                width={800}
-                height={80}
-                className="w-full max-w-2xl h-20 object-contain select-none pointer-events-none opacity-70 group-hover:opacity-100 transition-opacity"
-                draggable={false}
-                aria-hidden="true"
-                unoptimized
-              />
+              <InteractiveTap />
             </div>
           </div>
         </div>
