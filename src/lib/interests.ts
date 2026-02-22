@@ -3,6 +3,6 @@ export const interests = [
     "Creating bad d&d characters 🎲",
     "Finding an excuse to try Rust 🦀",
     "Building personal projects 💻",
-    "Planning my hackathon victory lap 🏆",
+    "Refactoring old code 🧹",
     "Learning fantasy football 🏈",
   ]
