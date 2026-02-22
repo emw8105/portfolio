@@ -13,6 +13,8 @@ export function Navigation() {
     const pathname = usePathname()
 
     useEffect(() => {
+        setScrolled(window.scrollY > 20) // ensures that background will be there when users refresh after already scrolling down
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
         }

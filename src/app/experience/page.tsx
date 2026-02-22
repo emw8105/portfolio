@@ -31,9 +31,6 @@ export default function ExperiencePage() {
 
             {experiences.map((exp, index) => (
               <div key={index} className="relative">
-                {/* Timeline dot */}
-                <div className="hidden lg:block absolute left-0 top-8 w-4 h-4 -ml-[7px] rounded-full bg-gradient-ocean border-4 border-background"></div>
-
                 <Card className="glass-card p-8 glow-hover transition-all duration-500 lg:ml-12">
                   <div className="grid lg:grid-cols-12 gap-6">
                     {/* Left section - Meta info */}
