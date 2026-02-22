@@ -71,21 +71,21 @@ export default function AboutPage() {
               <Card className="glass-card p-8 glow-hover transition-all duration-500">
                 <h3 className="text-2xl font-bold font-serif mb-6 flex items-center gap-3">
                   <span className="w-1 h-8 bg-gradient-ocean rounded-full"></span>
-                  What I'm about
+                  What I&apos;m about
                 </h3>
                 <div className="space-y-4 text-foreground leading-relaxed">
                   <p>
-                    I'm a Solutions Architect at <span className="text-accent font-semibold">AWS</span>, working
-                    closely with <span className="text-accent font-semibold">some of the world's largest organizations</span> to design and
+                    I&apos;m a Solutions Architect at <span className="text-accent font-semibold">AWS</span>, working
+                    closely with <span className="text-accent font-semibold">some of the world&apos;s largest organizations</span> to design and
                     implement cloud-native architectures. My focus is being a knowledgeable and approachable partner for technical teams,
                     helping solve the most complex challenges faced by enterprises.
                   </p>
                   <p>
-                    I earned my Master's degree in Computer Science from UT Dallas (specializing in Intelligent Systems), and my work spans
+                    I earned my Master&apos;s degree in Computer Science from UT Dallas (specializing in Intelligent Systems), and my work spans
                     cloud architecture, full-stack development, and <span className="text-accent font-semibold">ML/AI systems</span>.
                   </p>
                   <p className="text-primary/80 italic border-l-2 border-primary pl-4">
-                    Outside of work, I'm staying active at the gym and tend to jump into side projects whenever an idea sticks, but time is short and the ideas are many.
+                    Outside of work, I&apos;m staying active at the gym and tend to jump into side projects whenever an idea sticks, but time is short and the ideas are many.
                   </p>
                 </div>
               </Card>
