@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge"
 import Image from "next/image"
 import { skills } from "@/lib/skills"
 import { interests } from "@/lib/interests"
+import { InteractiveStretch } from "@/components/interactive-stretch"
 
 export default function AboutPage() {
 
@@ -141,14 +142,7 @@ export default function AboutPage() {
           {/* Fun Nojima section */}
           <div className="mt-12 lg:pl-[calc(33.333333%+2rem)]">
             <div className="flex justify-center lg:justify-start">
-              <Image
-                src="/assets/nojima-stretch.gif"
-                alt="Nojima stretching"
-                width={300}
-                height={200}
-                className="rounded-xl hover:scale-105 transition-transform duration-300"
-                unoptimized
-              />
+              <InteractiveStretch />
             </div>
           </div>
         </div>
