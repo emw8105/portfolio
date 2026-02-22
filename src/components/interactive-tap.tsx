@@ -25,7 +25,7 @@ interface Bubble {
 }
 
 export function InteractiveTap() {
-    const [oceanMode, setOceanMode] = useState(false)
+    const [nojimaTap, setNojimaTap] = useState(false)
     const [particles, setParticles] = useState<Particle[]>([])
     const [bubbles, setBubbles] = useState<Bubble[]>([])
     const [mounted, setMounted] = useState(false)
@@ -35,7 +35,7 @@ export function InteractiveTap() {
     }, [])
 
     useEffect(() => {
-        if (!oceanMode) {
+        if (!nojimaTap) {
             setParticles([])
             setBubbles([])
             return
@@ -77,11 +77,11 @@ export function InteractiveTap() {
         }, 50)
 
         return () => clearInterval(interval)
-    }, [oceanMode])
+    }, [nojimaTap])
 
     const handleTap = () => {
-        const newMode = !oceanMode
-        setOceanMode(newMode)
+        const newMode = !nojimaTap
+        setNojimaTap(newMode)
 
         // Add smooth transition class to body
         if (newMode) {
@@ -93,22 +93,22 @@ export function InteractiveTap() {
     }
 
     useEffect(() => {
-        if (oceanMode) {
-            document.body.classList.add('ocean-mode')
+        if (nojimaTap) {
+            document.body.classList.add('nojima-tap-mode')
         } else {
-            document.body.classList.remove('ocean-mode')
+            document.body.classList.remove('nojima-tap-mode')
         }
-    }, [oceanMode])
+    }, [nojimaTap])
 
     return (
         <>
             <div className="relative">
                 <button
                     onClick={handleTap}
-                    className={`glass-card rounded-3xl p-8 relative cursor-pointer transition-all duration-700 w-full ${oceanMode ? 'ocean-active' : ''}`}
+                    className={`glass-card rounded-3xl p-8 relative cursor-pointer transition-all duration-700 w-full ${nojimaTap ? 'nojima-active' : ''}`}
                     aria-label="Interactive element"
                 >
-                    <div className={`absolute inset-0 rounded-3xl transition-all duration-700 ${oceanMode
+                    <div className={`absolute inset-0 rounded-3xl transition-all duration-700 ${nojimaTap
                         ? 'bg-gradient-to-br from-primary/40 via-accent/30 to-primary/40 opacity-100'
                         : 'opacity-0'
                         }`}></div>
@@ -118,7 +118,7 @@ export function InteractiveTap() {
                         alt="Nojima tapping"
                         width={400}
                         height={400}
-                        className={`w-full h-auto rounded-2xl transition-all duration-700 ${oceanMode ? 'brightness-125 contrast-110' : ''}`}
+                        className={`w-full h-auto rounded-2xl transition-all duration-700 ${nojimaTap ? 'brightness-125 contrast-110' : ''}`}
                         unoptimized
                         priority
                     />
@@ -127,9 +127,9 @@ export function InteractiveTap() {
 
             {/* Portal the ocean effects to document.body for full viewport coverage */}
             {mounted && createPortal(
-                <div className={`fixed inset-0 pointer-events-none transition-opacity duration-[1500ms] z-[9999] ${oceanMode ? 'opacity-100' : 'opacity-0'}`}>
+                <div className={`fixed inset-0 pointer-events-none transition-opacity duration-[1500ms] z-[9999] ${nojimaTap ? 'opacity-100' : 'opacity-0'}`}>
                     {/* Animated wave overlays - FULL PAGE */}
-                    <div className="absolute inset-0 pointer-events-none ocean-waves" />
+                    {/* <div className="absolute inset-0 pointer-events-none ocean-waves" /> */}
 
                     {/* Animated overlay gradients - FULL PAGE */}
                     <div className="absolute inset-0 pointer-events-none ocean-overlay" />

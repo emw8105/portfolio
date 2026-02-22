@@ -29,8 +29,10 @@ export default function HomePage() {
               </p>
 
               <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed opacity-0 animate-fade-in-up animation-delay-600">
-                Specializing in cloud architecture and full-stack development at massive scale.
-                Building intelligent systems and solutions for enterprise challenges.
+                Designing <span className="text-accent font-semibold">cloud-native architectures</span> and
+                building <span className="text-accent font-semibold">intelligent systems</span> for enterprise-scale
+                organizations. Specializing in <span className="text-accent font-semibold">scalable solutions</span> that
+                bridge infrastructure, data, and AI.
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 pt-4 opacity-0 animate-fade-in-up animation-delay-700">
