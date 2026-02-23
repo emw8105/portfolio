@@ -52,6 +52,14 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundImage: {
+        "gradient-ocean":
+          "linear-gradient(135deg, oklch(0.68 0.15 195), oklch(0.65 0.22 240))",
+        "gradient-coral":
+          "linear-gradient(135deg, oklch(0.72 0.18 25), oklch(0.75 0.2 35))",
+        "gradient-depth":
+          "linear-gradient(135deg, oklch(0.65 0.22 240), oklch(0.68 0.15 195))",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",

@@ -10,11 +10,28 @@ export interface Experience {
 }
 
 export const experiences: Experience[] = [
+  // {
+  //   title: "Solutions Architect",
+  //   company: "Amazon Web Services",
+  //   location: "Dallas, TX",
+  //   period: "January 2025 - Present",
+  //   type: "Full-Time",
+  //   description:
+  //       "Working as a dedicated technical advisor for enterprise organizations, building relationships as a trusted partner for cloud architecture and AWS solutions. After initial training, I'll be assigned to a specific customer account within a key industry (automotive, manufacturing, financial services, or energy) to serve as their primary AWS contact.",
+  //   technologies: ["AWS", "Python", "TypeScript", "Infrastructure as Code", "Cloud Architecture", "Solution Design"],
+  //   highlights: [
+  //       "Serving as a trusted technical advisor and primary point of contact for enterprise AWS customers, independent of sales quotas to ensure unbiased guidance.",
+  //       "Designing cloud-native architectures and providing strategic direction for implementation while collaborating with customer technical teams.",
+  //       "Building proof-of-concept prototypes to demonstrate specific AWS capabilities and validate architectural approaches before full-scale implementation.",
+  //       "Tackling complex technical challenges across customer projects, from infrastructure optimization to application modernization.",
+  //       "Developing custom tools and automation to accelerate customer outcomes and improve operational efficiency.",
+  //   ],
+  // },
   {
     title: "Director of Development",
     company: "ACM UTD",
     location: "Richardson, TX",
-    period: "May 2025 - Present",
+    period: "May 2025 - December 2025",
     type: "Organization Role",
     description:
         "Oversee ACM UTD's largest division, managing 6 project teams and 45 officers to build and maintain software serving hundreds of ACM members and thousands of UTD students while driving recruiting, planning, and cross-divisional initiatives.",

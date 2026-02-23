@@ -13,6 +13,8 @@ export function Navigation() {
     const pathname = usePathname()
 
     useEffect(() => {
+        setScrolled(window.scrollY > 20) // ensures that background will be there when users refresh after already scrolling down
+
         const handleScroll = () => {
             setScrolled(window.scrollY > 20)
         }
@@ -29,7 +31,7 @@ export function Navigation() {
 
     return (
         <nav
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "glass-nav shadow-lg" : "bg-transparent"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-200 ${scrolled ? "glass-nav shadow-lg" : "bg-transparent"
                 }`}
         >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,17 +75,17 @@ export function Navigation() {
 
                         {/* Social Links */}
                         <div className="flex items-center space-x-3 ml-6">
-                            <Button variant="ghost" size="sm" asChild>
+                            <Button variant="ghost" size="sm" asChild className="duration-200">
                                 <a href="https://github.com/emw8105" target="_blank" rel="noopener noreferrer">
                                     <Github className="h-4 w-4" />
                                 </a>
                             </Button>
-                            <Button variant="ghost" size="sm" asChild>
+                            <Button variant="ghost" size="sm" asChild className="duration-200">
                                 <a href="https://www.linkedin.com/in/evanmattwright/" target="_blank" rel="noopener noreferrer">
                                     <Linkedin className="h-4 w-4" />
                                 </a>
                             </Button>
-                            <Button variant="ghost" size="sm" asChild>
+                            <Button variant="ghost" size="sm" asChild className="duration-200">
                                 <a href="mailto:evanmatt.wright@gmail.com">
                                     <Mail className="h-4 w-4" />
                                 </a>
@@ -117,17 +119,17 @@ export function Navigation() {
 
                             {/* Mobile Social Links */}
                             <div className="flex items-center space-x-3 pt-3 border-t border-border">
-                                <Button variant="ghost" size="sm" asChild>
+                                <Button variant="ghost" size="sm" asChild className="duration-300">
                                     <a href="https://github.com/emw8105" target="_blank" rel="noopener noreferrer">
                                         <Github className="h-4 w-4" />
                                     </a>
                                 </Button>
-                                <Button variant="ghost" size="sm" asChild>
+                                <Button variant="ghost" size="sm" asChild className="duration-300">
                                     <a href="https://www.linkedin.com/in/evanmattwright/" target="_blank" rel="noopener noreferrer">
                                         <Linkedin className="h-4 w-4" />
                                     </a>
                                 </Button>
-                                <Button variant="ghost" size="sm" asChild>
+                                <Button variant="ghost" size="sm" asChild className="duration-300">
                                     <a href="mailto:evanmatt.wright@gmail.com">
                                         <Mail className="h-4 w-4" />
                                     </a>

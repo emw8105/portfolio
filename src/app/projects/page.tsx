@@ -23,18 +23,18 @@ export default function ProjectsPage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-primary via-pink-500 to-blue-500 bg-clip-text text-transparent py-2">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 py-2">
               Projects
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Check out the things I enjoyed making :D
+              Some neat tools and tech I&apos;ve built over the years
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {projects.map((project, index) => (
               <div key={project.id} onClick={() => handleCardClick(project.id)} className="relative">
-                <Card className="flex flex-col glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group cursor-pointer h-full">
+                <Card className="flex flex-col glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 glow-hover transition-all duration-300 group cursor-pointer h-full">
 
                   {/* highlight only the newest (first) project */}
                   {index === 0 && (
@@ -59,7 +59,7 @@ export default function ProjectsPage() {
                       {/* categories as tags */}
                       <div className="flex flex-wrap gap-2 mb-2">
                         {project.categories.map((category: string, idx: number) => (
-                          <Badge key={idx} variant="black">
+                          <Badge key={idx} variant="outline" className="border-primary/30 bg-primary/5 text-xs">
                             {category}
                           </Badge>
                         ))}
@@ -67,7 +67,7 @@ export default function ProjectsPage() {
 
                       {/* status + year get a line */}
                       <div className="flex items-center gap-2 text-sm">
-                        <Badge variant={project.status === "Completed" ? "default" : "accent"}>
+                        <Badge variant={project.status === "Completed" ? "default" : "accent"} className="text-xs">
                           {project.status}
                         </Badge>
                         <span className="text-muted-foreground">{project.year}</span>
@@ -86,7 +86,7 @@ export default function ProjectsPage() {
                         variant="outline"
                         size="sm"
                         asChild
-                        className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
+                        className="bg-transparent flex-1 border-2 border-primary hover:border-transparent transition-all duration-300"
                         onClick={(e) => e.stopPropagation()}
                       >
                         <a
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
                           variant="outline"
                           size="sm"
                           asChild
-                          className="bg-transparent flex-1 border-2 border-primary hover:border-transparent"
+                          className="bg-transparent flex-1 border-2 border-primary hover:border-transparent transition-all duration-300"
                           onClick={(e) => e.stopPropagation()}
                         >
                           <a
