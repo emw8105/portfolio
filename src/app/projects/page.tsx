@@ -27,7 +27,7 @@ export default function ProjectsPage() {
               Projects
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Some neat tools and tech I've built over the years
+              Some neat tools and tech I&apos;ve built over the years
             </p>
           </div>
 

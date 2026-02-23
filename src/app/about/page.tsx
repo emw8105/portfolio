@@ -128,7 +128,7 @@ export default function AboutPage() {
                   <h3 className="text-2xl font-bold font-serif">Currently exploring</h3>
                 </div>
                 <div className="grid md:grid-cols-2 gap-4">
-                  {interests.map((interest, index) => (
+                  {interests.map((interest) => (
                     <div key={interest} className="flex items-start gap-3 group">
                       <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
                       <p className="text-foreground">{interest}</p>

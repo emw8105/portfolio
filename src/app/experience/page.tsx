@@ -4,7 +4,6 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin } from "lucide-react"
 import { experiences } from "@/lib/experience"
-import Image from "next/image"
 
 export default function ExperiencePage() {
   return (
