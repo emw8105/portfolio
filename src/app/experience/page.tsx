@@ -14,12 +14,11 @@ export default function ExperiencePage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-4 bg-gradient-ocean bg-clip-text text-transparent inline-block">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2">
               Experience
             </h1>
-            <div className="h-1 w-32 bg-gradient-coral rounded-full mb-4"></div>
-            <p className="text-xl text-muted-foreground max-w-2xl">
+            <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
               Professional roles, leadership positions, and contributions to the tech community
             </p>
           </div>

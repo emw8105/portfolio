@@ -23,11 +23,11 @@ export default function ProjectsPage() {
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-gradient-to-r from-primary via-pink-500 to-blue-500 bg-clip-text text-transparent py-2">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2">
               Projects
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Check out the things I enjoyed making :D
+              Check out the stuff I've made :D
             </p>
           </div>
 
