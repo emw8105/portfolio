@@ -196,6 +196,10 @@ html, body, #__next {
     box-shadow: 0 0 20px rgba(100, 200, 220, 0.3);
   }
 
+  .glow-hover {
+    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+  }
+
   .glow-hover:hover {
     box-shadow: 0 0 30px rgba(100, 200, 220, 0.5), 0 4px 20px rgba(255, 127, 80, 0.2);
     transform: translateY(-2px);
@@ -281,29 +285,6 @@ html, body, #__next {
 .no-scrollbar {
   scrollbar-width: none;
   -ms-overflow-style: none;
-}
-
-/* ========== OCEAN MODE ANIMATIONS ========== */
-
-/* Ocean mode background transformation */
-body.ocean-mode::before {
-  background: radial-gradient(
-    ellipse at top,
-    oklch(0.20 0.14 195) 0%,
-    oklch(0.14 0.10 210) 30%,
-    oklch(0.10 0.06 230) 60%,
-    oklch(0.08 0.03 245) 100%
-  ) !important;
-  transition: background 1s ease-out;
-}
-
-/* Ocean active card glow */
-.ocean-active {
-  box-shadow: 
-    0 0 60px rgba(100, 200, 220, 0.6), 
-    0 0 120px rgba(100, 200, 220, 0.3),
-    0 0 180px rgba(255, 127, 80, 0.2);
-  animation: ocean-pulse 3s ease-in-out infinite;
 }
 
 @keyframes ocean-pulse {
