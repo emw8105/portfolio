@@ -130,8 +130,8 @@ export default function AboutPage() {
                 <div className="grid md:grid-cols-2 gap-4">
                   {interests.map((interest, index) => (
                     <div key={interest} className="flex items-start gap-3 group">
-                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0 group-hover:scale-150 transition-transform"></div>
-                      <p className="text-foreground group-hover:text-primary transition-colors">{interest}</p>
+                      <div className="w-2 h-2 bg-accent rounded-full mt-2 flex-shrink-0"></div>
+                      <p className="text-foreground">{interest}</p>
                     </div>
                   ))}
                 </div>

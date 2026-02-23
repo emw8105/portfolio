@@ -93,10 +93,10 @@ export default function ExperiencePage() {
                           {exp.highlights.map((highlight, idx) => (
                             <div
                               key={idx}
-                              className="flex items-start gap-3 group hover:translate-x-1 transition-transform"
+                              className="flex items-start gap-3"
                             >
-                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0 group-hover:scale-150 group-hover:bg-accent transition-all"></div>
-                              <span className="text-sm leading-relaxed text-foreground/90 group-hover:text-foreground">
+                              <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2.5 flex-shrink-0"></div>
+                              <span className="text-sm leading-relaxed text-foreground/90">
                                 {highlight}
                               </span>
                             </div>
@@ -108,21 +108,6 @@ export default function ExperiencePage() {
                 </Card>
               </div>
             ))}
-          </div>
-
-          {/* Fun footer element */}
-          <div className="mt-16 flex justify-center">
-            <div className="glass-card rounded-2xl px-8 py-4 inline-flex items-center gap-4 group hover:scale-105 transition-transform">
-              <Image
-                src="/assets/nojima-new.gif"
-                alt="Nojima"
-                width={60}
-                height={60}
-                className="rounded-lg"
-                unoptimized
-              />
-              <p className="text-muted-foreground italic">Always building, always learning</p>
-            </div>
           </div>
         </div>
       </main>
