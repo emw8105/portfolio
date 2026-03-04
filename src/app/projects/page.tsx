@@ -10,7 +10,6 @@ import { Github, ExternalLink } from "lucide-react"
 
 export default function ProjectsPage() {
   const router = useRouter()
-  const projects = Object.values(projectsData)
 
   const handleCardClick = (projectId: string) => {
     router.push(`/projects/${projectId}`)
@@ -32,8 +31,8 @@ export default function ProjectsPage() {
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {projects.map((project, index) => (
-              <div key={project.id} onClick={() => handleCardClick(project.id)} className="relative">
+            {Object.entries(projectsData).map(([projectId, project], index) => (
+              <div key={projectId} onClick={() => handleCardClick(projectId)} className="relative">
                 <Card className="flex flex-col glass-card relative hover:scale-[1.02] hover:shadow-2xl hover:shadow-primary/10 glow-hover transition-all duration-300 group cursor-pointer h-full">
 
                   {/* highlight only the newest (first) project */}

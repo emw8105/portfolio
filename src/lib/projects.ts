@@ -1,5 +1,4 @@
 export interface Project {
-  id: string
   title: string
   subtitle?: string
   description: string
@@ -21,7 +20,6 @@ export interface Project {
 
 export const projectsData: Record<string, Project> = {
   "professor-rating-prediction": {
-    id: "professor-rating-prediction",
     title: "Professor Rating Prediction Model",
     subtitle: "Using Academic Outcomes to Predict Missing RateMyProfessors Ratings",
     description: "A machine learning system that predicts professor quality, difficulty, and would-take-again ratings using UTD grade distributions and structured RMP metadata, explaining over 60% of student rating variance.",
@@ -86,7 +84,6 @@ export const projectsData: Record<string, Project> = {
     ]
   },
   "earth2echo": {
-    id: "earth2echo",
     title: "earth2echo",
     subtitle: "World's First Live Video-to-Music System",
     description: "Live video-to-music system that analyzes visual content in real time and generates adaptive music synchronized to the video. Built during HackTX and refined into a production-ready demo for the Gemini Developer Showcase.",
@@ -163,7 +160,6 @@ export const projectsData: Record<string, Project> = {
     ]
   },
   "keylogger": {
-    id: "keylogger",
     title: "Keylogger System",
     subtitle: "A Secure, Full-Stack Remote Logging and Monitoring System (PoC)",
     description:
@@ -233,7 +229,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "sage": {
-    id: "sage",
     title: "SAGE",
     subtitle: "Automated Degree Plan Evaluator and Advising Platform",
     description:
@@ -302,7 +297,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "wallify": {
-    id: "wallify",
     title: "Wallify",
     subtitle: "Transform Your Spotify Playlists into Beautiful Wallpapers",
     description:
@@ -353,7 +347,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "wordle-solver": {
-    id: "wordle-solver",
     title: "Wordle Solver",
     subtitle: "Optimization Tool for Daily Wordle Puzzles",
     description:
@@ -403,7 +396,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "rating-script": {
-    id: "rating-script",
     title: "Professor Data Script",
     subtitle: "Combining RateMyProfessors and UTD Grade Data for More Comprehensive Insights",
     description: "A Python script that aggregates and matches professor ratings from RateMyProfessors with UTD grade distributions, handling name inconsistencies and duplicates for more accurate professor profiles.",
@@ -460,7 +452,6 @@ export const projectsData: Record<string, Project> = {
     ]
   },
   "easyteller": {
-    id: "easyteller",
     title: "EasyTeller",
     subtitle: "AI-Powered Credit & Loan Application Platform",
     description:
@@ -528,7 +519,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "astra-extension": {
-    id: "astra-extension",
     title: "Astra Extension",
     subtitle: "Automated Form Filler for UTD Room Requests",
     description:
@@ -581,7 +571,6 @@ export const projectsData: Record<string, Project> = {
     ],
   },
   "visio-parsing-tool": {
-    id: "visio-parsing-tool",
     title: "Visio Parsing Tool",
     subtitle: "Automated Test Case Generation from Visio Callflows",
     description:
