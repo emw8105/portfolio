@@ -11,9 +11,6 @@ export interface Project {
   technologies: string[]
   githubUrl?: string
   liveUrl?: string
-  featured?: boolean
-  icon?: string | null
-  highlights?: string[]
   images?: { url: string; alt: string; caption: string }[]
   overview?: string
   challenge?: string
@@ -23,6 +20,71 @@ export interface Project {
 }
 
 export const projectsData: Record<string, Project> = {
+  "professor-rating-prediction": {
+    id: "professor-rating-prediction",
+    title: "Professor Rating Prediction Model",
+    subtitle: "Using Academic Outcomes to Predict Missing RateMyProfessors Ratings",
+    description: "A machine learning system that predicts professor quality, difficulty, and would-take-again ratings using UTD grade distributions and structured RMP metadata, explaining over 60% of student rating variance.",
+    categories: ["Machine Learning", "Data Science"],
+    status: "Completed",
+    year: "Fall 2025",
+    duration: "2 Months",
+    team: "Solo",
+    technologies: [
+      "Python",
+      "scikit-learn",
+      "XGBoost",
+      "Pandas",
+      "NumPy",
+      "Matplotlib",
+      "TF-IDF",
+    ],
+    githubUrl: "https://github.com/emw8105/professor-rating-model",
+    images: [
+      {
+        url: "/projects/prof-rating-model-quality-vs-difficulty.png",
+        alt: "Quality vs Difficulty correlation plot",
+        caption: "Clear inverse linear relationship between perceived quality and difficulty."
+      },
+      {
+        url: "/projects/prof-rating-model-performance-scatter.png",
+        alt: "Model performance metrics",
+        caption: "Model explains 60-65% of variance across all three rating targets."
+      },
+      {
+        url: "/projects/prof-rating-model-feature-importance.png",
+        alt: "Feature importance visualization",
+        caption: "Withdrawal rates, poor grades, and sentiment tags dominate prediction strength."
+      },
+      {
+        url: "/projects/prof-rating-model-ratings-count-impact.png",
+        alt: "Actual vs predicted ratings",
+        caption: "Predictions closely track real ratings for high-data professors."
+      },
+      {
+        url: "/projects/prof-rating-model-prediction-error-distribution.png",
+        alt: "Prediction error distribution",
+        caption: "Model achieves approximately normal error distribution with a mean of 0."
+      },
+    ],
+    overview: "After building the [Professor Data Script](https://www.doypid.com/projects/rating-script) to aggregate and match UTD grade distributions with RateMyProfessors data, I became curious about a deeper question: how much of student perception is actually predictable from academic outcomes? This project extends that data engineering pipeline into a full statistical modeling study. Using over 47,000 grade distributions and 8,000 RMP reviews, I trained an ensemble learning system to predict quality, difficulty, and would-take-again ratings - even for professors with no reviews at all.",
+    challenge: "Student ratings are subjective, noisy, and sparse. Many instructors have fewer than five reviews, and some have none. Additionally, ratings are influenced by hidden behavioral patterns - such as grading harshness, withdrawal rates, and consistency over time. The challenge was to transform raw institutional grade distributions and review metadata into structured features capable of modeling these perception dynamics without leaking target variables into the inputs.",
+    solution: "I engineered over 70 structured features capturing GPA trends, DFW rates (the rate of a D, F, or W grade from a professor, not Dallas-Fort Worth rates unfortunately), grade variance, teaching stability, and sentiment tag embeddings using TF-IDF. These features were fed into a stacked ensemble combining Gradient Boosting, Random Forest, Ridge Regression, and XGBoost, wrapped in a multi-output regression framework. After filtering for instructors with sufficient statistical reliability, the final model explained approximately 60-65% of the variance in student ratings on a held-out test set. Quality was predicted with an MAE of 0.41, difficulty with 0.36, and would-take-again with 0.13 on a normalized scale.",
+    features: [
+      "Multi-output regression predicting quality, difficulty, and would-take-again",
+      "70+ engineered academic and perception-based features",
+      "TF-IDF encoding of RMP sentiment tags",
+      "Stacked ensemble model (GBM, RF, Ridge, XGBoost)",
+      "Feature importance and behavioral pattern analysis",
+      "Confidence-aware predictions for sparse-review instructors"
+    ],
+    futureEnhancements: [
+      "Use these insights to power [SAGE](https://www.doypid.com/projects/sage) course recommendations",
+      "Integrate as a pipeline to pull from the [ACM API](https://github.com/acmutd/acmutd-api) for predictions on new instructors",
+      "Model longitudinal rating drift over time",
+      "Deploy as an API for integration into course-planning tools"
+    ]
+  },
   "earth2echo": {
     id: "earth2echo",
     title: "earth2echo",
@@ -45,17 +107,6 @@ export const projectsData: Record<string, Project> = {
     ],
     githubUrl: "https://github.com/emw8105/hacktx",
     liveUrl: "https://devpost.com/software/minions-6-7",
-    featured: true,
-    icon: "/projects/gemini-showcase-icon.png",
-    highlights: [
-      "Winner — HackTX: Best Use of Gemini API",
-      "Invited to and presented at the Google Gemini Developer Showcase",
-      "Provided documentation writeups to improve Lyria RealTime and Gemini developer docs",
-      "Integrated Gemini 2.5 Flash vision + Lyria RealTime for live music composition",
-      "Sub-4s cold start to first audio using pre-warmed Lyria pool",
-      "Live livestream support (adaptive music for never-before-seen content)",
-      "Scrubbing support - music follows timeline seeks immediately",
-    ],
     images: [
       {
         url: "/projects/earth2echo-apollo-landing.png",
@@ -390,14 +441,6 @@ export const projectsData: Record<string, Project> = {
         alt: "Professor ratings script JSON output",
         caption: "Structured JSON output from the professor ratings data aggregation script",
       },
-    ],
-    featured: true,
-    highlights: [
-      "Combines RMP and UTD grade data for comprehensive professor profiles",
-      "Handles name inconsistencies and duplicates with normalization and fuzzy matching",
-      "Supports manual mapping for edge cases",
-      "Outputs structured JSON for easy integration",
-      "Automates data scraping from RateMyProfessors"
     ],
     overview: "For many years, my organization, ACM UTD, has managed UTD Grades, the premier site for course optimization through grade visualization. However, I felt as though grades don't tell the full story. Many professors I've taken were tough, but I learned the most from them and appreciated them much more than courses which I had sailed by with an easy A in. I decided during the creation of SAGE's course optimizer that I would find a way to integrate more insights. The site I looked towards was RMP.",
     challenge: "Existing solutions struggled with inconsistent professor names, duplicate names and duplicate student-created RMP profiles, professors whose names have changed during their tenure, and incomplete data when merging RMP and grade sources. Similarly, RMP uses internal ids for each professor's URL, so we can't easily webscrape them. My initial approach used Selenium to navigate to the UTD page of RMP and then click the 'Show More' button to list professors until it wasn't available. However, each button click would take about 2 seconds to retrieve more professors, causing the full scrape to take several minutes. After some other attempts to speed up this process, Michael Zhao (https://www.michaelzhao.xyz/) showed me a program he had written that uses the internal GraphQL API of the RMP site to query for 1000 professors at once, drastically speeding up my RMP data sourcing.",

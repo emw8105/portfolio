@@ -118,14 +118,14 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <div className="space-y-8">
               <div>
                 <h3 className="text-lg font-semibold mb-3">Project Overview</h3>
-                <p className="text-foreground leading-relaxed">{project.overview}</p>
+                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.overview)}</p>
               </div>
 
               <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
 
               <div>
                 <h3 className="text-lg font-semibold mb-3">The Challenge</h3>
-                <p className="text-foreground leading-relaxed">{project.challenge}</p>
+                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.challenge)}</p>
               </div>
 
               <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
