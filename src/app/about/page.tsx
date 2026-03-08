@@ -54,7 +54,7 @@ export default function AboutPage() {
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-1 h-3 bg-gradient-coral rounded-full"></div>
-                      <p className="text-foreground">MS in CS, UT Dallas</p>
+                      <p className="text-foreground">MS CS, UT Dallas</p>
                     </div>
                     <div className="flex items-center justify-center gap-2">
                       <div className="w-1 h-3 bg-gradient-ocean rounded-full"></div>
