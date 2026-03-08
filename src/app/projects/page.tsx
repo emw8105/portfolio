@@ -69,7 +69,7 @@ export default function ProjectsPage() {
                         <Badge variant={project.status === "Completed" ? "default" : "accent"} className="text-xs">
                           {project.status}
                         </Badge>
-                        <span className="text-muted-foreground">{project.year}</span>
+                        <span className="text-muted-foreground">{project.date}</span>
                       </div>
                     </div>
 

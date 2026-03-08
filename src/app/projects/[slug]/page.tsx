@@ -96,7 +96,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             </Button>
           </div>
 
-          <Card className="glass-card overflow-hidden p-6 sm:p-8 lg:p-10">
+          <Card className="glass-card glow-hover overflow-hidden p-6 sm:p-8 lg:p-10">
             <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
               <div className="space-y-6">
 
