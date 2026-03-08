@@ -4,7 +4,7 @@ export interface Project {
   description: string
   categories: string[]
   status: string
-  year: string
+  date: string
   duration?: string
   team?: string
   technologies: string[]
@@ -25,9 +25,8 @@ export const projectsData: Record<string, Project> = {
     description: "A machine learning system that predicts professor quality, difficulty, and would-take-again ratings using UTD grade distributions and structured RMP metadata, explaining over 60% of student rating variance.",
     categories: ["Machine Learning", "Data Science"],
     status: "Completed",
-    year: "Fall 2025",
+    date: "Fall 2025",
     duration: "2 Months",
-    team: "Solo",
     technologies: [
       "Python",
       "scikit-learn",
@@ -89,7 +88,7 @@ export const projectsData: Record<string, Project> = {
     description: "Live video-to-music system that analyzes visual content in real time and generates adaptive music synchronized to the video. Built during HackTX and refined into a production-ready demo for the Gemini Developer Showcase.",
     categories: ["Web Application"],
     status: "Completed",
-    year: "October 2025",
+    date: "October 2025",
     duration: "24-hour Hackathon",
     team: "Sahas Sharma, Adarsh Goura, Alan Roybal",
     technologies: [
@@ -166,9 +165,8 @@ export const projectsData: Record<string, Project> = {
       "A system that collects, encrypts, and stores system information and key inputs from a client, utilizing secure data transmission, cloud-based storage, and web-based monitoring. Built for educational purposes.",
     categories: ["Cloud System", "Web Application"],
     status: "Completed",
-    year: "Summer 2025",
+    date: "Summer 2025",
     duration: "2 months",
-    team: "Solo Project",
     technologies: [
       "Golang",
       "Python",
@@ -235,7 +233,7 @@ export const projectsData: Record<string, Project> = {
       "A full-stack web application designed to help UTD students evaluate their degree progress, optimize course planning, and receive AI-powered advising using a RAG chatbot.",
     categories: ["Web Application", "Cloud System"],
     status: "In Progress",
-    year: "2025",
+    date: "2025",
     duration: "Ongoing (1 year)",
     team: "10+ ACM Developers | Role: Lead Developer",
     technologies: [
@@ -303,9 +301,8 @@ export const projectsData: Record<string, Project> = {
       "A web application that connects to your Spotify account and integrates your top listening activity to generate customized wallpapers.",
     categories: ["Web Application", "Cloud System"],
     status: "Completed",
-    year: "Fall 2024",
+    date: "Fall 2024",
     duration: "3 months",
-    team: "Solo Project",
     technologies: ["Typescript", "React", "Node.js", "Express.js", "Go", "AWS EC2", "AWS DynamoDB", "Docker", "Spotify API", "OAuth 2.0"],
     githubUrl: "https://github.com/emw8105/Wallify",
     liveUrl: "https://wallify.doypid.com/",
@@ -353,9 +350,8 @@ export const projectsData: Record<string, Project> = {
       "A web application that helps solve Wordle puzzles by analyzing existing guesses and resulting hints to provide optimal suggestions.",
     categories: ["Web Application"],
     status: "Completed",
-    year: "2024",
+    date: "2024",
     duration: "2 months",
-    team: "Solo Project",
     technologies: ["JavaScript", "Typescript", "React", "Algorithm Design", "Data Analysis",],
     githubUrl: "https://github.com/emw8105/wordle-solver",
     liveUrl: undefined,
@@ -401,9 +397,8 @@ export const projectsData: Record<string, Project> = {
     description: "A Python script that aggregates and matches professor ratings from RateMyProfessors with UTD grade distributions, handling name inconsistencies and duplicates for more accurate professor profiles.",
     categories: ["Data Engineering", "Scripting"],
     status: "Completed",
-    year: "Spring 2025",
+    date: "Spring 2025",
     duration: "2 Months",
-    team: "Solo",
     technologies: [
       "Python",
       "Selenium",
@@ -458,7 +453,7 @@ export const projectsData: Record<string, Project> = {
       "A web application that enables users with limited credit history to apply for credit cards and loans using alternative financial documents, powered by AI-driven document analysis, made for HackUTD 11.",
     categories: ["Web Application"],
     status: "Completed",
-    year: "Fall 2024",
+    date: "Fall 2024",
     duration: "24-hour Hackathon",
     team: "Thejas Kumar, Nabil Fadili, Emily Nguyen",
     technologies: [
@@ -525,7 +520,7 @@ export const projectsData: Record<string, Project> = {
       "A Chrome extension that autofills the UTD Astra Special Room Request Form by saving and entering common info, including dynamic questions.",
     categories: ["Browser Extension"],
     status: "Completed",
-    year: "Fall 2024",
+    date: "Fall 2024",
     duration: "1 month",
     team: "Michael Zhao",
     technologies: [
@@ -577,9 +572,8 @@ export const projectsData: Record<string, Project> = {
       "A C# tool that parses Microsoft Visio files to extract callflow data, build multi-page graphs, and generate optimal test case paths for QA automation. Designed to streamline IVR testing and facilitate integration with platforms like TestRail.",
     categories: ["Data Engineering", "Scripting"],
     status: "Completed",
-    year: "2024",
+    date: "2024",
     duration: "4 months",
-    team: "Solo Project",
     technologies: [
       "C#",
       ".NET 7",

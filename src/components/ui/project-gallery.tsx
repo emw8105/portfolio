@@ -76,7 +76,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     return (
         <Card className="glass-card p-8 mb-8">
             <div className="flex items-center gap-3 mb-6">
-                <ImageIcon className="h-6 w-6 text-primary" />
+                <ImageIcon className="h-6 w-6 text-accent" />
                 <h2 className="text-2xl font-bold font-serif">Project Gallery</h2>
             </div>
 
