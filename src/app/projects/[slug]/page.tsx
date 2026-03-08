@@ -1,22 +1,30 @@
 "use client"
-import { Navigation } from "@/components/navigation"
-import { Card } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
-import {
-  ArrowLeft,
-  ExternalLink,
-  Github,
-  Calendar,
-  Users,
-  Target,
-  Lightbulb,
-  Code,
-} from "lucide-react"
+
+import { useState } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { projectsData } from "@/lib/projects"
+import {
+  ArrowLeft,
+  Calendar,
+  ChevronRight,
+  CheckCircle2,
+  CircleAlert,
+  Code,
+  ExternalLink,
+  Github,
+  Lightbulb,
+  Rocket,
+  Target,
+  Users,
+  Wrench,
+} from "lucide-react"
+
+import { Navigation } from "@/components/navigation"
+import { Badge } from "@/components/ui/badge"
+import { Button } from "@/components/ui/button"
+import { Card } from "@/components/ui/card"
 import ProjectGallery from "@/components/ui/project-gallery"
+import { projectsData } from "@/lib/projects"
 import { parseTextWithLinks } from "@/lib/utils"
 
 interface ProjectPageProps {
@@ -27,166 +35,279 @@ interface ProjectPageProps {
 
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projectsData[params.slug as keyof typeof projectsData]
+  const [activeNarrative, setActiveNarrative] = useState(0)
 
   if (!project) {
     notFound()
   }
 
+  const narrativeSections = [
+    {
+      label: "Overview",
+      title: "What this project is",
+      icon: Lightbulb,
+      content: project.overview,
+    },
+    {
+      label: "Challenge",
+      title: "What made it difficult",
+      icon: CircleAlert,
+      content: project.challenge,
+    },
+    {
+      label: "Solution",
+      title: "How I approached it",
+      icon: Wrench,
+      content: project.solution,
+    },
+  ].filter(
+    (section): section is {
+      label: string
+      title: string
+      icon: typeof Lightbulb
+      content: string
+    } => Boolean(section.content)
+  )
+
+  const activeSection = narrativeSections[activeNarrative] ?? narrativeSections[0]
+
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
       <Navigation />
 
-      <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-4xl mx-auto">
-          {/* Back Button */}
-          <div className="mb-8">
-            <Button variant="ghost" asChild className="hover:bg-muted/50">
-              <Link href="/projects" className="flex items-center gap-2">
-                <ArrowLeft className="h-4 w-4" />
+      <main className="relative overflow-hidden px-4 pt-24 pb-20 sm:px-6 lg:px-8">
+        <div className="pointer-events-none absolute inset-0 -z-10">
+          <div className="absolute top-24 -left-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
+          <div className="absolute top-[32rem] right-[-8rem] h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
+          <div className="absolute bottom-24 left-1/3 h-64 w-64 rounded-full bg-electric/10 blur-3xl" />
+        </div>
+
+        <div className="mx-auto max-w-6xl space-y-8">
+          <div>
+            <Button
+              variant="ghost"
+              asChild
+              className="group border border-border/60 bg-card/30 text-foreground transition-colors duration-300 hover:border-primary/40 hover:bg-card/55 hover:text-foreground"
+            >
+              <Link href="/projects" className="flex items-center gap-2 font-medium">
+                <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
                 Back to Projects
               </Link>
             </Button>
           </div>
 
-          {/* Project Header */}
-          <Card className="glass-card p-8 mb-8 glow-hover">
-            <div className="space-y-6">
-              <div>
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="w-1 h-10 bg-gradient-coral rounded-full"></div>
-                  <h1 className="text-3xl sm:text-4xl font-bold font-serif">{project.title}</h1>
-                </div>
-                <p className="text-lg text-muted-foreground mb-4 pl-4">{project.subtitle}</p>
-                <p className="text-foreground leading-relaxed pl-4">{project.description}</p>
-              </div>
+          <Card className="glass-card overflow-hidden p-6 sm:p-8 lg:p-10">
+            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
+              <div className="space-y-6">
 
-              <div className="flex flex-wrap gap-4 pl-4">
-                <div className="flex flex-wrap items-center gap-2">
-                  {project.categories.map((category: string, idx: number) => (
-                    <Badge key={idx} variant="outline" className="border-primary/30 bg-primary/5 text-sm">{category}</Badge>
-                  ))}
-                  <Badge variant={project.status === "Completed" ? "default" : "accent"} className="text-sm">{project.status}</Badge>
-                </div>
-              </div>
+                <div className="space-y-4">
+                  <div className="flex items-center gap-3">
+                    <div className="h-12 w-1 rounded-full bg-gradient-coral" />
+                    <h1 className="text-3xl font-bold font-serif sm:text-4xl lg:text-5xl">{project.title}</h1>
+                  </div>
 
-              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 text-sm pl-4">
-                <div className="flex items-center gap-2">
-                  <Calendar className="h-5 w-5 text-accent" />
-                  <span>{project.year}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Target className="h-5 w-5 text-accent" />
-                  <span>{project.duration}</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Users className="h-6 w-6 text-accent" />
-                  <span>{project.team}</span>
-                </div>
-                <div className="flex gap-2">
-                  <Button variant="outline" size="sm" asChild className="border-2 border-primary hover:border-transparent transition-all duration-300">
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                      <Github className="h-4 w-4 mr-2" />
-                      GitHub
-                    </a>
-                  </Button>
-                  {project.liveUrl && (
-                    <Button variant="outline" size="sm" asChild className="border-2 border-primary hover:border-transparent transition-all duration-300">
-                      <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                        <ExternalLink className="h-4 w-4 mr-2" />
-                        Live
-                      </a>
-                    </Button>
+                  {project.subtitle && (
+                    <p className="pl-4 text-lg text-muted-foreground sm:text-xl">{project.subtitle}</p>
                   )}
+
+                  <p className="max-w-3xl pl-4 leading-relaxed text-foreground/90">{project.description}</p>
+                </div>
+
+                <div className="flex flex-wrap gap-2 pl-4">
+                  {project.categories.map((category, idx) => (
+                    <Badge key={idx} variant="outline" className="border-primary/30 bg-primary/5 text-sm">
+                      {category}
+                    </Badge>
+                  ))}
+                  <Badge variant={project.status === "Completed" ? "default" : "accent"} className="text-sm">
+                    {project.status}
+                  </Badge>
+                </div>
+              </div>
+
+              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-[auto_auto]">
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-3">
+                  <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                    <Calendar className="h-3.5 w-3.5 text-accent" />
+                    Year
+                  </div>
+                  <p className="text-lg font-semibold">{project.year}</p>
+                </div>
+
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-3">
+                  <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                    <Target className="h-3.5 w-3.5 text-accent" />
+                    Duration
+                  </div>
+                  <p className="text-lg font-semibold">{project.duration}</p>
+                </div>
+
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-2">
+                  <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
+                    <Users className="h-3.5 w-3.5 text-accent" />
+                    Team
+                  </div>
+                  <p className="text-sm font-medium leading-relaxed text-foreground/90">{project.team}</p>
+                </div>
+
+                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-4">
+                  <div className="mb-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">Project Links</div>
+                  <div className="flex flex-wrap gap-2">
+                    {project.githubUrl && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="border-2 border-primary/70 bg-card/50 transition-all duration-300 hover:border-transparent"
+                      >
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
+                          <Github className="mr-2 h-4 w-4" />
+                          GitHub
+                        </a>
+                      </Button>
+                    )}
+                    {project.liveUrl && (
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        asChild
+                        className="border-2 border-primary/70 bg-card/50 transition-all duration-300 hover:border-transparent"
+                      >
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
+                          <ExternalLink className="mr-2 h-4 w-4" />
+                          Live Demo
+                        </a>
+                      </Button>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
           </Card>
 
-          {/* Project Images */}
-          {project.images && project.images.length > 0 && (
-            <ProjectGallery project={project} />
-          )}
+          {project.images && project.images.length > 0 && <ProjectGallery project={project} />}
 
-          {/* Development Journey */}
-          <Card className="glass-card p-8 mb-8 glow-hover">
-            <div className="flex items-center gap-3 mb-6">
-              <div className="w-1 h-8 bg-gradient-coral rounded-full"></div>
+          <Card className="glass-card p-6 sm:p-8 glow-hover">
+            <div className="mb-6 flex items-center gap-3">
+              <div className="h-8 w-1 rounded-full bg-gradient-coral" />
               <Lightbulb className="h-7 w-7 text-accent" />
-              <h2 className="text-2xl font-bold font-serif">Development Journey</h2>
+              <h2 className="text-2xl font-bold font-serif">Inside The Build</h2>
             </div>
 
-            <div className="space-y-8">
-              <div>
-                <h3 className="text-lg font-semibold mb-3">Project Overview</h3>
-                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.overview)}</p>
+            <div className="grid gap-6 lg:grid-cols-[220px_1fr]">
+              <div className="flex flex-row gap-2 overflow-x-auto no-scrollbar lg:flex-col">
+                {narrativeSections.map((section, index) => {
+                  const Icon = section.icon
+                  const isActive = index === activeNarrative
+
+                  return (
+                    <button
+                      key={section.label}
+                      type="button"
+                      onClick={() => setActiveNarrative(index)}
+                      className={`min-w-fit cursor-pointer rounded-xl border px-4 py-3 text-left transition-colors duration-300 lg:min-w-0 ${isActive
+                        ? "border-primary/35 bg-card/45 text-foreground"
+                        : "border-border/50 bg-card/20 text-muted-foreground hover:border-primary/20 hover:bg-card/40 hover:text-foreground"
+                        }`}
+                    >
+                      <div className="flex items-center justify-between gap-3 text-sm font-medium">
+                        <div className="flex items-center gap-2">
+                          <Icon className={`h-4 w-4 ${isActive ? "text-primary" : "text-accent"}`} />
+                          {section.label}
+                        </div>
+                        <ChevronRight className={`h-4 w-4 transition-transform duration-300 ${isActive ? "text-primary translate-x-0.5" : "text-muted-foreground/70"}`} />
+                      </div>
+                    </button>
+                  )
+                })}
               </div>
 
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-3">The Challenge</h3>
-                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.challenge)}</p>
-              </div>
-
-              <div className="h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent"></div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-3">My Solution</h3>
-                <p className="text-foreground leading-relaxed">{parseTextWithLinks(project.solution)}</p>
+              <div className="min-h-[280px] rounded-2xl border border-border/60 bg-card/40 p-5 sm:p-6">
+                {activeSection && (
+                  <>
+                    <div className="mb-4 flex items-center gap-2 text-sm uppercase tracking-[0.24em] text-primary/90">
+                      <activeSection.icon className="h-4 w-4" />
+                      {activeSection.label}
+                    </div>
+                    <h3 className="mb-4 text-2xl font-bold font-serif">{activeSection.title}</h3>
+                    <div className="text-[15px] leading-relaxed text-foreground/90 sm:text-base">
+                      {parseTextWithLinks(activeSection.content)}
+                    </div>
+                  </>
+                )}
               </div>
             </div>
           </Card>
 
-          {/* Technical Details */}
-          <Card className="glass-card p-8 mb-8 glow-hover">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-1 h-6 bg-gradient-ocean rounded-full"></div>
-              <Code className="h-6 w-6 text-accent" />
-              <h3 className="text-xl font-bold font-serif">Technologies Used</h3>
-            </div>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <Badge key={tech} variant="secondary" className="text-sm">
-                  {tech}
-                </Badge>
-              ))}
-            </div>
-          </Card>
+          <div className="space-y-8">
+            <Card className="glass-card p-6 sm:p-8 glow-hover">
+              <div className="mb-5 flex items-center gap-3">
+                <div className="h-7 w-1 rounded-full bg-gradient-ocean" />
+                <Code className="h-6 w-6 text-accent" />
+                <h3 className="text-2xl font-bold font-serif">Technology Stack</h3>
+              </div>
 
-          {/* All Features */}
-          <Card className="glass-card p-8 mb-8 glow-hover">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-1 h-6 bg-gradient-coral rounded-full"></div>
-              <h3 className="text-xl font-bold font-serif">Complete Feature Set</h3>
-            </div>
-            <div className="grid md:grid-cols-2 gap-4">
-              {project.features && project.features.map((feature, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-accent rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-sm text-foreground">{parseTextWithLinks(feature)}</span>
+              <div className="flex flex-wrap gap-3">
+                {project.technologies.map((tech) => (
+                  <Badge
+                    key={tech}
+                    variant="secondary"
+                    className="border border-border/60 bg-secondary/45 px-3 py-1.5 text-base transition-colors duration-300 hover:bg-secondary/65"
+                  >
+                    {tech}
+                  </Badge>
+                ))}
+              </div>
+            </Card>
+
+            <div className="grid gap-8 lg:grid-cols-2">
+              <Card className="glass-card p-6 sm:p-8 glow-hover">
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="h-7 w-1 rounded-full bg-gradient-coral" />
+                  <CheckCircle2 className="h-6 w-6 text-accent" />
+                  <h3 className="text-2xl font-bold font-serif">Current Features</h3>
                 </div>
-              ))}
-            </div>
-          </Card>
 
-          {/* Future Enhancements */}
-          <Card className="glass-card p-8 glow-hover">
-            <div className="flex items-center gap-3 mb-4">
-              <div className="w-1 h-6 bg-gradient-ocean rounded-full"></div>
-              <h3 className="text-xl font-bold font-serif">Future Enhancements</h3>
+                <div className="space-y-2.5">
+                  {project.features?.map((feature, index) => (
+                    <div
+                      key={index}
+                      className="rounded-xl border border-border/50 bg-card/50 p-3.5 transition-colors duration-300 hover:border-primary/25 hover:bg-card/65"
+                    >
+                      <div className="flex items-start gap-2.5">
+                        <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
+                        <span className="text-base leading-relaxed text-foreground/90">
+                          {parseTextWithLinks(feature)}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </Card>
+
+              <Card className="glass-card p-6 sm:p-8 glow-hover">
+                <div className="mb-5 flex items-center gap-3">
+                  <div className="h-7 w-1 rounded-full bg-gradient-ocean" />
+                  <Rocket className="h-6 w-6 text-accent" />
+                  <h3 className="text-2xl font-bold font-serif">Future Enhancements</h3>
+                </div>
+
+                <ul className="space-y-2.5">
+                  {project.futureEnhancements?.map((enhancement, index) => (
+                    <li
+                      key={index}
+                      className="flex items-start gap-2.5 rounded-xl border border-border/50 bg-card/50 p-3.5 transition-colors duration-300 hover:border-primary/25 hover:bg-card/65"
+                    >
+                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
+                      <span className="text-base leading-relaxed text-foreground/90">
+                        {parseTextWithLinks(enhancement)}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </Card>
             </div>
-            <p className="text-muted-foreground mb-4">
-              Here are some ideas I&apos;m considering for future versions of this project:
-            </p>
-            <ul className="space-y-3">
-              {project.futureEnhancements && project.futureEnhancements.map((enhancement, index) => (
-                <li key={index} className="flex items-start gap-2">
-                  <div className="w-1.5 h-1.5 bg-muted-foreground rounded-full mt-2 flex-shrink-0" />
-                  <span className="text-foreground">{parseTextWithLinks(enhancement)}</span>
-                </li>
-              ))}
-            </ul>
-          </Card>
+          </div>
         </div>
       </main>
     </div>

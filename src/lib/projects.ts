@@ -91,7 +91,7 @@ export const projectsData: Record<string, Project> = {
     status: "Completed",
     year: "October 2025",
     duration: "24-hour Hackathon",
-    team: "Me, Sahas Sharma, Adarsh Goura, Alan Roybal",
+    team: "Sahas Sharma, Adarsh Goura, Alan Roybal",
     technologies: [
       "Python",
       "FastAPI",
@@ -460,7 +460,7 @@ export const projectsData: Record<string, Project> = {
     status: "Completed",
     year: "Fall 2024",
     duration: "24-hour Hackathon",
-    team: "Me, Thejas Kumar, Nabil Fadili, Emily Nguyen",
+    team: "Thejas Kumar, Nabil Fadili, Emily Nguyen",
     technologies: [
       "SvelteKit",
       "TypeScript",
@@ -527,7 +527,7 @@ export const projectsData: Record<string, Project> = {
     status: "Completed",
     year: "Fall 2024",
     duration: "1 month",
-    team: "Me & Michael Zhao",
+    team: "Michael Zhao",
     technologies: [
       "JavaScript",
       "Chrome Extensions API",
