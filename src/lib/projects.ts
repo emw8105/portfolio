@@ -19,6 +19,78 @@ export interface Project {
 }
 
 export const projectsData: Record<string, Project> = {
+  "acmapi": {
+    title: "ACM API",
+    subtitle: "Centralized Data Infrastructure for University Course & Professor Data",
+    description: "A production-grade REST API built with Go and Firebase that aggregates university course data, grade distributions, and professor ratings into a unified, token-secured platform used across ACM UTD projects and events.",
+    categories: ["Infrastructure", "Backend Application"],
+    status: "Completed",
+    date: "Fall 2025",
+    duration: "3 Months",
+    team: "Ruben Olano",
+    technologies: [
+      "Go",
+      "Python",
+      "Firebase",
+      "GCP",
+      "Selenium",
+      "GraphQL",
+      "GitHub Actions",
+    ],
+    githubUrl: "https://github.com/acmutd/acmutd-api",
+    images: [
+      {
+        url: "/projects/acmapi-multi-scrape.png",
+        alt: "ACM API scraper console output",
+        caption: "Mass update through multi-scrape and data integration."
+      },
+      {
+        url: "/projects/acmapi-professor-schema.png",
+        alt: "ACM API professor schema example",
+        caption: "Example of integrated professor data schema stored in Firebase."
+      },
+      {
+        url: "/projects/acmapi-grades.png",
+        alt: "Every grade since Fall 2017 recorded in the system",
+        caption: "Comprehensive grade data integration and storage in Firebase for every course."
+      },
+      {
+        url: "/projects/acmapi-scraper-retry.png",
+        alt: "Scraper retry mechanism",
+        caption: "Automated retry mechanism for failed scraper tasks such as expired tokens."
+      },
+      {
+        url: "/projects/acmapi-scraper-query-fallback.png",
+        alt: "Scraper query fallback mechanism",
+        caption: "Recursive fallback filtering to scrape data despite query sizes."
+      },
+      {
+        url: "/projects/acmapi-raw.png",
+        alt: "Raw data view",
+        caption: "Access to raw, aggregated data using Firebase Storage for bulk analysis and custom ACM UTD product integrations."
+      },
+    ],
+    overview: "Originally, I built some independent scrapers to power [SAGE](https://www.doypid.com/projects/sage), which functioned as the [Professor Data Script](https://www.doypid.com/projects/rating-script). However, once I became Director of ACM Development, I recognized an inevitable structural hurdle of having multiple project teams independently scraping and maintaining similar university datasets. This led to duplication, inconsistencies, and fragile integrations. Instead of having projects pull this data from SAGE, for which the functionality was already written for and stored within, I designed and built the ACM API - a centralized, production-grade data platform whose sole purpose is to collect, integrate, manage, and serve university course and professor data for the entire ACM UTD organization.",
+    challenge: "The challenge was architectural, not just technical. The system needed to: (1) aggregate data from multiple heterogeneous sources (UTD Coursebook, grade distributions, RateMyProfessors), (2) normalize and handle conflicting identifiers across sources, (3) support both multiple deployment environments (local, dev, prod), and (4) provide secure, rate-limited external access for events like HackUTD and ACM workshops. Additionally, scrapers needed to be modular, re-runnable, and environment-aware without risking data corruption, and the system needed to be as easy to understand and maintain as possible due to the high turnover involved with student organizations and the scale involved amplifying the risk of failure.",
+    solution: "We built the ACM API as a multi-component system. A Go-based REST API server handles authentication, token management, rate limiting, and CORS. A separate Go scraper orchestrator manages Python-based scrapers for Coursebook, grade distributions, and RMP data. An integration service merges datasets into a unified schema and uploads structured results into Firebase Firestore and Cloud Storage. The API supports token-based access with configurable expiration and request limits, allowing controlled external access for hackathons, workshops, and affiliated student projects. The ACM API transformed how data is managed within ACM UTD. Instead of siloed scraping logic across multiple teams, all university data now flows through a single, maintainable infrastructure layer. Now, the system powers internal tools like SAGE and UTD Grades, supports ACM Projects teams experimenting with real datasets, and provides secure external access for major events such as HackUTD - the largest 24 hour collegiate hackathon in North America. [Ruben Olano](https://github.com/RubenOlano) primarily focused on the Go orchestration layer and API schema, while I primarily built out the individual scrapers, environment context, and various configurations programmable via env.",
+    features: [
+      "Centralized REST API for course, grade, and professor data",
+      "Token-based authentication with configurable expiration and rate limits",
+      "Modular scraper orchestration system",
+      "Environment-aware data pipelines (local/dev/prod)",
+      "Firebase Firestore integration for scalable cloud storage",
+      "Automated data integration across heterogeneous sources",
+      "Configured service account keys in GCP for direct read access to cloud data for ACM UTD-managed products",
+    ],
+    futureEnhancements: [
+      "Add automated scheduled scraping and CI/CD deployment",
+      "Add a site UI for token management, data visualization, and easy data collection",
+      "Implement monitoring dashboards and usage analytics",
+      "Expand schema to support additional parameters and data endpoints",
+      "Introduce GraphQL endpoint layer for more flexible querying",
+      "Deploy containerized production hosting with horizontal scaling"
+    ]
+  },
   "professor-rating-prediction": {
     title: "Professor Rating Prediction Model",
     subtitle: "Using Academic Outcomes to Predict Missing RateMyProfessors Ratings",
