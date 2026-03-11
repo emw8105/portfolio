@@ -95,7 +95,12 @@ export function Navigation() {
 
                     {/* Mobile menu button */}
                     <div className="md:hidden">
-                        <Button variant="ghost" size="sm" onClick={() => setIsOpen(!isOpen)}>
+                        <Button
+                            variant="ghost"
+                            size="sm"
+                            className={`${"text-foreground hover:bg-primary hover:text-primary-foreground active:bg-primary active:text-primary-foreground"} ${isOpen ? "bg-primary text-primary-foreground" : ""}`}
+                            onClick={() => setIsOpen(!isOpen)}
+                        >
                             {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
                         </Button>
                     </div>
