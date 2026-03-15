@@ -26,6 +26,8 @@
   /* Coral accent for pops of energy */
   --accent: oklch(0.78 0.17 42);
   --accent-foreground: oklch(0.14 0.03 228);
+  --surface-ocean: rgba(8, 22, 38, 0.92);
+  --surface-ocean-border: rgba(143, 227, 207, 0.1);
   
   /* Electric surf blue for highlights */
   --electric: oklch(0.71 0.17 218);
@@ -72,6 +74,8 @@
   --muted-foreground: oklch(0.74 0.03 208);
   --accent: oklch(0.78 0.17 42);
   --accent-foreground: oklch(0.14 0.03 228);
+  --surface-ocean: rgba(8, 22, 38, 0.92);
+  --surface-ocean-border: rgba(143, 227, 207, 0.1);
   --destructive: oklch(0.6 0.25 15);
   --destructive-foreground: oklch(0.98 0 0);
   --border: oklch(0.28 0.05 216);
@@ -295,6 +299,196 @@ html, body, #__next {
     opacity: 0.9;
   }
 
+  .homepage-stage {
+    position: relative;
+    isolation: isolate;
+    width: 100%;
+  }
+
+  .homepage-stage::before {
+    content: "";
+    position: absolute;
+    inset: 4rem 14% auto -6%;
+    height: 17rem;
+    border-radius: 999px;
+    background:
+      radial-gradient(circle at 20% 50%, rgba(143, 227, 207, 0.2), transparent 26%),
+      linear-gradient(90deg, rgba(143, 227, 207, 0.08), transparent 70%);
+    filter: blur(26px);
+    opacity: 0.62;
+    z-index: -1;
+    animation: drift-haze 12s cubic-bezier(0.22, 1, 0.36, 1) infinite;
+  }
+
+  .tap-stage {
+    position: relative;
+  }
+
+  .tap-stage::before {
+    content: "";
+    position: absolute;
+    inset: -0.2rem -0.2rem 0.55rem;
+    border-radius: 1.9rem;
+    background:
+      radial-gradient(circle at 50% 24%, rgba(143, 227, 207, 0.035), transparent 58%),
+      linear-gradient(180deg, rgba(6, 16, 27, 0.06), transparent 70%);
+    opacity: 0.55;
+    z-index: -1;
+  }
+
+  .home-surface {
+    background-color: var(--surface-ocean);
+    border-color: var(--surface-ocean-border);
+    box-shadow: 0 26px 96px rgba(3, 10, 20, 0.28);
+    backdrop-filter: blur(14px);
+  }
+
+  .interactive-tap-card {
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --tilt-x: 0deg;
+    --tilt-y: 0deg;
+    transform: perspective(1200px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
+    transform-style: preserve-3d;
+    overflow: hidden;
+    isolation: isolate;
+    will-change: transform;
+  }
+
+  .interactive-tap-card:hover {
+    border-color: rgba(143, 227, 207, 0.14);
+    box-shadow: 0 30px 110px rgba(3, 10, 20, 0.34);
+  }
+
+  .interactive-tap-card:focus-visible {
+    border-color: rgba(143, 227, 207, 0.16);
+    box-shadow:
+      0 30px 110px rgba(3, 10, 20, 0.34),
+      0 0 0 2px rgba(143, 227, 207, 0.12);
+    outline: none;
+  }
+
+  .interactive-tap-glow {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(circle 116px at var(--pointer-x) var(--pointer-y), rgba(255, 255, 255, 0.12), transparent 62%);
+    opacity: 0.26;
+    transition: opacity 0.25s ease;
+    z-index: 0;
+  }
+
+  .interactive-tap-card:hover .interactive-tap-glow,
+  .interactive-tap-card:focus-visible .interactive-tap-glow,
+  .interactive-tap-card[aria-pressed="true"] .interactive-tap-glow {
+    opacity: 0.42;
+  }
+
+  .interactive-tap-grid {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 26px 26px;
+    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.45), transparent 88%);
+    opacity: 0.08;
+    z-index: 0;
+  }
+
+  .interactive-tap-card img {
+    position: relative;
+    z-index: 1;
+  }
+
+  .tap-ripple {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.26), transparent 72%);
+    transform: translate(-50%, -50%);
+    animation: tap-ripple 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    z-index: 1;
+  }
+
+  .footer-wrap {
+    position: relative;
+  }
+
+  .footer-panel {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .footer-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      linear-gradient(120deg, rgba(143, 227, 207, 0.05), transparent 30%),
+      linear-gradient(180deg, transparent 45%, rgba(255, 255, 255, 0.03));
+  }
+
+  .footer-quote {
+    position: relative;
+    min-width: 0;
+  }
+
+  .footer-quote-frame {
+    min-height: 0;
+  }
+
+  .footer-quote-line {
+    display: block;
+  }
+
+  .footer-quote-text {
+    display: inline;
+    animation: fade-in-up 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    font-family: var(--font-sans);
+    font-weight: 450;
+    letter-spacing: -0.01em;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .footer-quote-placeholder {
+    display: block;
+    min-height: 3.75rem;
+  }
+
+  .footer-quote-author {
+    display: block;
+    margin-top: 0.5rem;
+    padding-left: 0;
+    font-family: var(--font-sans);
+    font-size: 0.68rem;
+    font-style: normal;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: color-mix(in oklch, var(--muted-foreground) 86%, var(--primary) 14%);
+  }
+
+  .footer-credit {
+    justify-self: end;
+    max-width: none;
+  }
+
+  .footer-link {
+    color: color-mix(in oklch, var(--foreground) 78%, var(--primary) 22%);
+    transition: color 0.3s ease;
+  }
+
+  .footer-link:hover {
+    color: color-mix(in oklch, var(--primary) 86%, white 8%);
+  }
+
+
   .tideline {
     position: relative;
   }
@@ -362,6 +556,28 @@ html, body, #__next {
     }
   }
 
+  @keyframes drift-haze {
+    0%, 100% {
+      transform: translate3d(0, 0, 0) scale(1);
+      opacity: 0.58;
+    }
+    50% {
+      transform: translate3d(2%, 3%, 0) scale(1.06);
+      opacity: 0.76;
+    }
+  }
+
+  @keyframes tap-ripple {
+    from {
+      opacity: 0.9;
+      transform: translate(-50%, -50%) scale(0.2);
+    }
+    to {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(10);
+    }
+  }
+
   .animate-fade-in-up {
     animation: fade-in-up 0.8s ease-out forwards;
   }
@@ -410,10 +626,17 @@ html, body, #__next {
     .bubble,
     .animate-fade-in-up,
     .animate-slide-in-left,
-    .animate-slide-in-right {
+    .animate-slide-in-right,
+    .footer-quote-text,
+    .tap-ripple,
+    .homepage-stage::before {
       animation: none !important;
       transform: none !important;
       opacity: 1 !important;
+    }
+
+    .interactive-tap-card {
+      transform: none !important;
     }
   }
 

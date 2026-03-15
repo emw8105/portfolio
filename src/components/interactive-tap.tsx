@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useEffect, useRef, useState, type PointerEvent as ReactPointerEvent } from "react"
 import { createPortal } from "react-dom"
 import Image from "next/image"
 
@@ -24,11 +24,19 @@ interface Bubble {
     duration: number
 }
 
+interface Ripple {
+    id: number
+    x: number
+    y: number
+}
+
 export function InteractiveTap() {
     const [nojimaTap, setNojimaTap] = useState(false)
     const [particles, setParticles] = useState<Particle[]>([])
     const [bubbles, setBubbles] = useState<Bubble[]>([])
+    const [ripples, setRipples] = useState<Ripple[]>([])
     const [mounted, setMounted] = useState(false)
+    const buttonRef = useRef<HTMLButtonElement>(null)
 
     useEffect(() => {
         setMounted(true)
@@ -41,12 +49,11 @@ export function InteractiveTap() {
             return
         }
 
-        // Create TONS of particles for maximum drama
-        const initialParticles: Particle[] = Array.from({ length: 80 }, (_, i) => ({
+        const initialParticles: Particle[] = Array.from({ length: 48 }, (_, i) => ({
             id: Date.now() + i,
             x: Math.random() * 100,
             y: Math.random() * 100,
-            size: Math.random() * 15 + 3,
+            size: Math.random() * 11 + 3,
             speedY: Math.random() * 1.2 + 0.4,
             speedX: (Math.random() - 0.5) * 0.6,
             opacity: Math.random() * 0.8 + 0.2,
@@ -54,8 +61,7 @@ export function InteractiveTap() {
         }))
         setParticles(initialParticles)
 
-        // Create animated bubbles
-        const initialBubbles: Bubble[] = Array.from({ length: 25 }, (_, i) => ({
+        const initialBubbles: Bubble[] = Array.from({ length: 16 }, (_, i) => ({
             id: Date.now() + i + 1000,
             x: Math.random() * 100,
             y: 100 + Math.random() * 20,
@@ -92,6 +98,60 @@ export function InteractiveTap() {
         }
     }
 
+    const createRipple = (event: ReactPointerEvent<HTMLButtonElement>) => {
+        const bounds = event.currentTarget.getBoundingClientRect()
+        const id = Date.now()
+
+        setRipples((current) => [
+            ...current,
+            {
+                id,
+                x: event.clientX - bounds.left,
+                y: event.clientY - bounds.top,
+            },
+        ])
+
+        window.setTimeout(() => {
+            setRipples((current) => current.filter((ripple) => ripple.id !== id))
+        }, 850)
+    }
+
+    const handlePointerMove = (event: ReactPointerEvent<HTMLButtonElement>) => {
+        const element = buttonRef.current
+
+        if (!element) {
+            return
+        }
+
+        const bounds = element.getBoundingClientRect()
+        const offsetX = event.clientX - bounds.left
+        const offsetY = event.clientY - bounds.top
+        const tiltX = (0.5 - offsetY / bounds.height) * 7
+        const tiltY = (offsetX / bounds.width - 0.5) * 7
+
+        element.style.setProperty("--pointer-x", `${offsetX}px`)
+        element.style.setProperty("--pointer-y", `${offsetY}px`)
+        element.style.setProperty("--tilt-x", `${tiltX}deg`)
+        element.style.setProperty("--tilt-y", `${tiltY}deg`)
+    }
+
+    const resetPointerState = () => {
+        const element = buttonRef.current
+
+        if (!element) {
+            return
+        }
+
+        element.style.setProperty("--pointer-x", "50%")
+        element.style.setProperty("--pointer-y", "50%")
+        element.style.setProperty("--tilt-x", "0deg")
+        element.style.setProperty("--tilt-y", "0deg")
+    }
+
+    const handlePress = (event: ReactPointerEvent<HTMLButtonElement>) => {
+        createRipple(event)
+    }
+
     useEffect(() => {
         if (nojimaTap) {
             document.body.classList.add('nojima-tap-mode')
@@ -104,38 +164,46 @@ export function InteractiveTap() {
         <>
             <div className="relative space-y-3">
                 <button
+                    ref={buttonRef}
+                    onPointerDown={handlePress}
                     onClick={handleTap}
-                    className={`glass-card rounded-3xl p-8 relative cursor-pointer transition-all duration-700 w-full ${nojimaTap ? 'nojima-active' : ''}`}
-                    aria-label={nojimaTap ? "Calm the ocean animation" : "Start the ocean animation"}
+                    onPointerMove={handlePointerMove}
+                    onPointerLeave={resetPointerState}
+                    className={`interactive-tap-card home-surface border border-ocean-border bg-ocean-surface rounded-[1.75rem] p-5 relative cursor-pointer transition-all duration-700 w-full ${nojimaTap ? 'nojima-active' : ''}`}
+                    aria-label={nojimaTap ? "Stop the ocean animation" : "Start the ocean animation"}
                     aria-pressed={nojimaTap}
                 >
-                    <div className={`absolute inset-0 rounded-3xl transition-all duration-700 ${nojimaTap
-                        ? 'bg-gradient-to-br from-primary/40 via-accent/30 to-primary/40 opacity-100'
-                        : 'opacity-0'
-                        }`}></div>
+                    <div className="interactive-tap-glow" />
+
+                    <div className="interactive-tap-grid" />
+
+                    {ripples.map((ripple) => (
+                        <span
+                            key={ripple.id}
+                            className="tap-ripple"
+                            style={{
+                                left: `${ripple.x}px`,
+                                top: `${ripple.y}px`,
+                            }}
+                        />
+                    ))}
 
                     <Image
                         src="/assets/nojima-tap.gif"
                         alt="Nojima tapping"
                         width={400}
                         height={400}
-                        className={`w-full h-auto rounded-2xl transition-all duration-700 ${nojimaTap ? 'brightness-125 contrast-110' : ''}`}
+                        className={`w-full h-auto rounded-[1.2rem] transition-all duration-700 ${nojimaTap ? 'brightness-125 contrast-110' : ''}`}
                         unoptimized
                         priority
                     />
                 </button>
             </div>
 
-            {/* Portal the ocean effects to document.body for full viewport coverage */}
             {mounted && createPortal(
                 <div className={`fixed inset-0 pointer-events-none transition-opacity duration-[1500ms] z-[9999] ${nojimaTap ? 'opacity-100' : 'opacity-0'}`}>
-                    {/* Animated wave overlays - FULL PAGE */}
-                    {/* <div className="absolute inset-0 pointer-events-none ocean-waves" /> */}
-
-                    {/* Animated overlay gradients - FULL PAGE */}
                     <div className="absolute inset-0 pointer-events-none ocean-overlay" />
 
-                    {/* Floating particles - FULL PAGE */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
                         {particles.map(particle => {
                             const getParticleColor = (colorValue: number) => {
@@ -163,7 +231,6 @@ export function InteractiveTap() {
                         })}
                     </div>
 
-                    {/* Animated bubbles rising - FULL PAGE */}
                     <div className="absolute inset-0 pointer-events-none overflow-hidden">
                         {bubbles.map(bubble => (
                             <div
@@ -181,7 +248,6 @@ export function InteractiveTap() {
                         ))}
                     </div>
 
-                    {/* Light rays effect - FULL PAGE */}
                     <div className="absolute inset-0 pointer-events-none ocean-rays" />
                 </div>,
                 document.body
