@@ -102,11 +102,12 @@ export function InteractiveTap() {
 
     return (
         <>
-            <div className="relative">
+            <div className="relative space-y-3">
                 <button
                     onClick={handleTap}
                     className={`glass-card rounded-3xl p-8 relative cursor-pointer transition-all duration-700 w-full ${nojimaTap ? 'nojima-active' : ''}`}
-                    aria-label="Interactive element"
+                    aria-label={nojimaTap ? "Calm the ocean animation" : "Start the ocean animation"}
+                    aria-pressed={nojimaTap}
                 >
                     <div className={`absolute inset-0 rounded-3xl transition-all duration-700 ${nojimaTap
                         ? 'bg-gradient-to-br from-primary/40 via-accent/30 to-primary/40 opacity-100'

@@ -7,60 +7,50 @@ import { InteractiveTap } from "@/components/interactive-tap"
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen lg:h-screen flex flex-col overflow-x-hidden lg:overflow-hidden">
+    <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navigation />
 
-      <section className="flex-1 flex items-start lg:items-center px-4 pt-24 pb-8 sm:px-6 sm:pt-28 sm:pb-10 lg:px-8 lg:py-0">
-        <div className="max-w-6xl mx-auto w-full">
-          {/* Asymmetric hero layout */}
-          <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-start lg:items-center">
-            {/* Left column - Main content */}
-            <div className="lg:col-span-7 space-y-5 sm:space-y-6 opacity-0 animate-fade-in-up">
-              <div className="space-y-2.5 sm:space-y-3">
-                <h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold font-serif leading-[0.95] opacity-0 animate-slide-in-left animation-delay-200">
-                  <span className="block text-foreground">Evan</span>
-                  <span className="block bg-gradient-ocean bg-clip-text mt-2">Wright</span>
+      <section className="relative flex-1 px-4 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-12 lg:px-8 lg:pt-32 lg:pb-14">
+        <div className="mx-auto max-w-6xl">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_320px] lg:gap-16">
+            <div className="space-y-8 pt-2 opacity-0 animate-fade-in-up">
+              <div className="space-y-4">
+                <h1 className="max-w-4xl font-sans text-[clamp(4.5rem,12vw,9rem)] font-semibold leading-[0.86] tracking-[-0.09em] text-foreground opacity-0 animate-slide-in-left animation-delay-200">
+                  Evan Wright
                 </h1>
-                <div className="h-1 w-24 bg-gradient-ocean rounded-full opacity-0 animate-slide-in-left animation-delay-400"></div>
+
+                <p className="text-sm uppercase tracking-[0.28em] text-muted-foreground opacity-0 animate-slide-in-right animation-delay-400 sm:text-base">
+                  Solutions Architect
+                </p>
+
               </div>
 
-              <p className="text-xl sm:text-3xl text-muted-foreground leading-relaxed opacity-0 animate-slide-in-right animation-delay-400">
-                Solutions Architect
-              </p>
-
-              <p className="text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed opacity-0 animate-fade-in-up animation-delay-600">
-                Designing <span className="text-accent font-semibold">cloud-native architectures</span> and
-                building <span className="text-accent font-semibold">intelligent systems</span> for enterprise-scale
-                organizations. Specializing in <span className="text-accent font-semibold">scalable solutions</span> that
-                bridge infrastructure, data, and AI.
-              </p>
-
-              <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 pt-2 sm:pt-4 opacity-0 animate-fade-in-up animation-delay-700">
+              <div className="flex flex-wrap gap-3 pt-1 opacity-0 animate-fade-in-up animation-delay-700">
                 <Button
                   asChild
                   size="lg"
-                  className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 relative overflow-hidden group border-2 border-primary bg-primary/10 text-primary hover:bg-primary hover:text-background transition-all duration-300"
+                  className="group min-h-13 rounded-full border border-primary/20 bg-primary px-7 text-base font-semibold text-primary-foreground transition-all duration-300 hover:bg-primary/90"
                 >
                   <Link href="/projects" className="flex items-center gap-2">
-                    <span className="relative z-10">View Projects</span>
-                    <ArrowRight className="ml-1 h-5 w-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-                    <span className="absolute inset-0 bg-gradient-ocean opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                    Projects
+                    <ArrowRight className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </Button>
                 <Button
                   variant="outline"
                   size="lg"
-                  className="w-full sm:w-auto text-base sm:text-lg px-6 sm:px-8 py-5 sm:py-6 border-2 border-border hover:border-accent hover:text-accent hover:bg-accent/10 transition-all duration-300"
+                  className="min-h-13 rounded-full border-border/70 bg-transparent px-7 text-base hover:border-primary/30 hover:bg-background/20 hover:text-foreground"
                   asChild
                 >
-                  <Link href="/about">About Me</Link>
+                  <Link href="/about">About</Link>
                 </Button>
               </div>
             </div>
 
-            {/* Right column - Interactive Nojima */}
-            <div className="lg:col-span-5 flex items-center justify-center opacity-0 animate-fade-in-up animation-delay-600 max-w-sm sm:max-w-md lg:max-w-none mx-auto w-full">
-              <InteractiveTap />
+            <div className="mx-auto w-full max-w-[20rem] opacity-0 animate-fade-in-up animation-delay-600 lg:ml-auto lg:pt-8">
+              <div className="rounded-[1.75rem] border border-border/60 bg-background/18 p-3 backdrop-blur-sm">
+                <InteractiveTap />
+              </div>
             </div>
           </div>
         </div>

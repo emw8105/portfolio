@@ -5,91 +5,91 @@
 
 :root {
   /* Ocean-inspired color palette - vibrant and playful-technical */
-  --background: oklch(0.08 0.02 240);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.13 0.03 240);
+  --background: oklch(0.1 0.03 228);
+  --foreground: oklch(0.97 0.01 205);
+  --card: oklch(0.15 0.04 228);
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.13 0.03 240);
+  --popover: oklch(0.15 0.04 228);
   --popover-foreground: oklch(0.98 0 0);
   
-  /* Vibrant teal as primary - ocean energy */
-  --primary: oklch(0.68 0.15 195);
-  --primary-foreground: oklch(0.98 0 0);
+  /* Sea-glass teal as primary - ocean energy */
+  --primary: oklch(0.75 0.14 182);
+  --primary-foreground: oklch(0.1 0.03 228);
   
-  /* Deep ocean purple for secondary */
-  --secondary: oklch(0.18 0.05 260);
+  /* Kelp-shadow for secondary surfaces */
+  --secondary: oklch(0.21 0.06 208);
   --secondary-foreground: oklch(0.98 0 0);
   
-  --muted: oklch(0.16 0.02 240);
-  --muted-foreground: oklch(0.68 0.02 240);
+  --muted: oklch(0.18 0.03 224);
+  --muted-foreground: oklch(0.74 0.03 208);
   
   /* Coral accent for pops of energy */
-  --accent: oklch(0.72 0.18 25);
-  --accent-foreground: oklch(0.12 0.03 240);
+  --accent: oklch(0.78 0.17 42);
+  --accent-foreground: oklch(0.14 0.03 228);
   
-  /* Electric blue for highlights */
-  --electric: oklch(0.65 0.22 240);
+  /* Electric surf blue for highlights */
+  --electric: oklch(0.71 0.17 218);
   
   /* Warm coral for CTAs and important elements */
-  --coral: oklch(0.72 0.18 25);
+  --coral: oklch(0.78 0.17 42);
   
   --destructive: oklch(0.6 0.25 15);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.22 0.04 240);
-  --input: oklch(0.16 0.03 240);
-  --ring: oklch(0.68 0.15 195);
-  --chart-1: oklch(0.68 0.15 195);
-  --chart-2: oklch(0.72 0.18 25);
-  --chart-3: oklch(0.65 0.22 240);
+  --border: oklch(0.28 0.05 216);
+  --input: oklch(0.17 0.04 224);
+  --ring: oklch(0.75 0.14 182);
+  --chart-1: oklch(0.75 0.14 182);
+  --chart-2: oklch(0.78 0.17 42);
+  --chart-3: oklch(0.71 0.17 218);
   --chart-4: oklch(0.7 0.15 160);
   --chart-5: oklch(0.68 0.2 280);
   --radius: 0.75rem;
-  --sidebar: oklch(0.1 0.02 240);
+  --sidebar: oklch(0.12 0.03 228);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.68 0.15 195);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.16 0.03 240);
+  --sidebar-primary: oklch(0.75 0.14 182);
+  --sidebar-primary-foreground: oklch(0.1 0.03 228);
+  --sidebar-accent: oklch(0.17 0.04 224);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.22 0.04 240);
-  --sidebar-ring: oklch(0.68 0.15 195);
+  --sidebar-border: oklch(0.28 0.05 216);
+  --sidebar-ring: oklch(0.75 0.14 182);
   --font-inter: "Inter", sans-serif;
   --font-sora: "Sora", sans-serif;
 }
 
 .dark {
   /* Ocean-inspired dark theme colors */
-  --background: oklch(0.08 0.02 240);
-  --foreground: oklch(0.98 0 0);
-  --card: oklch(0.13 0.03 240);
+  --background: oklch(0.1 0.03 228);
+  --foreground: oklch(0.97 0.01 205);
+  --card: oklch(0.15 0.04 228);
   --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.13 0.03 240);
+  --popover: oklch(0.15 0.04 228);
   --popover-foreground: oklch(0.98 0 0);
-  --primary: oklch(0.68 0.15 195);
-  --primary-foreground: oklch(0.98 0 0);
-  --secondary: oklch(0.18 0.05 260);
+  --primary: oklch(0.75 0.14 182);
+  --primary-foreground: oklch(0.1 0.03 228);
+  --secondary: oklch(0.21 0.06 208);
   --secondary-foreground: oklch(0.98 0 0);
-  --muted: oklch(0.16 0.02 240);
-  --muted-foreground: oklch(0.68 0.02 240);
-  --accent: oklch(0.72 0.18 25);
-  --accent-foreground: oklch(0.12 0.03 240);
+  --muted: oklch(0.18 0.03 224);
+  --muted-foreground: oklch(0.74 0.03 208);
+  --accent: oklch(0.78 0.17 42);
+  --accent-foreground: oklch(0.14 0.03 228);
   --destructive: oklch(0.6 0.25 15);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.22 0.04 240);
-  --input: oklch(0.16 0.03 240);
-  --ring: oklch(0.68 0.15 195);
-  --chart-1: oklch(0.68 0.15 195);
-  --chart-2: oklch(0.72 0.18 25);
-  --chart-3: oklch(0.65 0.22 240);
+  --border: oklch(0.28 0.05 216);
+  --input: oklch(0.17 0.04 224);
+  --ring: oklch(0.75 0.14 182);
+  --chart-1: oklch(0.75 0.14 182);
+  --chart-2: oklch(0.78 0.17 42);
+  --chart-3: oklch(0.71 0.17 218);
   --chart-4: oklch(0.7 0.15 160);
   --chart-5: oklch(0.68 0.2 280);
-  --sidebar: oklch(0.1 0.02 240);
+  --sidebar: oklch(0.12 0.03 228);
   --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.68 0.15 195);
-  --sidebar-primary-foreground: oklch(0.98 0 0);
-  --sidebar-accent: oklch(0.16 0.03 240);
+  --sidebar-primary: oklch(0.75 0.14 182);
+  --sidebar-primary-foreground: oklch(0.1 0.03 228);
+  --sidebar-accent: oklch(0.17 0.04 224);
   --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.22 0.04 240);
-  --sidebar-ring: oklch(0.68 0.15 195);
+  --sidebar-border: oklch(0.28 0.05 216);
+  --sidebar-ring: oklch(0.75 0.14 182);
 }
 
 @theme inline {
@@ -155,15 +155,27 @@ body::before {
   inset: 0;
   z-index: -9999;
   pointer-events: none;
-  background: radial-gradient(
-    ellipse at top,
-    oklch(0.15 0.08 195) 0%,
-    oklch(0.1 0.06 220) 40%,
-    oklch(0.08 0.03 240) 70%,
-    oklch(0.06 0.01 250) 100%
-  );
+  background:
+    radial-gradient(circle at 14% 18%, color-mix(in oklch, var(--primary) 24%, transparent) 0%, transparent 24%),
+    radial-gradient(circle at 84% 16%, color-mix(in oklch, var(--accent) 14%, transparent) 0%, transparent 20%),
+    radial-gradient(circle at 58% 72%, color-mix(in oklch, var(--electric) 18%, transparent) 0%, transparent 26%),
+    linear-gradient(180deg, oklch(0.19 0.08 196) 0%, oklch(0.12 0.05 216) 26%, oklch(0.09 0.03 228) 58%, oklch(0.08 0.02 238) 100%);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -9998;
+  pointer-events: none;
+  opacity: 0.22;
+  background-image:
+    linear-gradient(115deg, transparent 0%, rgba(255, 255, 255, 0.05) 48%, transparent 53%),
+    linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.025) 49%, transparent 54%);
+  background-size: 320px 320px, 240px 240px;
+  mix-blend-mode: screen;
 }
 
 /* ensures fallback colors don't cover the ::before */
@@ -180,16 +192,21 @@ html, body, #__next {
   }
 
   .glass-card {
-    background: rgba(15, 25, 45, 0.4);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(100, 200, 220, 0.12);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 200, 220, 0.08);
+    background:
+      linear-gradient(180deg, rgba(10, 34, 54, 0.78), rgba(8, 22, 38, 0.88)),
+      linear-gradient(135deg, rgba(160, 241, 224, 0.06), rgba(255, 166, 120, 0.03));
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(143, 227, 207, 0.15);
+    box-shadow:
+      0 22px 80px rgba(3, 10, 20, 0.38),
+      inset 0 1px 0 rgba(255, 255, 255, 0.06),
+      0 0 0 1px rgba(143, 227, 207, 0.04);
   }
 
   .glass-nav {
-    background: rgba(8, 12, 25, 0.90);
-    backdrop-filter: blur(24px);
-    border-bottom: 1px solid rgba(100, 200, 220, 0.1);
+    background: rgba(6, 16, 27, 0.86);
+    backdrop-filter: blur(22px);
+    border-bottom: 1px solid rgba(143, 227, 207, 0.12);
   }
 
   .glow {
@@ -197,13 +214,16 @@ html, body, #__next {
   }
 
   .glow-hover {
-    transition: box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+    transition: box-shadow 0.35s cubic-bezier(0.22, 1, 0.36, 1), transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   .glow-hover:hover {
-    box-shadow: 0 0 30px rgba(100, 200, 220, 0.5), 0 4px 20px rgba(255, 127, 80, 0.2);
-    transform: translateY(-2px);
-    border-color: rgba(100, 200, 220, 0.25);
+    box-shadow:
+      0 28px 90px rgba(1, 8, 18, 0.42),
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 0 0 1px rgba(143, 227, 207, 0.1);
+    transform: translateY(-5px);
+    border-color: rgba(143, 227, 207, 0.24);
   }
 
   .glow-coral {
@@ -212,15 +232,100 @@ html, body, #__next {
 
   /* Ocean-inspired gradient utilities */
   .gradient-ocean {
-    background: linear-gradient(135deg, oklch(0.68 0.15 195), oklch(0.65 0.22 240));
+    background: linear-gradient(135deg, oklch(0.75 0.14 182), oklch(0.71 0.17 218), oklch(0.78 0.12 160));
   }
 
   .gradient-coral {
-    background: linear-gradient(135deg, oklch(0.72 0.18 25), oklch(0.75 0.2 35));
+    background: linear-gradient(135deg, oklch(0.78 0.17 42), oklch(0.83 0.15 68));
   }
 
   .gradient-depth {
-    background: linear-gradient(135deg, oklch(0.65 0.22 240), oklch(0.68 0.15 195));
+    background: linear-gradient(135deg, oklch(0.12 0.06 222), oklch(0.28 0.09 201), oklch(0.18 0.05 236));
+  }
+
+  .shell-panel {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(143, 227, 207, 0.16);
+    background:
+      linear-gradient(180deg, rgba(11, 31, 48, 0.84), rgba(7, 20, 35, 0.94)),
+      linear-gradient(140deg, rgba(143, 227, 207, 0.08), rgba(255, 166, 120, 0.03));
+    box-shadow:
+      0 30px 120px rgba(2, 7, 16, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+  }
+
+  .shell-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at top left, rgba(143, 227, 207, 0.12), transparent 28%),
+      linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.05) 48%, transparent 52%);
+    opacity: 0.8;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: color-mix(in oklch, var(--primary) 62%, white 18%);
+  }
+
+  .eyebrow::before {
+    content: "";
+    width: 2.75rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, color-mix(in oklch, var(--primary) 78%, white 10%));
+  }
+
+  .hero-mesh {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 18% 16%, rgba(143, 227, 207, 0.18), transparent 22%),
+      radial-gradient(circle at 72% 22%, rgba(255, 166, 120, 0.12), transparent 16%),
+      linear-gradient(120deg, transparent 0%, rgba(255, 255, 255, 0.05) 38%, transparent 46%);
+    opacity: 0.9;
+  }
+
+  .tideline {
+    position: relative;
+  }
+
+  .tideline::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -0.45rem;
+    width: 100%;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: linear-gradient(90deg, rgba(143, 227, 207, 0.7), rgba(120, 187, 255, 0.28), transparent 82%);
+    opacity: 0.8;
+  }
+
+  .editorial-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.75rem;
+    border: 1px solid rgba(143, 227, 207, 0.14);
+    background: linear-gradient(180deg, rgba(11, 30, 47, 0.86), rgba(7, 19, 33, 0.95));
+    box-shadow: 0 22px 85px rgba(2, 7, 16, 0.38);
+  }
+
+  .editorial-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(135deg, rgba(143, 227, 207, 0.08), transparent 40%, rgba(255, 166, 120, 0.04));
   }
 
   /* Adding smooth loading animations for home page */
@@ -276,7 +381,41 @@ html, body, #__next {
   .animation-delay-400 {
     animation-delay: 0.4s;
   }
+
+  .animation-delay-600 {
+    animation-delay: 0.6s;
+  }
+
+  .animation-delay-700 {
+    animation-delay: 0.7s;
+  }
+
+  .animation-delay-800 {
+    animation-delay: 0.8s;
+  }
 }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+
+    .ocean-overlay,
+    .ocean-rays,
+    .bubble,
+    .animate-fade-in-up,
+    .animate-slide-in-left,
+    .animate-slide-in-right {
+      animation: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+    }
+  }
 
 .no-scrollbar::-webkit-scrollbar {
   display: none;

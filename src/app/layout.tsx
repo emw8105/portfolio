@@ -1,16 +1,16 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter, Sora } from "next/font/google"
+import { IBM_Plex_Sans, Syne } from "next/font/google"
 import "./globals.css"
 
-const inter = Inter({
+const inter = IBM_Plex_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
   weight: ["400", "500", "600", "700"],
 })
 
-const sora = Sora({
+const sora = Syne({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sora",
