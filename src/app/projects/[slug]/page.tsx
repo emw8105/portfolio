@@ -49,8 +49,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
     titleLen <= 10
       ? "clamp(3.2rem,7vw,5.5rem)"
       : titleLen <= 20
-      ? "clamp(2.6rem,5.5vw,4.2rem)"
-      : "clamp(2rem,4.2vw,3.2rem)"
+        ? "clamp(2.6rem,5.5vw,4.2rem)"
+        : "clamp(2rem,4.2vw,3.2rem)"
 
   return (
     <div className="min-h-screen">
@@ -187,11 +187,10 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => setActiveNarrative(index)}
-                      className={`relative pb-3.5 pr-8 text-sm font-medium transition-colors duration-200 ${
-                        isActive
-                          ? "text-foreground after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
-                          : "text-muted-foreground/70 hover:text-muted-foreground"
-                      }`}
+                      className={`relative pb-3.5 pr-8 text-sm font-medium transition-colors duration-200 ${isActive
+                        ? "text-foreground after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
+                        : "text-muted-foreground/70 hover:text-muted-foreground"
+                        }`}
                     >
                       {section.label}
                     </button>
