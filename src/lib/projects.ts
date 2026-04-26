@@ -76,16 +76,13 @@ export const projectsData: Record<string, Project> = {
     features: [
       "Centralized REST API for course, grade, and professor data",
       "Token-based authentication with configurable expiration and rate limits",
-      "Modular scraper orchestration system",
-      "Environment-aware data pipelines (local/dev/prod)",
-      "Firebase Firestore integration for scalable cloud storage",
-      "Automated data integration across heterogeneous sources",
-      "Configured service account keys in GCP for direct read access to cloud data for ACM UTD-managed products",
+      "Modular scraper orchestration with environment-aware pipelines (local/dev/prod)",
+      "Firebase Firestore integration with automated data merging across heterogeneous sources",
+      "GCP service account keys for direct read access by ACM UTD-managed products",
     ],
     futureEnhancements: [
       "Add automated scheduled scraping and CI/CD deployment",
-      "Add a site UI for token management, data visualization, and easy data collection",
-      "Implement monitoring dashboards and usage analytics",
+      "Add a site UI for token management, usage analytics, and data visualization",
       "Expand schema to support additional parameters and data endpoints",
       "Introduce GraphQL endpoint layer for more flexible querying",
       "Deploy containerized production hosting with horizontal scaling"
@@ -141,8 +138,7 @@ export const projectsData: Record<string, Project> = {
     solution: "I engineered over 70 structured features capturing GPA trends, DFW rates (the rate of a D, F, or W grade from a professor, not Dallas-Fort Worth rates unfortunately), grade variance, teaching stability, and sentiment tag embeddings using TF-IDF. These features were fed into a stacked ensemble combining Gradient Boosting, Random Forest, Ridge Regression, and XGBoost, wrapped in a multi-output regression framework. After filtering for instructors with sufficient statistical reliability, the final model explained approximately 60-65% of the variance in student ratings on a held-out test set. Quality was predicted with an MAE of 0.41, difficulty with 0.36, and would-take-again with 0.13 on a normalized scale.",
     features: [
       "Multi-output regression predicting quality, difficulty, and would-take-again",
-      "70+ engineered academic and perception-based features",
-      "TF-IDF encoding of RMP sentiment tags",
+      "70+ engineered features including TF-IDF encoded RMP sentiment tags",
       "Stacked ensemble model (GBM, RF, Ridge, XGBoost)",
       "Feature importance and behavioral pattern analysis",
       "Confidence-aware predictions for sparse-review instructors"
@@ -216,10 +212,9 @@ export const projectsData: Record<string, Project> = {
     challenge: "Delivering low-latency, synchronized music for never-before-seen livestream content while keeping startup latency low and handling irregular audio chunk delivery from the generator service. Getting set up with Lyria was a big struggle because the application is only available as an experimental preview and the documentation is very limited, it had only been released a month ago to the Gemini platform, but it was perfect for our use case. Another challenge was ensuring smooth user experience during scrubbing, requiring prompt updates to reflect new video content immediately.",
     solution: "Pre-warmed Lyria WebSocket pool for instant starts, metadata-first prompts for rapid initial audio, a pre-processing buffer to analyze frames ahead of playback, SSIM-based change detection for delta analysis, and robust session lifecycle management to prevent audio carryover between sessions. Our solution won at HackTX for Best Use of Gemini API and was invited to present at the Google Gemini Developer Showcase where we created a much more refined product (Apollo), and helped improve the Lyria RealTime and Gemini developer experience with documentation writeups. See the improved solution [here](https://github.com/emw8105/gemini-showcase).",
     features: [
-      "Real-time frame analysis (Gemini vision) with delta detection",
-      "Pre-warmed Lyria pool for sub-4s cold starts",
-      "Livestream snapshotting and adaptive prompt updates",
-      "User scrubbing with timeline back-dating for immediate seek response",
+      "Real-time frame analysis (Gemini vision) with SSIM delta detection and adaptive prompt updates",
+      "Pre-warmed Lyria WebSocket pool for sub-4s cold starts",
+      "Livestream snapshotting with user scrubbing and timeline back-dating",
       "WAV download endpoint with 48kHz stereo format",
       "Session logging and telemetry for reproducible debugging"
     ],
@@ -284,12 +279,11 @@ export const projectsData: Record<string, Project> = {
     solution:
       "The solution is a multi-layered system. The lightweight Python client, packaged with PyInstaller, securely captures keystrokes and system info. It performs a cryptographic handshake with the Go server to establish a secure AES session. The encrypted logs are then sent via an API endpoint to the Go server, which decrypts them and stores them in Firestore (Firebase database). A Next.js web client then fetches this data to provide a live, transparent view of the logs, while also serving the compiled client executable directly from an AWS S3 bucket.",
     features: [
-      "Secure end-to-end encryption using a hybrid cryptographic approach",
-      "Centralized log storage and management in Firebase Firestore",
+      "Secure end-to-end encryption using a hybrid RSA/AES-GCM cryptographic scheme",
+      "Centralized log storage in Firebase Firestore, supporting multiple simultaneous clients",
       "Public-facing web client built with Next.js for transparent log viewing",
-      "Multi-platform API server and client (Linux server, Windows client)",
-      "Automated deployment scripts for both client and server",
-      "Scalable system architecture capable of handling multiple clients simultaneously",
+      "Multi-platform support (Linux server, Windows client) with automated deployment scripts",
+      "Compiled Python client distributed as a Windows executable via AWS S3",
     ],
     futureEnhancements: [
       "Rewrite the client in Go for improved cross-platform support and performance",
@@ -304,9 +298,9 @@ export const projectsData: Record<string, Project> = {
     description:
       "A full-stack web application designed to help UTD students evaluate their degree progress, optimize course planning, and receive AI-powered advising using a RAG chatbot.",
     categories: ["Web Application", "Cloud System"],
-    status: "In Progress",
+    status: "Completed",
     date: "2025",
-    duration: "Ongoing (1 year)",
+    duration: "1 year",
     team: "10+ ACM Developers | Role: Lead Developer",
     technologies: [
       "React",
@@ -314,7 +308,6 @@ export const projectsData: Record<string, Project> = {
       "TailwindCSS",
       "Python",
       "AWS Lambda",
-      "AWS Step Functions",
       "AWS S3",
       "AWS DynamoDB",
       "Terraform",
@@ -331,7 +324,7 @@ export const projectsData: Record<string, Project> = {
       {
         url: "/projects/sage-architecture.png",
         alt: "AWS Architecture diagram",
-        caption: "Cloud architecture using AWS Lambda, Step Functions, and S3",
+        caption: "Cloud architecture using AWS Lambda, DynamoDB, and S3",
       },
       {
         url: "/projects/sage-chatbot-course.png",
@@ -349,15 +342,13 @@ export const projectsData: Record<string, Project> = {
     challenge:
       "The project faced several challenges, including handling formatting inconsistencies across multiple years of degree catalogs, parsing transcript PDF formats reliably, and architecting a scalable system capable of supporting thousands of students. Another major hurdle was managing a team of 45+ developers, maintaining code quality, and ensuring smooth collaboration across frontend, backend, and infrastructure teams. We also needed to construct the RAG chatbot to provide accurate advising responses based on the parsed data, and integrating the RMP and university grade data for course recommendations required some creativity on sourcing our data.",
     solution:
-      "We built a modular AWS-based pipeline with multiple Lambda functions, orchestrated with Step Functions. A custom Python parser replaced AWS Textract for faster and more accurate transcript processing. Degree plans are generated and stored in S3 for fast retrieval, while Pinecone is used to support semantic chatbot queries. The frontend was migrated from React to Next.js + Typescript + Tailwind for performance and scalability, with a redesigned UI for usability.",
+      "We built a modular AWS-based pipeline with multiple Lambda functions, integrating Firebase for cost-efficient authentication. A custom Python parser replaced AWS Textract for faster and more accurate transcript processing with custom handling logic. Degree plans are generated and stored in S3 for bulkier storage with DynamoDB used for lightweight profile information provided to the chatbot context, while Pinecone is used to support semantic chatbot queries. The frontend UI was redesigned for usability and mobile responsiveness. During my time as Director of ACM Development, I worked to ensure that the application would be as maintainable as possible while providing university data to other applications, so I built out the [ACM API](https://www.doypid.com/projects/acmapi) and worked to abstract the university data collection that I originally gathered for SAGE to a more widely accessible platform. As of the release of SAGE 2.0, the platform has gained recognition from the university administration with hopes of usage by UTD advising staff, as well as the official school newspaper (The Mercury), and is now being used by thousands of students each semester to plan their courses and evaluate their degree progress.",
     features: [
       "Automated transcript parsing using custom Python Lambda functions",
       "Scraping and standardizing degree catalog data across multiple years",
-      "Degree plan progress evaluation and personalized recommendations",
-      "Integrated chatbot using Pinecone for semantic advising queries",
-      "React frontend with modern UI/UX for students",
-      "Scalable AWS pipeline with S3, Lambda, and Step Functions",
-      "Mobile-responsive design for on-the-go access",
+      "Degree plan progress evaluation and personalized course recommendations based on RMP ratings, grade distributions, and course availability",
+      "RAG chatbot using Pinecone for semantic advising queries powered by UTD",
+      "Scalable AWS pipeline (S3, Lambda, DynamoDB) with a responsive modern UI",
     ],
     futureEnhancements: [
       "Expand support for graduate degree plans",
@@ -403,11 +394,10 @@ export const projectsData: Record<string, Project> = {
       "The app was built using React and Typescript with tailwind for the frontend, with a Dockerized Go server deployed to an EC2 instance, storing data in DynamoDB and allowing users to modify their displayed data to customize their own wallpapers. Users can download the React fragment that contains the generated wallpaper and use it as their background or just as a collection to see their top listening activity.",
     features: [
       "Spotify OAuth 2.0 authentication for secure user login",
-      "Fetch and display user's top playlists and tracks",
+      "Fetch and display user's top playlists and tracks, cached for quick retrieval",
       "Multiple wallpaper styles and customization options",
+      "High-resolution wallpaper generation and one-click download",
       "Responsive design for mobile and desktop",
-      "High-resolution wallpaper generation and download",
-      "Activity data cached for quick retrieval and reduced API calls",
     ],
     futureEnhancements: [
       "Add cookie or account-based user profiles for saving preferences",
@@ -571,18 +561,15 @@ export const projectsData: Record<string, Project> = {
       "The backend processes uploaded documents using Tesseract OCR and OpenCV for text extraction, then validates them with the SambaNova Cloud API. Valid documents are analyzed to propose a credit score and limit. All results are stored and made available for admin review. The frontend provides a seamless experience for both applicants and auditors, with real-time status updates and a modern, responsive UI.",
     features: [
       "User authentication and role-based access (user/admin)",
-      "Upload and OCR of images and PDFs as financial proof",
-      "AI-powered document validation and fraud detection",
-      "Automated credit score and limit estimation",
+      "Upload and OCR of images and PDFs as alternative financial proof",
+      "AI-powered document validation, fraud detection, and automated credit scoring",
       "Admin dashboard for reviewing, approving, or rejecting applications",
-      "Detailed audit trail and reason codes for each decision"
+      "Detailed audit trail with reason codes for each credit decision"
     ],
     futureEnhancements: [
       "Restore persistent database storage (MongoDB or cloud DB)",
       "Add support for more document types and languages",
       "Enable document preview for auditors (with secure file handling)",
-      "Integrate with external credit bureaus for hybrid scoring",
-      "Deploy to cloud for public demo access"
     ],
   },
   "astra-extension": {
@@ -634,7 +621,7 @@ export const projectsData: Record<string, Project> = {
       "Cloud-based storage for user data (e.g., Firebase integration)",
       "Options for multiple user profiles and organization settings",
       "Improved error handling and feedback for unsupported form changes",
-      "Publish the extension to the Chrome Web Store for wider distribution"
+      "Publish the extension to the Chrome Web Store for wider distribution and easier installation"
     ],
   },
   "visio-parsing-tool": {
@@ -685,11 +672,10 @@ export const projectsData: Record<string, Project> = {
       "The tool unzips and parses Visio files, constructs a directed multi-graph of callflows, and provides a menu-driven interface for user configuration. It uses iterative graph traversal to avoid stack overflows, detects cycles, and outputs both exhaustive and minimal test paths. The output is designed for easy integration with QA platforms. It also utilizes the Microsoft Visual Studio testing framework for automated testing. Extensive documentation was written to ensure IVR developers can maintain consistency with design requirements to integrate with automated tool usage.",
     features: [
       "Automatic Visio file selection and XML parsing",
-      "Graph construction across multiple pages with reference handling",
-      "User-configurable start/end node and reference identification",
-      "Generation of all possible and minimum test case paths",
-      "Cycle detection and prevention of infinite loops",
-      "Output files for test case integration and Visio ID mapping"
+      "Graph construction across multiple pages with on- and off-page reference handling",
+      "User-configurable start/end node identification",
+      "Generation of all possible and minimum test case paths with cycle detection",
+      "Output files for test case integration and Visio shape ID mapping"
     ],
     futureEnhancements: [
       "Function return detection for off-page references",

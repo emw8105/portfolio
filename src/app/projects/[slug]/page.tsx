@@ -31,7 +31,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
   const narrativeSections = [
     { label: "Overview", title: "What this project is", content: project.overview },
     { label: "Challenge", title: "What made it difficult", content: project.challenge },
-    { label: "Solution", title: "How I approached it", content: project.solution },
+    { label: "Solution", title: "How it was approached", content: project.solution },
   ].filter((s): s is { label: string; title: string; content: string } => Boolean(s.content))
 
   const activeSection = narrativeSections[activeNarrative] ?? narrativeSections[0]
@@ -186,8 +186,8 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         aria-selected={isActive}
                         onClick={() => setActiveNarrative(index)}
                         className={`relative py-4 pr-8 text-sm font-medium transition-all duration-200 ${isActive
-                            ? "text-primary after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
-                            : "text-foreground/40 hover:text-foreground/70"
+                          ? "text-primary after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
+                          : "text-foreground/40 hover:text-foreground/70"
                           }`}
                       >
                         {section.label}
