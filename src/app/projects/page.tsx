@@ -1,4 +1,5 @@
 "use client"
+import { useState } from "react"
 import { Navigation } from "@/components/navigation"
 import { projectsData } from "@/lib/projects"
 import { useRouter } from "next/navigation"
@@ -7,6 +8,56 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Github, ExternalLink } from "lucide-react"
+
+interface ProjectImageData {
+  url: string
+  alt: string
+  caption: string
+}
+
+function ProjectPreviewImage({
+  image,
+  title,
+  sizes,
+  compact = false,
+  priority = false,
+}: {
+  image: ProjectImageData
+  title: string
+  sizes: string
+  compact?: boolean
+  priority?: boolean
+}) {
+  const [fitClassName, setFitClassName] = useState(
+    compact ? "object-contain p-2.5" : "object-contain p-3"
+  )
+
+  return (
+    <Image
+      src={image.url}
+      alt={image.alt || `${title} preview image`}
+      fill
+      className={`${fitClassName} transition-transform duration-500 group-hover:scale-[1.02]`}
+      sizes={sizes}
+      priority={priority}
+      onLoadingComplete={(img) => {
+        const ratio = img.naturalWidth / img.naturalHeight
+
+        if (ratio >= 1.45) {
+          setFitClassName(compact ? "object-cover" : "object-cover")
+          return
+        }
+
+        if (ratio >= 1.05) {
+          setFitClassName(compact ? "object-contain p-2.5" : "object-contain p-3.5")
+          return
+        }
+
+        setFitClassName(compact ? "object-contain p-3.5" : "object-contain p-5")
+      }}
+    />
+  )
+}
 
 export default function ProjectsPage() {
   const router = useRouter()
@@ -36,23 +87,25 @@ export default function ProjectsPage() {
     const sideColumnClass = reverse ? "col-start-1" : "col-start-2"
     const leadFrameClass = compact ? "rounded-[1.3rem]" : "rounded-[1.6rem]"
     const supportingFrameClass = compact ? "rounded-[1rem]" : "rounded-[1.15rem]"
-    const imageClass = compact
-      ? "object-contain p-2.5 transition-transform duration-500 group-hover:scale-[1.02]"
-      : "object-contain p-3 transition-transform duration-500 group-hover:scale-[1.02]"
+    const leadSurfaceClass = compact
+      ? "bg-[rgba(26,52,77,0.96)]"
+      : "bg-[rgba(28,56,82,0.97)]"
+    const supportSurfaceClass = compact
+      ? "bg-[rgba(22,44,66,0.95)]"
+      : "bg-[rgba(23,46,69,0.96)]"
 
     if (previewImages.length === 1) {
       const image = previewImages[0]
 
       return (
-        <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/12 bg-gradient-depth`}>
-          <Image
-            src={image.url}
-            alt={image.alt || `${title} preview image`}
-            fill
-            className={imageClass}
+        <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]`}>
+          <ProjectPreviewImage
+            image={image}
+            title={title}
+            compact={compact}
+            priority={!compact}
             sizes={compact ? "(min-width: 1024px) 24vw, 100vw" : "(min-width: 1024px) 40vw, 100vw"}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/35 to-transparent" />
         </div>
       )
     }
@@ -60,25 +113,22 @@ export default function ProjectsPage() {
     if (previewImages.length === 2) {
       return (
         <div className={`grid ${frameClass} gap-2 sm:gap-3 ${reverse ? "grid-cols-[0.92fr_1.15fr]" : "grid-cols-[1.15fr_0.92fr]"}`}>
-          <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/12 bg-gradient-depth ${reverse ? "order-2" : ""}`}>
-            <Image
-              src={previewImages[0].url}
-              alt={previewImages[0].alt || `${title} preview image`}
-              fill
-              className={imageClass}
+          <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ${reverse ? "order-2" : ""}`}>
+            <ProjectPreviewImage
+              image={previewImages[0]}
+              title={title}
+              compact={compact}
+              priority={!compact}
               sizes={compact ? "(min-width: 1024px) 16vw, 100vw" : "(min-width: 1024px) 28vw, 100vw"}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
           </div>
-          <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 bg-card/70 ${reverse ? "order-1" : ""}`}>
-            <Image
-              src={previewImages[1].url}
-              alt={previewImages[1].alt || `${title} supporting preview image`}
-              fill
-              className={imageClass}
+          <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${reverse ? "order-1" : ""}`}>
+            <ProjectPreviewImage
+              image={previewImages[1]}
+              title={title}
+              compact={compact}
               sizes={compact ? "(min-width: 1024px) 10vw, 100vw" : "(min-width: 1024px) 18vw, 100vw"}
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/85 via-background/20 to-transparent" />
           </div>
         </div>
       )
@@ -86,33 +136,30 @@ export default function ProjectsPage() {
 
     return (
       <div className={`grid ${frameClass} gap-2 sm:gap-3 ${reverse ? "grid-cols-[0.92fr_1.15fr]" : "grid-cols-[1.15fr_0.92fr]"} grid-rows-2`}>
-        <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/12 bg-gradient-depth ${leadImageClass}`}>
-          <Image
-            src={previewImages[0].url}
-            alt={previewImages[0].alt || `${title} preview image`}
-            fill
-            className={imageClass}
+        <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ${leadImageClass}`}>
+          <ProjectPreviewImage
+            image={previewImages[0]}
+            title={title}
+            compact={compact}
+            priority={!compact}
             sizes={compact ? "(min-width: 1024px) 16vw, 100vw" : "(min-width: 1024px) 28vw, 100vw"}
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/25 to-transparent" />
         </div>
 
-        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 bg-card/70 ${sideColumnClass}`}>
-          <Image
-            src={previewImages[1].url}
-            alt={previewImages[1].alt || `${title} supporting preview image`}
-            fill
-            className={imageClass}
+        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${sideColumnClass}`}>
+          <ProjectPreviewImage
+            image={previewImages[1]}
+            title={title}
+            compact={compact}
             sizes={compact ? "(min-width: 1024px) 10vw, 100vw" : "(min-width: 1024px) 14vw, 100vw"}
           />
         </div>
 
-        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 bg-card/70 ${sideColumnClass}`}>
-          <Image
-            src={previewImages[2].url}
-            alt={previewImages[2].alt || `${title} supporting preview image`}
-            fill
-            className={imageClass}
+        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${sideColumnClass}`}>
+          <ProjectPreviewImage
+            image={previewImages[2]}
+            title={title}
+            compact={compact}
             sizes={compact ? "(min-width: 1024px) 10vw, 100vw" : "(min-width: 1024px) 14vw, 100vw"}
           />
         </div>
@@ -155,7 +202,7 @@ export default function ProjectsPage() {
               <div className="grid gap-6 p-4 sm:p-6 lg:grid-cols-[minmax(280px,0.95fr)_minmax(0,1.05fr)] lg:gap-8 lg:p-8">
                 <div className="relative">
                   {renderProjectMosaic(featuredProject.images, featuredProject.title)}
-                  <div className="absolute left-5 top-5 rounded-full border border-primary/20 bg-background/55 px-4 py-1.5 text-xs uppercase tracking-[0.24em] text-primary backdrop-blur-sm">
+                  <div className="absolute left-5 top-5 rounded-full border border-primary/25 bg-background/65 px-4 py-1.5 text-xs uppercase tracking-[0.24em] text-primary backdrop-blur-sm">
                     Start here
                   </div>
                 </div>
@@ -229,7 +276,7 @@ export default function ProjectsPage() {
                   onClick={() => handleCardClick(projectId)}
                   className={`group relative cursor-pointer ${layoutPattern[index % layoutPattern.length]}`}
                 >
-                  <Card className="glow-hover flex h-full flex-col rounded-[1.75rem] border-primary/12 p-6">
+                  <Card className="glow-hover flex h-full flex-col rounded-[1.75rem] border-primary/14 bg-[linear-gradient(180deg,rgba(18,38,58,0.88),rgba(10,24,40,0.95))] p-6 shadow-[0_24px_80px_rgba(2,7,16,0.3)]">
                     {projectMosaic && <div className="mb-5">{projectMosaic}</div>}
 
                     <div className="mb-5 flex items-start justify-between gap-3">
