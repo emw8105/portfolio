@@ -4,7 +4,7 @@ import Image from "next/image"
 import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, ImageIcon } from "lucide-react"
+import { ChevronLeft, ChevronRight } from "lucide-react"
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 
@@ -74,10 +74,10 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     }, [selectedImage, project.images])
 
     return (
-        <Card className="glass-card glow-hover p-8 mb-8">
-            <div className="flex items-center gap-3 mb-6">
-                <ImageIcon className="h-6 w-6 text-accent" />
-                <h2 className="text-2xl font-bold font-serif">Project Gallery</h2>
+        <Card className="glass-card glow-hover mb-8 p-6 sm:p-8">
+            <div className="mb-6 space-y-3">
+                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-primary/85">Project Gallery</p>
+                <h2 className="font-serif text-3xl font-bold tracking-[-0.03em] text-foreground">Screens and snapshots</h2>
             </div>
 
             {project.images && project.images.length > 0 ? (

@@ -3,25 +3,11 @@
 import { useState } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import {
-  ArrowLeft,
-  Calendar,
-  CheckCircle2,
-  CircleAlert,
-  Code,
-  ExternalLink,
-  Github,
-  Lightbulb,
-  Rocket,
-  Target,
-  Users,
-  Wrench,
-} from "lucide-react"
+import { ArrowLeft, ExternalLink, Github } from "lucide-react"
 
 import { Navigation } from "@/components/navigation"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
 import ProjectGallery from "@/components/ui/project-gallery"
 import { projectsData } from "@/lib/projects"
 import { parseTextWithLinks } from "@/lib/utils"
@@ -34,177 +20,166 @@ interface ProjectPageProps {
 
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projectsData[params.slug as keyof typeof projectsData]
-  const [activeNarrative, setActiveNarrative] = useState(0)
-  const hasTeam = Boolean(project.team?.trim())
 
   if (!project) {
     notFound()
   }
 
+  const [activeNarrative, setActiveNarrative] = useState(0)
+  const hasTeam = Boolean(project.team?.trim())
+
   const narrativeSections = [
-    {
-      label: "Overview",
-      title: "What this project is",
-      icon: Lightbulb,
-      content: project.overview,
-    },
-    {
-      label: "Challenge",
-      title: "What made it difficult",
-      icon: CircleAlert,
-      content: project.challenge,
-    },
-    {
-      label: "Solution",
-      title: "How I approached it",
-      icon: Wrench,
-      content: project.solution,
-    },
-  ].filter(
-    (section): section is {
-      label: string
-      title: string
-      icon: typeof Lightbulb
-      content: string
-    } => Boolean(section.content)
-  )
+    { label: "Overview", title: "What this project is", content: project.overview },
+    { label: "Challenge", title: "What made it difficult", content: project.challenge },
+    { label: "Solution", title: "How I approached it", content: project.solution },
+  ].filter((s): s is { label: string; title: string; content: string } => Boolean(s.content))
 
   const activeSection = narrativeSections[activeNarrative] ?? narrativeSections[0]
 
+  const projectLinks = [
+    project.githubUrl ? { href: project.githubUrl, label: "GitHub", icon: Github } : null,
+    project.liveUrl ? { href: project.liveUrl, label: "Live Demo", icon: ExternalLink } : null,
+  ].filter((l): l is { href: string; label: string; icon: typeof Github } => Boolean(l))
+
+  const featureList = project.features?.filter(Boolean) ?? []
+  const futureList = project.futureEnhancements?.filter(Boolean) ?? []
+
+  const titleLen = project.title.length
+  const titleFontSize =
+    titleLen <= 10
+      ? "clamp(3.2rem,7vw,5.5rem)"
+      : titleLen <= 20
+      ? "clamp(2.6rem,5.5vw,4.2rem)"
+      : "clamp(2rem,4.2vw,3.2rem)"
+
   return (
-    <div className="min-h-screen relative">
+    <div className="min-h-screen">
       <Navigation />
 
-      <main className="relative overflow-hidden px-4 pt-24 pb-20 sm:px-6 lg:px-8">
-        <div className="pointer-events-none absolute inset-0 -z-10">
-          <div className="absolute top-24 -left-40 h-80 w-80 rounded-full bg-primary/10 blur-3xl" />
-          <div className="absolute top-[32rem] right-[-8rem] h-72 w-72 rounded-full bg-accent/10 blur-3xl" />
-          <div className="absolute bottom-24 left-1/3 h-64 w-64 rounded-full bg-electric/10 blur-3xl" />
-        </div>
+      <main className="px-4 pt-24 pb-24 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-5xl">
 
-        <div className="mx-auto max-w-6xl space-y-8">
-          <div>
+          {/* Back */}
+          <div className="mb-14">
             <Button
               variant="ghost"
               asChild
-              className="group border border-border/60 bg-card/30 text-foreground transition-colors duration-300 hover:border-primary/40 hover:bg-card/55 hover:text-foreground"
+              className="group -ml-2 gap-2 text-muted-foreground hover:bg-transparent hover:text-foreground"
             >
-              <Link href="/projects" className="flex items-center gap-2 font-medium">
-                <ArrowLeft className="h-4 w-4 transition-transform duration-300 group-hover:-translate-x-1" />
-                Back to Projects
+              <Link href="/projects">
+                <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
+                All Projects
               </Link>
             </Button>
           </div>
 
-          <Card className="glass-card glow-hover overflow-hidden p-6 sm:p-8 lg:p-10">
-            <div className="grid gap-6 lg:grid-cols-[1.15fr_0.85fr]">
-              <div className="space-y-6">
+          {/* ── Hero ── */}
+          <section className="mb-16 sm:mb-20">
+            <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-start lg:gap-16">
 
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <div className="h-12 w-1 rounded-full bg-gradient-coral" />
-                    <h1 className="text-3xl font-bold font-serif sm:text-4xl lg:text-5xl">{project.title}</h1>
-                  </div>
-
-                  {project.subtitle && (
-                    <p className="pl-4 text-lg text-muted-foreground sm:text-xl">{project.subtitle}</p>
-                  )}
-
-                  <p className="max-w-3xl pl-4 leading-relaxed text-foreground/90">{project.description}</p>
-                </div>
-
-                <div className="flex flex-wrap gap-2 pl-4">
-                  {project.categories.map((category, idx) => (
-                    <Badge key={idx} variant="outline" className="border-primary/30 bg-primary/5 text-sm">
-                      {category}
-                    </Badge>
-                  ))}
-                  <Badge variant={project.status === "Completed" ? "default" : "accent"} className="text-sm">
+              <div className="space-y-7">
+                <div className="flex flex-wrap items-center gap-2.5">
+                  <span className="text-[0.7rem] font-semibold uppercase tracking-[0.3em] text-primary/80">
+                    Case Study
+                  </span>
+                  <span className="text-border">·</span>
+                  <Badge
+                    variant={project.status === "Completed" ? "default" : "accent"}
+                    className="text-[0.68rem] uppercase tracking-[0.16em]"
+                  >
                     {project.status}
                   </Badge>
                 </div>
-              </div>
 
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-6 lg:grid-rows-[auto_auto]">
-                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-3">
-                  <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                    <Calendar className="h-3.5 w-3.5 text-accent" />
-                    Date
-                  </div>
-                  <p className="text-lg font-semibold">{project.date}</p>
-                </div>
+                <h1
+                  className="font-serif font-extrabold uppercase leading-[0.92] tracking-[-0.05em] text-foreground"
+                  style={{ fontSize: titleFontSize }}
+                >
+                  {project.title}
+                </h1>
 
-                <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-3">
-                  <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                    <Target className="h-3.5 w-3.5 text-accent" />
-                    Duration
-                  </div>
-                  <p className="text-lg font-semibold">{project.duration}</p>
-                </div>
-
-                {hasTeam && (
-                  <div className="rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 lg:col-span-2">
-                    <div className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-muted-foreground">
-                      <Users className="h-3.5 w-3.5 text-accent" />
-                      Team
-                    </div>
-                    <p className="text-sm font-medium leading-relaxed text-foreground/90">{project.team}</p>
-                  </div>
+                {project.subtitle && (
+                  <p className="max-w-xl text-[clamp(1.05rem,2vw,1.3rem)] leading-relaxed text-muted-foreground">
+                    {project.subtitle}
+                  </p>
                 )}
 
-                <div className={`rounded-2xl border border-border/60 bg-card/60 p-4 sm:col-span-2 ${hasTeam ? "lg:col-span-4" : "lg:col-span-6"}`}>
-                  <div className="mb-3 text-xs uppercase tracking-[0.24em] text-muted-foreground">Project Links</div>
-                  <div className="flex flex-wrap gap-2">
-                    {project.githubUrl && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        asChild
-                        className="border-2 border-primary/70 bg-card/50 transition-all duration-300 hover:border-transparent"
-                      >
-                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer">
-                          <Github className="mr-2 h-4 w-4" />
-                          GitHub
-                        </a>
-                      </Button>
-                    )}
-                    {project.liveUrl && (
-                      <Button
-                        variant="outline"
-                        size="sm"
-                        asChild
-                        className="border-2 border-primary/70 bg-card/50 transition-all duration-300 hover:border-transparent"
-                      >
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="mr-2 h-4 w-4" />
-                          Live Demo
-                        </a>
-                      </Button>
-                    )}
-                  </div>
+                <div className="max-w-2xl text-[1rem] leading-8 text-foreground/82 sm:text-[1.05rem]">
+                  {parseTextWithLinks(project.description)}
                 </div>
+
+                {project.categories.length > 0 && (
+                  <div className="flex flex-wrap gap-2">
+                    {project.categories.map((cat, i) => (
+                      <span
+                        key={i}
+                        className="rounded-full border border-border/50 bg-white/[0.04] px-3.5 py-1.5 text-sm text-foreground/68"
+                      >
+                        {cat}
+                      </span>
+                    ))}
+                  </div>
+                )}
               </div>
+
+              {/* Metadata column */}
+              <aside className="shrink-0 lg:w-52 lg:pt-2">
+                <dl className="space-y-6">
+                  <div>
+                    <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">Date</dt>
+                    <dd className="mt-1.5 text-[0.97rem] text-foreground/88">{project.date}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">Duration</dt>
+                    <dd className="mt-1.5 text-[0.97rem] text-foreground/88">{project.duration}</dd>
+                  </div>
+                  {hasTeam && (
+                    <div>
+                      <dt className="text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">Team</dt>
+                      <dd className="mt-1.5 break-words text-[0.97rem] leading-6 text-foreground/88">{project.team}</dd>
+                    </div>
+                  )}
+                  {projectLinks.length > 0 && (
+                    <div>
+                      <dt className="mb-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.28em] text-muted-foreground">Links</dt>
+                      <dd className="flex flex-col gap-2.5">
+                        {projectLinks.map((link) => (
+                          <a
+                            key={link.label}
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 text-[0.93rem] text-primary/80 transition-colors duration-200 hover:text-primary"
+                          >
+                            <link.icon className="h-3.5 w-3.5" />
+                            {link.label}
+                          </a>
+                        ))}
+                      </dd>
+                    </div>
+                  )}
+                </dl>
+              </aside>
             </div>
-          </Card>
+          </section>
 
-          {project.images && project.images.length > 0 && <ProjectGallery project={project} />}
-
-          <Card className="glass-card p-6 sm:p-8 glow-hover">
-            <div className="mb-6 flex items-center gap-3">
-              <div className="h-8 w-1 rounded-full bg-gradient-coral" />
-              <Lightbulb className="h-7 w-7 text-accent" />
-              <h2 className="text-2xl font-bold font-serif">Inside The Build</h2>
+          {/* ── Gallery ── */}
+          {project.images && project.images.length > 0 && (
+            <div className="mb-16 sm:mb-20">
+              <ProjectGallery project={project} />
             </div>
+          )}
 
-            <div className="grid gap-6 lg:grid-cols-[180px_minmax(0,1fr)] xl:grid-cols-[200px_minmax(0,1fr)]">
+          {/* ── Inside The Build ── */}
+          {narrativeSections.length > 0 && (
+            <section className="mb-16 sm:mb-20">
               <div
                 role="tablist"
                 aria-label="Project build sections"
-                className="flex flex-row gap-1 overflow-x-auto border-b border-border/50 pb-2 no-scrollbar lg:flex-col lg:gap-0 lg:border-b-0 lg:border-l lg:pb-0"
+                className="mb-10 flex gap-0 border-b border-border/40"
               >
                 {narrativeSections.map((section, index) => {
                   const isActive = index === activeNarrative
-
                   return (
                     <button
                       key={section.label}
@@ -212,103 +187,102 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       role="tab"
                       aria-selected={isActive}
                       onClick={() => setActiveNarrative(index)}
-                      className={`min-w-fit cursor-pointer rounded-md border-b-2 px-3 py-2 text-left text-base font-medium transition-colors duration-200 lg:min-w-0 lg:border-b-0 lg:border-l-2 lg:px-4 ${isActive
-                        ? "border-primary bg-primary text-primary-foreground"
-                        : "border-transparent text-muted-foreground hover:border-primary/40 hover:bg-primary/5 hover:text-foreground"
-                        }`}
+                      className={`relative pb-3.5 pr-8 text-sm font-medium transition-colors duration-200 ${
+                        isActive
+                          ? "text-foreground after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
+                          : "text-muted-foreground/70 hover:text-muted-foreground"
+                      }`}
                     >
-                      <span className="block whitespace-nowrap">{section.label}</span>
+                      {section.label}
                     </button>
                   )
                 })}
               </div>
 
-              <div className="min-h-[280px] rounded-2xl border border-border/60 bg-card/40 p-6 sm:p-7">
-                {activeSection && (
-                  <>
-                    <div className="mb-4 flex items-center gap-2 text-sm uppercase tracking-[0.24em] text-primary">
-                      <activeSection.icon className="h-4 w-4" />
+              {activeSection && (
+                <div className="grid gap-8 lg:grid-cols-[200px_minmax(0,1fr)] lg:gap-14">
+                  <div>
+                    <p className="mb-3 text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-primary/75">
                       {activeSection.label}
-                    </div>
-                    <h3 className="mb-4 text-2xl font-bold font-serif sm:text-[1.75rem]">{activeSection.title}</h3>
-                    <div className="text-base leading-8 text-foreground/90 sm:text-[1.05rem]">
-                      {parseTextWithLinks(activeSection.content)}
-                    </div>
-                  </>
-                )}
-              </div>
-            </div>
-          </Card>
+                    </p>
+                    <h3 className="font-serif text-[1.7rem] font-bold leading-[1.05] tracking-[-0.03em] text-foreground sm:text-[2rem]">
+                      {activeSection.title}
+                    </h3>
+                  </div>
+                  <div className="text-[1rem] leading-8 text-foreground/82 sm:text-[1.05rem]">
+                    {parseTextWithLinks(activeSection.content)}
+                  </div>
+                </div>
+              )}
+            </section>
+          )}
 
-          <div className="space-y-8">
-            <Card className="glass-card p-6 sm:p-8 glow-hover">
-              <div className="mb-5 flex items-center gap-3">
-                <div className="h-7 w-1 rounded-full bg-gradient-ocean" />
-                <Code className="h-6 w-6 text-accent" />
-                <h3 className="text-2xl font-bold font-serif">Technology Stack</h3>
-              </div>
+          {/* ── Bottom: Tech + Lists ── */}
+          <div className="space-y-12 sm:space-y-14">
 
-              <div className="flex flex-wrap gap-3">
+            {/* Tech stack */}
+            <section>
+              <h3 className="mb-5 text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                Built with
+              </h3>
+              <div className="flex flex-wrap gap-2.5">
                 {project.technologies.map((tech) => (
-                  <Badge
+                  <span
                     key={tech}
-                    variant="secondary"
-                    className="border border-border/60 bg-secondary/45 px-3 py-1.5 text-base transition-colors duration-300 hover:bg-secondary/65"
+                    className="rounded-full border border-border/50 bg-white/[0.04] px-3.5 py-1.5 text-sm text-foreground/75 transition-colors duration-200 hover:border-primary/30 hover:text-foreground/90"
                   >
                     {tech}
-                  </Badge>
+                  </span>
                 ))}
               </div>
-            </Card>
+            </section>
 
-            <div className="grid gap-8 lg:grid-cols-2">
-              <Card className="glass-card p-6 sm:p-8 glow-hover">
-                <div className="mb-5 flex items-center gap-3">
-                  <div className="h-7 w-1 rounded-full bg-gradient-coral" />
-                  <CheckCircle2 className="h-6 w-6 text-accent" />
-                  <h3 className="text-2xl font-bold font-serif">Current Features</h3>
-                </div>
+            {/* Features + Future side by side */}
+            {(featureList.length > 0 || futureList.length > 0) && (
+              <div className="grid gap-10 sm:grid-cols-2 sm:gap-12 lg:gap-16">
+                {featureList.length > 0 && (
+                  <section>
+                    <h3 className="mb-6 text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                      Current Features
+                    </h3>
+                    <ol className="space-y-5">
+                      {featureList.map((feature, i) => (
+                        <li key={i} className="flex gap-4 border-t border-border/35 pt-5 first:border-t-0 first:pt-0">
+                          <span className="mt-0.5 shrink-0 font-serif text-[1.1rem] font-bold leading-none tracking-[-0.04em] text-primary/36">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-[0.97rem] leading-7 text-foreground/82">
+                            {parseTextWithLinks(feature)}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                )}
 
-                <div className="space-y-2">
-                  {project.features?.map((feature, index) => (
-                    <div
-                      key={index}
-                      className="rounded-xl border border-border/50 bg-card/50 px-3.5 py-3 transition-colors duration-300 hover:border-primary/25 hover:bg-card/65"
-                    >
-                      <div className="flex items-start gap-2.5">
-                        <CheckCircle2 className="mt-1 h-4 w-4 flex-shrink-0 text-primary" />
-                        <span className="text-base leading-[1.55] text-foreground/90">
-                          {parseTextWithLinks(feature)}
-                        </span>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </Card>
-
-              <Card className="glass-card p-6 sm:p-8 glow-hover">
-                <div className="mb-5 flex items-center gap-3">
-                  <div className="h-7 w-1 rounded-full bg-gradient-ocean" />
-                  <Rocket className="h-6 w-6 text-accent" />
-                  <h3 className="text-2xl font-bold font-serif">Future Enhancements</h3>
-                </div>
-
-                <ul className="space-y-2">
-                  {project.futureEnhancements?.map((enhancement, index) => (
-                    <li
-                      key={index}
-                      className="flex items-start gap-2 rounded-xl border border-border/50 bg-card/50 px-3.5 py-3 transition-colors duration-300 hover:border-primary/25 hover:bg-card/65"
-                    >
-                      <div className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary" />
-                      <span className="text-base leading-[1.55] text-foreground/90">
-                        {parseTextWithLinks(enhancement)}
-                      </span>
-                    </li>
-                  ))}
-                </ul>
-              </Card>
-            </div>
+                {futureList.length > 0 && (
+                  <section>
+                    <h3 className="mb-6 text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-muted-foreground">
+                      Future Enhancements
+                    </h3>
+                    <ol className="space-y-5">
+                      {futureList.map((enhancement, i) => (
+                        <li key={i} className="flex gap-4 border-t border-border/35 pt-5 first:border-t-0 first:pt-0">
+                          <span className="mt-0.5 shrink-0 font-serif text-[1.1rem] font-bold leading-none tracking-[-0.04em] text-accent/42">
+                            {String(i + 1).padStart(2, "0")}
+                          </span>
+                          <span className="text-[0.97rem] leading-7 text-foreground/82">
+                            {parseTextWithLinks(enhancement)}
+                          </span>
+                        </li>
+                      ))}
+                    </ol>
+                  </section>
+                )}
+              </div>
+            )}
           </div>
+
         </div>
       </main>
     </div>
