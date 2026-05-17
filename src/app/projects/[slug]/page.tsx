@@ -172,7 +172,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* ── Inside The Build ── */}
           {narrativeSections.length > 0 && (
-            <section className="mb-16 overflow-hidden rounded-2xl border border-primary/12 bg-primary/[0.045] sm:mb-20">
+            <section className="mb-16 overflow-hidden rounded-2xl border border-border/60 bg-black/[0.028] sm:mb-20">
               {/* Section switcher + arrows */}
               <div className="flex items-center justify-between gap-4 border-b border-primary/20 px-6 sm:px-8">
                 <div aria-label="Project build sections" className="flex gap-0">

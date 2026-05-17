@@ -88,17 +88,17 @@ export default function ProjectsPage() {
     const leadFrameClass = compact ? "rounded-[1.3rem]" : "rounded-[1.6rem]"
     const supportingFrameClass = compact ? "rounded-[1rem]" : "rounded-[1.15rem]"
     const leadSurfaceClass = compact
-      ? "bg-[rgba(26,52,77,0.96)]"
-      : "bg-[rgba(28,56,82,0.97)]"
+      ? "bg-[rgba(244,245,247,0.97)]"
+      : "bg-[rgba(242,244,246,0.98)]"
     const supportSurfaceClass = compact
-      ? "bg-[rgba(22,44,66,0.95)]"
-      : "bg-[rgba(23,46,69,0.96)]"
+      ? "bg-[rgba(240,242,244,0.96)]"
+      : "bg-[rgba(238,241,244,0.97)]"
 
     if (previewImages.length === 1) {
       const image = previewImages[0]
 
       return (
-        <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]`}>
+          <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.65)]`}>
           <ProjectPreviewImage
             image={image}
             title={title}
@@ -113,7 +113,7 @@ export default function ProjectsPage() {
     if (previewImages.length === 2) {
       return (
         <div className={`grid ${frameClass} gap-2 sm:gap-3 ${reverse ? "grid-cols-[0.92fr_1.15fr]" : "grid-cols-[1.15fr_0.92fr]"}`}>
-          <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ${reverse ? "order-2" : ""}`}>
+          <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ${reverse ? "order-2" : ""}`}>
             <ProjectPreviewImage
               image={previewImages[0]}
               title={title}
@@ -122,7 +122,7 @@ export default function ProjectsPage() {
               sizes={compact ? "(min-width: 1024px) 16vw, 100vw" : "(min-width: 1024px) 28vw, 100vw"}
             />
           </div>
-          <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${reverse ? "order-1" : ""}`}>
+          <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] ${reverse ? "order-1" : ""}`}>
             <ProjectPreviewImage
               image={previewImages[1]}
               title={title}
@@ -136,7 +136,7 @@ export default function ProjectsPage() {
 
     return (
       <div className={`grid ${frameClass} gap-2 sm:gap-3 ${reverse ? "grid-cols-[0.92fr_1.15fr]" : "grid-cols-[1.15fr_0.92fr]"} grid-rows-2`}>
-        <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.06)] ${leadImageClass}`}>
+        <div className={`relative overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.65)] ${leadImageClass}`}>
           <ProjectPreviewImage
             image={previewImages[0]}
             title={title}
@@ -146,7 +146,7 @@ export default function ProjectsPage() {
           />
         </div>
 
-        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${sideColumnClass}`}>
+        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] ${sideColumnClass}`}>
           <ProjectPreviewImage
             image={previewImages[1]}
             title={title}
@@ -155,7 +155,7 @@ export default function ProjectsPage() {
           />
         </div>
 
-        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.05)] ${sideColumnClass}`}>
+        <div className={`relative overflow-hidden ${supportingFrameClass} border border-primary/10 ${supportSurfaceClass} shadow-[inset_0_1px_0_rgba(255,255,255,0.6)] ${sideColumnClass}`}>
           <ProjectPreviewImage
             image={previewImages[2]}
             title={title}
@@ -276,7 +276,7 @@ export default function ProjectsPage() {
                   onClick={() => handleCardClick(projectId)}
                   className={`group relative cursor-pointer ${layoutPattern[index % layoutPattern.length]}`}
                 >
-                  <Card className="glow-hover flex h-full flex-col rounded-[1.75rem] border-primary/14 bg-[linear-gradient(180deg,rgba(18,38,58,0.88),rgba(10,24,40,0.95))] p-6 shadow-[0_24px_80px_rgba(2,7,16,0.3)]">
+                  <Card className="glow-hover flex h-full flex-col rounded-[1.75rem] border-primary/14 bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(251,252,253,0.95))] p-6 shadow-[0_24px_80px_rgba(80,130,160,0.10)]">
                     {projectMosaic && <div className="mb-5">{projectMosaic}</div>}
 
                     <div className="mb-5 flex items-start justify-between gap-3">

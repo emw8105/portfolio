@@ -4,56 +4,56 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Ocean-inspired color palette - vibrant and playful-technical */
-  --background: oklch(0.1 0.03 228);
-  --foreground: oklch(0.97 0.01 205);
-  --card: oklch(0.15 0.04 228);
-  --card-foreground: oklch(0.98 0 0);
-  --popover: oklch(0.15 0.04 228);
-  --popover-foreground: oklch(0.98 0 0);
+  /* Ocean-inspired color palette - light mode */
+  --background: oklch(0.97 0.008 210);
+  --foreground: oklch(0.13 0.04 228);
+  --card: oklch(0.94 0.01 210);
+  --card-foreground: oklch(0.13 0.04 228);
+  --popover: oklch(0.94 0.01 210);
+  --popover-foreground: oklch(0.13 0.04 228);
   
-  /* Sea-glass teal as primary - ocean energy */
-  --primary: oklch(0.75 0.14 182);
-  --primary-foreground: oklch(0.1 0.03 228);
+  /* Sea-glass teal as primary - darkened for light bg contrast */
+  --primary: oklch(0.52 0.14 182);
+  --primary-foreground: oklch(0.98 0 0);
   
   /* Kelp-shadow for secondary surfaces */
-  --secondary: oklch(0.21 0.06 208);
-  --secondary-foreground: oklch(0.98 0 0);
+  --secondary: oklch(0.9 0.02 208);
+  --secondary-foreground: oklch(0.13 0.04 228);
   
-  --muted: oklch(0.18 0.03 224);
-  --muted-foreground: oklch(0.74 0.03 208);
+  --muted: oklch(0.91 0.01 220);
+  --muted-foreground: oklch(0.42 0.04 212);
   
   /* Coral accent for pops of energy */
   --accent: oklch(0.78 0.17 42);
-  --accent-foreground: oklch(0.14 0.03 228);
-  --surface-ocean: rgba(8, 22, 38, 0.92);
-  --surface-ocean-border: rgba(143, 227, 207, 0.1);
+  --accent-foreground: oklch(0.13 0.04 228);
+  --surface-ocean: rgba(228, 242, 250, 0.88);
+  --surface-ocean-border: rgba(20, 130, 130, 0.2);
   
   /* Electric surf blue for highlights */
-  --electric: oklch(0.71 0.17 218);
+  --electric: oklch(0.45 0.18 218);
   
   /* Warm coral for CTAs and important elements */
   --coral: oklch(0.78 0.17 42);
   
   --destructive: oklch(0.6 0.25 15);
   --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.28 0.05 216);
-  --input: oklch(0.17 0.04 224);
-  --ring: oklch(0.75 0.14 182);
-  --chart-1: oklch(0.75 0.14 182);
+  --border: oklch(0.82 0.02 216);
+  --input: oklch(0.9 0.01 220);
+  --ring: oklch(0.52 0.14 182);
+  --chart-1: oklch(0.52 0.14 182);
   --chart-2: oklch(0.78 0.17 42);
-  --chart-3: oklch(0.71 0.17 218);
+  --chart-3: oklch(0.45 0.18 218);
   --chart-4: oklch(0.7 0.15 160);
   --chart-5: oklch(0.68 0.2 280);
   --radius: 0.75rem;
-  --sidebar: oklch(0.12 0.03 228);
-  --sidebar-foreground: oklch(0.98 0 0);
-  --sidebar-primary: oklch(0.75 0.14 182);
-  --sidebar-primary-foreground: oklch(0.1 0.03 228);
-  --sidebar-accent: oklch(0.17 0.04 224);
-  --sidebar-accent-foreground: oklch(0.98 0 0);
-  --sidebar-border: oklch(0.28 0.05 216);
-  --sidebar-ring: oklch(0.75 0.14 182);
+  --sidebar: oklch(0.93 0.01 215);
+  --sidebar-foreground: oklch(0.13 0.04 228);
+  --sidebar-primary: oklch(0.52 0.14 182);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.9 0.01 220);
+  --sidebar-accent-foreground: oklch(0.13 0.04 228);
+  --sidebar-border: oklch(0.82 0.02 216);
+  --sidebar-ring: oklch(0.52 0.14 182);
   --font-inter: "Inter", sans-serif;
   --font-sora: "Sora", sans-serif;
 }
@@ -160,10 +160,10 @@ body::before {
   z-index: -9999;
   pointer-events: none;
   background:
-    radial-gradient(circle at 14% 18%, color-mix(in oklch, var(--primary) 24%, transparent) 0%, transparent 24%),
-    radial-gradient(circle at 84% 16%, color-mix(in oklch, var(--accent) 14%, transparent) 0%, transparent 20%),
-    radial-gradient(circle at 58% 72%, color-mix(in oklch, var(--electric) 18%, transparent) 0%, transparent 26%),
-    linear-gradient(180deg, oklch(0.19 0.08 196) 0%, oklch(0.12 0.05 216) 26%, oklch(0.09 0.03 228) 58%, oklch(0.08 0.02 238) 100%);
+    radial-gradient(circle at 14% 18%, color-mix(in oklch, var(--primary) 12%, transparent) 0%, transparent 24%),
+    radial-gradient(circle at 84% 16%, color-mix(in oklch, var(--accent) 7%, transparent) 0%, transparent 20%),
+    radial-gradient(circle at 58% 72%, color-mix(in oklch, var(--electric) 9%, transparent) 0%, transparent 26%),
+    linear-gradient(180deg, oklch(0.97 0.012 196) 0%, oklch(0.965 0.009 210) 50%, oklch(0.96 0.006 220) 100%);
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }
@@ -190,27 +190,25 @@ html, body, #__next {
 
 @layer utilities {
   .glass {
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.62);
     backdrop-filter: blur(16px);
-    border: 1px solid rgba(100, 200, 220, 0.15);
+    border: 1px solid rgba(20, 130, 130, 0.15);
   }
 
   .glass-card {
-    background:
-      linear-gradient(180deg, rgba(10, 34, 54, 0.78), rgba(8, 22, 38, 0.88)),
-      linear-gradient(135deg, rgba(160, 241, 224, 0.06), rgba(255, 166, 120, 0.03));
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 250, 250, 0.97));
     backdrop-filter: blur(14px);
-    border: 1px solid rgba(143, 227, 207, 0.15);
+    border: 1px solid rgba(20, 130, 130, 0.13);
     box-shadow:
-      0 22px 80px rgba(3, 10, 20, 0.38),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 0 0 1px rgba(143, 227, 207, 0.04);
+      0 22px 80px rgba(80, 130, 160, 0.09),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      0 0 0 1px rgba(20, 130, 130, 0.04);
   }
 
   .glass-nav {
-    background: rgba(6, 16, 27, 0.86);
+    background: rgba(252, 253, 254, 0.92);
     backdrop-filter: blur(22px);
-    border-bottom: 1px solid rgba(143, 227, 207, 0.12);
+    border-bottom: 1px solid rgba(20, 130, 130, 0.10);
   }
 
   .glow {
@@ -223,11 +221,11 @@ html, body, #__next {
 
   .glow-hover:hover {
     box-shadow:
-      0 30px 96px rgba(2, 9, 20, 0.36),
-      inset 0 1px 0 rgba(255, 255, 255, 0.08),
-      0 0 0 1px rgba(143, 227, 207, 0.12);
+      0 30px 96px rgba(80, 130, 160, 0.16),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 0 0 1px rgba(20, 130, 130, 0.12);
     transform: translateY(-5px);
-    border-color: rgba(143, 227, 207, 0.28);
+    border-color: rgba(20, 130, 130, 0.28);
   }
 
   .glow-coral {
@@ -250,13 +248,11 @@ html, body, #__next {
   .shell-panel {
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(143, 227, 207, 0.16);
-    background:
-      linear-gradient(180deg, rgba(11, 31, 48, 0.84), rgba(7, 20, 35, 0.94)),
-      linear-gradient(140deg, rgba(143, 227, 207, 0.08), rgba(255, 166, 120, 0.03));
+    border: 1px solid rgba(20, 130, 130, 0.12);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.92), rgba(250, 250, 250, 0.97));
     box-shadow:
-      0 30px 120px rgba(2, 7, 16, 0.4),
-      inset 0 1px 0 rgba(255, 255, 255, 0.07);
+      0 30px 120px rgba(80, 130, 160, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
   }
 
   .shell-panel::before {
@@ -327,19 +323,16 @@ html, body, #__next {
   .tap-stage::before {
     content: "";
     position: absolute;
-    inset: -0.2rem -0.2rem 0.55rem;
+    inset: 0;
     border-radius: 1.9rem;
-    background:
-      radial-gradient(circle at 50% 24%, rgba(143, 227, 207, 0.035), transparent 58%),
-      linear-gradient(180deg, rgba(6, 16, 27, 0.06), transparent 70%);
-    opacity: 0.55;
+    background: transparent;
     z-index: -1;
   }
 
   .home-surface {
-    background-color: var(--surface-ocean);
-    border-color: var(--surface-ocean-border);
-    box-shadow: 0 26px 96px rgba(3, 10, 20, 0.28);
+    background-color: oklch(0.88 0.04 196 / 0.82);
+    border-color: rgba(20, 130, 130, 0.2);
+    box-shadow: 0 26px 96px rgba(20, 100, 130, 0.14), inset 0 1px 0 rgba(255,255,255,0.7);
     backdrop-filter: blur(14px);
   }
 
@@ -356,15 +349,15 @@ html, body, #__next {
   }
 
   .interactive-tap-card:hover {
-    border-color: rgba(143, 227, 207, 0.14);
-    box-shadow: 0 30px 110px rgba(3, 10, 20, 0.34);
+    border-color: rgba(20, 130, 130, 0.22);
+    box-shadow: 0 30px 110px rgba(80, 130, 160, 0.16);
   }
 
   .interactive-tap-card:focus-visible {
-    border-color: rgba(143, 227, 207, 0.16);
+    border-color: rgba(20, 130, 130, 0.24);
     box-shadow:
-      0 30px 110px rgba(3, 10, 20, 0.34),
-      0 0 0 2px rgba(143, 227, 207, 0.12);
+      0 30px 110px rgba(80, 130, 160, 0.16),
+      0 0 0 2px rgba(20, 130, 130, 0.16);
     outline: none;
   }
 
@@ -509,14 +502,11 @@ html, body, #__next {
     position: relative;
     overflow: visible;
     border-radius: 1.75rem;
-    border: 1px solid rgba(143, 227, 207, 0.18);
-    background:
-      radial-gradient(circle at top left, rgba(143, 227, 207, 0.12), transparent 30%),
-      radial-gradient(circle at 82% 18%, rgba(120, 187, 255, 0.08), transparent 24%),
-      linear-gradient(180deg, rgba(18, 41, 61, 0.9), rgba(9, 24, 40, 0.96));
+    border: 1px solid rgba(20, 130, 130, 0.13);
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.95), rgba(250, 250, 250, 0.99));
     box-shadow:
-      0 24px 96px rgba(2, 7, 16, 0.32),
-      inset 0 1px 0 rgba(255, 255, 255, 0.06);
+      0 24px 96px rgba(80, 130, 160, 0.10),
+      inset 0 1px 0 rgba(255, 255, 255, 0.95);
   }
 
   .editorial-card::before {
@@ -525,8 +515,7 @@ html, body, #__next {
     inset: 0;
     pointer-events: none;
     background:
-      linear-gradient(135deg, rgba(143, 227, 207, 0.1), transparent 42%, rgba(255, 166, 120, 0.05)),
-      linear-gradient(180deg, rgba(255, 255, 255, 0.03), transparent 22%);
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 22%);
   }
 
   /* Adding smooth loading animations for home page */
