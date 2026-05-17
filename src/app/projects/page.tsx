@@ -190,7 +190,7 @@ export default function ProjectsPage() {
               alt="New"
               width={96}
               height={96}
-              className="pointer-events-none absolute right-0 top-0 z-30 h-20 w-20 select-none drop-shadow-xl transition-transform duration-350 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-[5px] sm:h-24 sm:w-24"
+              className="pointer-events-none absolute right-0 top-0 z-30 h-20 w-20 select-none drop-shadow-xl transition-transform duration-[350ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-[5px] sm:h-24 sm:w-24"
               draggable={false}
               unoptimized
             />

@@ -37,9 +37,14 @@ export function InteractiveTap() {
     const [ripples, setRipples] = useState<Ripple[]>([])
     const [mounted, setMounted] = useState(false)
     const buttonRef = useRef<HTMLButtonElement>(null)
+    const rippleCounter = useRef(0)
+    const rippleTimeouts = useRef<number[]>([])
 
     useEffect(() => {
         setMounted(true)
+        return () => {
+            rippleTimeouts.current.forEach(clearTimeout)
+        }
     }, [])
 
     useEffect(() => {
@@ -100,7 +105,7 @@ export function InteractiveTap() {
 
     const createRipple = (event: ReactPointerEvent<HTMLButtonElement>) => {
         const bounds = event.currentTarget.getBoundingClientRect()
-        const id = Date.now()
+        const id = ++rippleCounter.current
 
         setRipples((current) => [
             ...current,
@@ -111,9 +116,12 @@ export function InteractiveTap() {
             },
         ])
 
-        window.setTimeout(() => {
+        const timeoutId = window.setTimeout(() => {
             setRipples((current) => current.filter((ripple) => ripple.id !== id))
+            rippleTimeouts.current = rippleTimeouts.current.filter((t) => t !== timeoutId)
         }, 850)
+
+        rippleTimeouts.current.push(timeoutId)
     }
 
     const handlePointerMove = (event: ReactPointerEvent<HTMLButtonElement>) => {

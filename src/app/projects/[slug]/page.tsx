@@ -21,11 +21,11 @@ interface ProjectPageProps {
 export default function ProjectPage({ params }: ProjectPageProps) {
   const project = projectsData[params.slug as keyof typeof projectsData]
 
+  const [activeNarrative, setActiveNarrative] = useState(0)
+
   if (!project) {
     notFound()
   }
-
-  const [activeNarrative, setActiveNarrative] = useState(0)
   const hasTeam = Boolean(project.team?.trim())
 
   const narrativeSections = [
@@ -173,18 +173,17 @@ export default function ProjectPage({ params }: ProjectPageProps) {
           {/* ── Inside The Build ── */}
           {narrativeSections.length > 0 && (
             <section className="mb-16 overflow-hidden rounded-2xl border border-primary/12 bg-primary/[0.045] sm:mb-20">
-              {/* Tab bar + arrows */}
+              {/* Section switcher + arrows */}
               <div className="flex items-center justify-between gap-4 border-b border-primary/20 px-6 sm:px-8">
-                <div role="tablist" aria-label="Project build sections" className="flex gap-0">
+                <div aria-label="Project build sections" className="flex gap-0">
                   {narrativeSections.map((section, index) => {
                     const isActive = index === activeNarrative
                     return (
                       <button
                         key={section.label}
                         type="button"
-                        role="tab"
-                        aria-selected={isActive}
                         onClick={() => setActiveNarrative(index)}
+                        aria-pressed={isActive}
                         className={`relative py-4 pr-8 text-sm font-medium transition-all duration-200 ${isActive
                           ? "text-primary after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
                           : "text-foreground/40 hover:text-foreground/70"
