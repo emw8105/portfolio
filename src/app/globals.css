@@ -216,7 +216,6 @@ html, body, #__next {
   .glass-nav {
     background: rgba(4, 12, 30, 0.88);
     backdrop-filter: blur(22px);
-    border-bottom: 1px solid rgba(75, 224, 193, 0.08);
   }
 
   .glow {
