@@ -18,13 +18,13 @@ const OVERLAY_FISH: Array<{
     color?: string; color2?: string; size: number; top: number
     duration: number; delay: number; reverse: boolean
 }> = [
-    { Component: Fish,       color: "#4be0c1", color2: "#2d9cdb", size: 52, top: 18,  duration: 22, delay: 0,    reverse: false },
-    { Component: Pufferfish, color: "#ffb84d",                    size: 44, top: 38,  duration: 28, delay: 4,    reverse: true  },
-    { Component: Fish,       color: "#ff6b8a", color2: "#c78bff", size: 44, top: 62,  duration: 20, delay: 8,    reverse: false },
-    { Component: Fish,       color: "#6effe6", color2: "#4be0c1", size: 38, top: 78,  duration: 34, delay: 2,    reverse: true  },
-    { Component: SeaTurtle,                                       size: 80, top: 50,  duration: 48, delay: 12,   reverse: false },
-    { Component: Fish,       color: "#c78bff", color2: "#ff6b8a", size: 36, top: 28,  duration: 26, delay: 16,   reverse: true  },
-]
+        { Component: Fish, color: "#4be0c1", color2: "#2d9cdb", size: 52, top: 18, duration: 22, delay: 0, reverse: false },
+        { Component: Pufferfish, color: "#ffb84d", size: 44, top: 38, duration: 28, delay: 4, reverse: true },
+        { Component: Fish, color: "#ff6b8a", color2: "#c78bff", size: 44, top: 62, duration: 20, delay: 8, reverse: false },
+        { Component: Fish, color: "#6effe6", color2: "#4be0c1", size: 38, top: 78, duration: 34, delay: 2, reverse: true },
+        { Component: SeaTurtle, size: 80, top: 50, duration: 48, delay: 12, reverse: false },
+        { Component: Fish, color: "#c78bff", color2: "#ff6b8a", size: 36, top: 28, duration: 26, delay: 16, reverse: true },
+    ]
 
 export function InteractiveTap() {
     const [nojimaTap, setNojimaTap] = useState(false)
