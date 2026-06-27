@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google"
 import "./globals.css"
+import { ScrollDepth } from "@/components/scroll-depth"
 
 const inter = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -34,7 +35,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${sora.variable} antialiased`}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <ScrollDepth />
+        {children}
+      </body>
     </html>
   )
 }

@@ -3,6 +3,25 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* ─── Scroll-depth CSS custom properties ───────────────────────────────────
+   @property lets the browser interpolate these as <color> values, enabling
+   CSS transitions between depth zones when the JS updates them.          */
+@property --bg-top {
+  syntax: "<color>";
+  initial-value: rgb(45, 143, 196);   /* mid-water — safe readable default */
+  inherits: false;
+}
+@property --bg-mid {
+  syntax: "<color>";
+  initial-value: rgb(11, 51, 88);     /* deep */
+  inherits: false;
+}
+@property --bg-bot {
+  syntax: "<color>";
+  initial-value: rgb(1, 4, 15);       /* abyss */
+  inherits: false;
+}
+
 :root {
   /* === OCEAN DEPTH PALETTE ============================================== */
   /* Depth zones — sky surface down to the abyss */
@@ -135,23 +154,24 @@
   }
 }
 
-/* Ocean-depth gradient background — from sky surface to abyss */
+/* Ocean-depth gradient background — driven by ScrollDepth component */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
   z-index: -9999;
   pointer-events: none;
+  /* Depth gradient responds to --bg-top/mid/bot set by scroll-depth.tsx.
+     Radial hazes sit above it: they use mix-blend-mode:screen so they
+     naturally fade as the base darkens at depth.                        */
   background:
-    radial-gradient(ellipse at 20% 0%, rgba(207, 238, 255, 0.10) 0%, transparent 40%),
-    radial-gradient(circle at 80% 15%, rgba(75, 224, 193, 0.08) 0%, transparent 28%),
-    radial-gradient(circle at 15% 65%, rgba(199, 139, 255, 0.06) 0%, transparent 30%),
-    radial-gradient(circle at 75% 80%, rgba(75, 224, 193, 0.05) 0%, transparent 24%),
-    linear-gradient(180deg,
-      #071a30 0%,
-      #061220 35%,
-      #040d1a 65%,
-      #02080f 100%);
+    radial-gradient(ellipse at 22% 0%,   rgba(110, 255, 230, 0.09) 0%, transparent 38%),
+    radial-gradient(circle at 80% 12%,   rgba(255, 228, 139, 0.10) 0%, transparent 28%),
+    radial-gradient(circle at 12% 62%,   rgba(199, 139, 255, 0.06) 0%, transparent 30%),
+    radial-gradient(circle at 72% 80%,   rgba(75,  224, 193, 0.05) 0%, transparent 24%),
+    linear-gradient(180deg, var(--bg-top) 0%, var(--bg-mid) 50%, var(--bg-bot) 100%);
+  /* Smooth transitions when navigating between pages (depth zone change) */
+  transition: --bg-top 0.55s ease, --bg-mid 0.55s ease, --bg-bot 0.55s ease;
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
 }

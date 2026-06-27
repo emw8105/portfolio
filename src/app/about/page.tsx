@@ -45,7 +45,7 @@ export default function AboutPage() {
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           {/* Header with personality */}
           <div className="mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-4 bg-gradient-ocean bg-clip-text text-transparent inline-block">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-4 bg-gradient-ocean bg-clip-text text-transparent inline-block" style={{ filter: "drop-shadow(0 2px 14px rgba(0,0,0,0.45))" }}>
               A bit about me
             </h1>
             <div className="h-1 w-32 bg-gradient-coral rounded-full"></div>

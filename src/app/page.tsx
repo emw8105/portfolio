@@ -12,6 +12,25 @@ export default function HomePage() {
       <Navigation />
 
       <section className="relative flex flex-1 items-center px-4 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-12 lg:px-8 lg:pt-32 lg:pb-14 overflow-hidden">
+        {/* Sun warmth glow — bright amber/golden haze at top-right, like sunlight
+            filtered through shallow water. Uses mix-blend-mode:screen so it fades
+            gracefully as the user scrolls deeper.                                */}
+        <div aria-hidden style={{
+          position: "absolute", top: "-15%", right: "5%",
+          width: "55vw", height: "55vw", maxWidth: 640, maxHeight: 640,
+          background: "radial-gradient(circle, rgba(255, 228, 139, 0.28) 0%, rgba(255, 184, 77, 0.10) 38%, transparent 68%)",
+          pointerEvents: "none", zIndex: 0,
+          mixBlendMode: "screen",
+        }} />
+        {/* Secondary softer cyan shimmer — light bouncing off the surface */}
+        <div aria-hidden style={{
+          position: "absolute", top: "-8%", left: "20%",
+          width: "45vw", height: "30vw", maxWidth: 520, maxHeight: 340,
+          background: "radial-gradient(ellipse, rgba(110, 255, 230, 0.16) 0%, transparent 60%)",
+          pointerEvents: "none", zIndex: 0,
+          mixBlendMode: "screen",
+        }} />
+
         {/* Subtle ambient rising bubbles in the background */}
         <BubblesBackdrop count={14} opacity={0.30} />
 
@@ -66,7 +85,10 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-20">
             <div className="space-y-10 pt-2 opacity-0 animate-fade-in-up">
               <div className="space-y-5">
-                <h1 className="max-w-5xl font-serif text-[clamp(5rem,12vw,9rem)] font-light leading-[0.90] tracking-[-0.06em] text-foreground opacity-0 animate-slide-in-left animation-delay-200">
+                <h1
+                  className="max-w-5xl font-serif text-[clamp(5rem,12vw,9rem)] font-light leading-[0.90] tracking-[-0.06em] text-foreground opacity-0 animate-slide-in-left animation-delay-200"
+                  style={{ textShadow: "0 3px 24px rgba(0,0,0,0.45), 0 1px 4px rgba(0,0,0,0.3)" }}
+                >
                   Evan Wright
                 </h1>
 

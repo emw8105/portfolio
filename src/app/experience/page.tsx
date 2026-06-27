@@ -31,7 +31,7 @@ export default function ExperiencePage() {
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           {/* Header */}
           <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2">
+            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}>
               Experience
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
