@@ -4,14 +4,65 @@ import { ArrowRight } from "lucide-react"
 import Link from "next/link"
 import { Footer } from "@/components/footer"
 import { InteractiveTap } from "@/components/interactive-tap"
+import { Fish, Pufferfish, BubblesBackdrop } from "@/components/ocean-creatures"
 
 export default function HomePage() {
   return (
     <div className="min-h-screen flex flex-col overflow-x-hidden">
       <Navigation />
 
-      <section className="relative flex flex-1 items-center px-4 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-12 lg:px-8 lg:pt-32 lg:pb-14">
-        <div className="homepage-stage mx-auto max-w-6xl">
+      <section className="relative flex flex-1 items-center px-4 pt-24 pb-10 sm:px-6 sm:pt-28 sm:pb-12 lg:px-8 lg:pt-32 lg:pb-14 overflow-hidden">
+        {/* Subtle ambient rising bubbles in the background */}
+        <BubblesBackdrop count={14} opacity={0.30} />
+
+        {/* Light rays filtering down from the surface */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="light-ray" style={{ left: "12%", "--ray-angle": "8deg" } as React.CSSProperties} />
+          <div className="light-ray" style={{ left: "45%", "--ray-angle": "-5deg", animationDelay: "-3s", opacity: 0.7 } as React.CSSProperties} />
+          <div className="light-ray" style={{ left: "76%", "--ray-angle": "6deg", animationDelay: "-6s", opacity: 0.65 } as React.CSSProperties} />
+        </div>
+
+        {/* Ambient swimming fish in the background */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden" style={{ zIndex: 0 }}>
+          {/* Large reef fish LR — already 25% through its cycle at load */}
+          <div style={{
+            position: "absolute", top: "55%",
+            animationName: "swimLR, wiggle-y",
+            animationDuration: "32s, 2.8s",
+            animationDelay: "-8s, 0s",
+            animationTimingFunction: "linear, ease-in-out",
+            animationIterationCount: "infinite, infinite",
+            display: "inline-block",
+          }}>
+            <Fish color="#4be0c1" color2="#2d9cdb" size={54} />
+          </div>
+          {/* Small puffer RL — already 38% through, appearing near 62% from left */}
+          <div style={{
+            position: "absolute", top: "72%",
+            animationName: "swimRL, wiggle-y",
+            animationDuration: "40s, 3.2s",
+            animationDelay: "-15s, -1.4s",
+            animationTimingFunction: "linear, ease-in-out",
+            animationIterationCount: "infinite, infinite",
+            display: "inline-block",
+          }}>
+            <Pufferfish color="#ffb84d" size={38} />
+          </div>
+          {/* Tiny coral fish LR — already 54% through, near screen center */}
+          <div style={{
+            position: "absolute", top: "30%",
+            animationName: "swimLR, wiggle-y",
+            animationDuration: "48s, 2.5s",
+            animationDelay: "-26s, -0.9s",
+            animationTimingFunction: "linear, ease-in-out",
+            animationIterationCount: "infinite, infinite",
+            display: "inline-block", opacity: 0.55,
+          }}>
+            <Fish color="#ff6b8a" color2="#ffb84d" size={34} />
+          </div>
+        </div>
+
+        <div className="homepage-stage mx-auto max-w-6xl" style={{ position: "relative", zIndex: 1 }}>
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-20">
             <div className="space-y-10 pt-2 opacity-0 animate-fade-in-up">
               <div className="space-y-5">

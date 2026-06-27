@@ -756,3 +756,101 @@ html, body, #__next {
     transform: translateY(100%);
   }
 }
+
+/* ═══════════════════════════════════════════════════════════════
+   OCEAN CREATURES — swim, rise, drift, sway
+   ══════════════════════════════════════════════════════════════ */
+
+/* Fish swimming left-to-right */
+@keyframes swimLR {
+  0%   { transform: translateX(-160px); }
+  100% { transform: translateX(calc(100vw + 160px)); }
+}
+
+/* Fish swimming right-to-left (flipped) */
+@keyframes swimRL {
+  0%   { transform: translateX(calc(100vw + 160px)) scaleX(-1); }
+  100% { transform: translateX(-160px) scaleX(-1); }
+}
+
+/* Subtle vertical sinusoidal wiggle during swim */
+@keyframes wiggle-y {
+  0%, 100% { margin-top: 0; }
+  50%       { margin-top: -16px; }
+}
+
+.wiggle-y {
+  animation: wiggle-y 2.6s ease-in-out infinite;
+}
+
+/* Rising bubbles (used by BubblesBackdrop) */
+@keyframes ocean-bubble-rise {
+  0%   { transform: translateY(0) translateX(0);  opacity: 0; }
+  8%   { opacity: 0.85; }
+  48%  { transform: translateY(-48vh) translateX(18px); }
+  88%  { opacity: 0.75; }
+  100% { transform: translateY(-105vh) translateX(-14px); opacity: 0; }
+}
+
+/* Jellyfish drifting bob */
+@keyframes jelly-drift {
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  33%       { transform: translateY(-22px) rotate(3deg); }
+  66%       { transform: translateY(-10px) rotate(-1deg); }
+}
+
+/* Kelp swaying */
+@keyframes kelp-sway {
+  0%, 100% { transform: rotate(-4deg); }
+  50%       { transform: rotate(5deg); }
+}
+
+/* Anglerfish lure glow pulse */
+@keyframes lure-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px #6effe6) drop-shadow(0 0 14px rgba(110,255,230,0.5)); }
+  50%       { filter: drop-shadow(0 0 18px #6effe6) drop-shadow(0 0 36px rgba(110,255,230,0.8)); }
+}
+
+.lure-bob {
+  animation: lure-glow 2.2s ease-in-out infinite;
+}
+
+/* Tap card bubble-pop ripple (replaces generic circle) */
+@keyframes bubble-pop {
+  from {
+    opacity: 0.85;
+    transform: translate(-50%, -50%) scale(0.15);
+    border-color: rgba(75, 224, 193, 0.9);
+  }
+  60% { border-color: rgba(75, 224, 193, 0.45); }
+  to {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(9);
+    border-color: rgba(75, 224, 193, 0);
+  }
+}
+
+.tap-ripple {
+  animation: bubble-pop 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards !important;
+  border: 1.5px solid rgba(75, 224, 193, 0.8) !important;
+  background: radial-gradient(circle, rgba(75, 224, 193, 0.22), transparent 70%) !important;
+}
+
+/* Light ray shafts (hero decorative) */
+@keyframes lightray-drift {
+  0%, 100% { opacity: 0.12; transform: rotate(var(--ray-angle, 6deg)) scaleY(1); }
+  50%       { opacity: 0.24; transform: rotate(var(--ray-angle, 6deg)) scaleY(1.04); }
+}
+
+.light-ray {
+  position: absolute;
+  top: -10%;
+  width: 10vw;
+  height: 110%;
+  background: linear-gradient(to bottom, rgba(255, 240, 200, 0.28), transparent 65%);
+  transform-origin: top center;
+  filter: blur(10px);
+  pointer-events: none;
+  animation: lightray-drift 8s ease-in-out infinite;
+}
+

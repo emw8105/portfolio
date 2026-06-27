@@ -5,6 +5,7 @@ import Image from "next/image"
 import { skills } from "@/lib/skills"
 import { interests } from "@/lib/interests"
 import { InteractiveStretch } from "@/components/interactive-stretch"
+import { DriftingJellyfish, SeafloorDecor, BubblesBackdrop, SeaTurtle } from "@/components/ocean-creatures"
 
 export default function AboutPage() {
 
@@ -12,8 +13,36 @@ export default function AboutPage() {
     <div className="min-h-screen">
       <Navigation />
 
-      <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Ambient bubbles */}
+        <BubblesBackdrop count={12} opacity={0.22} />
+
+        {/* Light rays */}
+        <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+          <div className="light-ray" style={{ left: "8%",  "--ray-angle": "6deg"  } as React.CSSProperties} />
+          <div className="light-ray" style={{ left: "62%", "--ray-angle": "-4deg", animationDelay: "-4s", opacity: 0.6 } as React.CSSProperties} />
+        </div>
+
+        {/* Drifting jellyfish in the background */}
+        <DriftingJellyfish top={8}  right={3}  delay={0}    size={80} color="#c78bff" />
+        <DriftingJellyfish top={42} left={1}   delay={-2.5} size={58} color="#ff9a6b" />
+        <DriftingJellyfish top={72} right={2}  delay={-4}   size={50} color="#4be0c1" />
+
+        {/* Sea turtle swimming across mid-page */}
+        <div aria-hidden className="pointer-events-none absolute overflow-hidden" style={{ top: "38%", left: 0, right: 0, height: 110 }}>
+          <div style={{
+            animationName: "swimLR, wiggle-y",
+            animationDuration: "52s, 4s",
+            animationDelay: "-26s, -2s",
+            animationTimingFunction: "linear, ease-in-out",
+            animationIterationCount: "infinite, infinite",
+            display: "inline-block", opacity: 0.45,
+          }}>
+            <SeaTurtle size={110} />
+          </div>
+        </div>
+
+        <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           {/* Header with personality */}
           <div className="mb-16">
             <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-4 bg-gradient-ocean bg-clip-text text-transparent inline-block">
@@ -146,6 +175,9 @@ export default function AboutPage() {
             </div>
           </div>
         </div>
+
+        {/* Seafloor kelp + coral anchored to bottom of page */}
+        <SeafloorDecor className="z-0" />
       </main>
     </div>
   )

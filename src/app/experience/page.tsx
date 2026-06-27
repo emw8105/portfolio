@@ -4,14 +4,31 @@ import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin } from "lucide-react"
 import { experiences } from "@/lib/experience"
+import { Anglerfish, BubblesBackdrop } from "@/components/ocean-creatures"
 
 export default function ExperiencePage() {
   return (
     <div className="min-h-screen">
       <Navigation />
 
-      <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-6xl mx-auto">
+      <main className="relative pt-24 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        {/* Deep-water ambiance */}
+        <BubblesBackdrop count={10} opacity={0.18} />
+
+        {/* Anglerfish lurking in the deep — bottom-right corner */}
+        <div
+          aria-hidden
+          style={{
+            position: "absolute", bottom: "6%", right: "-3%",
+            opacity: 0.22, pointerEvents: "none", zIndex: 0,
+            transform: "scaleX(-1)",
+          }}
+          className="lure-bob"
+        >
+          <Anglerfish size={260} />
+        </div>
+
+        <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
           {/* Header */}
           <div className="text-center mb-16">
             <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2">
