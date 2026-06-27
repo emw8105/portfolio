@@ -57,12 +57,9 @@ module.exports = {
         },
       },
       backgroundImage: {
-        "gradient-ocean":
-          "linear-gradient(135deg, #4be0c1, #2d8fc4, #6effe6)",
-        "gradient-coral":
-          "linear-gradient(135deg, #ff6b8a, #ffb84d)",
-        "gradient-depth":
-          "linear-gradient(135deg, #0b3358, #1d6595, #2d8fc4)",
+        "gradient-ocean": "linear-gradient(135deg, #4be0c1, #2d8fc4, #6effe6)",
+        "gradient-coral": "linear-gradient(135deg, #ff6b8a, #ffb84d)",
+        "gradient-depth": "linear-gradient(135deg, #0b3358, #1d6595, #2d8fc4)",
       },
       borderRadius: {
         lg: "var(--radius)",

@@ -98,7 +98,7 @@ export default function ProjectsPage() {
       const image = previewImages[0]
 
       return (
-          <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(75,224,193,0.06)]`}>
+        <div className={`relative ${frameClass} overflow-hidden ${leadFrameClass} border border-primary/14 ${leadSurfaceClass} shadow-[inset_0_1px_0_rgba(75,224,193,0.06)]`}>
           <ProjectPreviewImage
             image={image}
             title={title}
