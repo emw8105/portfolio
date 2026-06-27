@@ -178,9 +178,9 @@ export default function ProjectsPage() {
               <h1 className="font-serif text-[clamp(3rem,7vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.05em] text-foreground">
                 Projects
               </h1>
-              <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
+              {/* <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
                 Products and systems, open whichever ones look interesting.
-              </p>
+              </p> */}
             </div>
           </div>
 

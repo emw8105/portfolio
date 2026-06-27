@@ -65,7 +65,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
             <Button
               variant="ghost"
               asChild
-              className="group -ml-2 gap-2 text-muted-foreground hover:bg-transparent hover:text-foreground"
+              className="group -ml-2 gap-2 text-foreground/80 hover:bg-transparent hover:text-primary"
             >
               <Link href="/projects">
                 <ArrowLeft className="h-4 w-4 transition-transform duration-200 group-hover:-translate-x-0.5" />
