@@ -1,20 +1,21 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { IBM_Plex_Sans, Syne } from "next/font/google"
+import { Plus_Jakarta_Sans, Fraunces } from "next/font/google"
 import "./globals.css"
 
-const inter = IBM_Plex_Sans({
+const inter = Plus_Jakarta_Sans({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-inter",
-  weight: ["400", "500", "600", "700"],
+  weight: ["300", "400", "500", "600", "700", "800"],
 })
 
-const sora = Syne({
+const sora = Fraunces({
   subsets: ["latin"],
   display: "swap",
   variable: "--font-sora",
-  weight: ["400", "500", "600", "700", "800"],
+  axes: ["opsz"],
+  weight: "variable",
 })
 
 export const metadata: Metadata = {

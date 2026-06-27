@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, use } from "react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { ArrowLeft, ExternalLink, Github } from "lucide-react"
@@ -13,13 +13,14 @@ import { projectsData } from "@/lib/projects"
 import { parseTextWithLinks } from "@/lib/utils"
 
 interface ProjectPageProps {
-  params: {
+  params: Promise<{
     slug: string
-  }
+  }>
 }
 
 export default function ProjectPage({ params }: ProjectPageProps) {
-  const project = projectsData[params.slug as keyof typeof projectsData]
+  const { slug } = use(params)
+  const project = projectsData[slug as keyof typeof projectsData]
 
   const [activeNarrative, setActiveNarrative] = useState(0)
 
@@ -172,7 +173,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
 
           {/* ── Inside The Build ── */}
           {narrativeSections.length > 0 && (
-            <section className="mb-16 overflow-hidden rounded-2xl border border-border/60 bg-black/[0.028] sm:mb-20">
+            <section className="mb-16 overflow-hidden rounded-2xl border border-border/60 bg-white/[0.03] sm:mb-20">
               {/* Section switcher + arrows */}
               <div className="flex items-center justify-between gap-4 border-b border-primary/20 px-6 sm:px-8">
                 <div aria-label="Project build sections" className="flex gap-0">

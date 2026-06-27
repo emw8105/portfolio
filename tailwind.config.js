@@ -58,11 +58,11 @@ module.exports = {
       },
       backgroundImage: {
         "gradient-ocean":
-          "linear-gradient(135deg, oklch(0.68 0.15 195), oklch(0.65 0.22 240))",
+          "linear-gradient(135deg, #4be0c1, #2d8fc4, #6effe6)",
         "gradient-coral":
-          "linear-gradient(135deg, oklch(0.72 0.18 25), oklch(0.75 0.2 35))",
+          "linear-gradient(135deg, #ff6b8a, #ffb84d)",
         "gradient-depth":
-          "linear-gradient(135deg, oklch(0.65 0.22 240), oklch(0.68 0.15 195))",
+          "linear-gradient(135deg, #0b3358, #1d6595, #2d8fc4)",
       },
       borderRadius: {
         lg: "var(--radius)",

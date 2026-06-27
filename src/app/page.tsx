@@ -15,7 +15,7 @@ export default function HomePage() {
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,1fr)_23rem] lg:gap-20">
             <div className="space-y-10 pt-2 opacity-0 animate-fade-in-up">
               <div className="space-y-5">
-                <h1 className="max-w-5xl font-sans text-[clamp(5rem,12vw,9rem)] font-semibold leading-[0.84] tracking-[-0.09em] text-foreground opacity-0 animate-slide-in-left animation-delay-200">
+                <h1 className="max-w-5xl font-serif text-[clamp(5rem,12vw,9rem)] font-light leading-[0.90] tracking-[-0.06em] text-foreground opacity-0 animate-slide-in-left animation-delay-200">
                   Evan Wright
                 </h1>
 
