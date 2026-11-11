@@ -1,5 +1,6 @@
 
 import { Navigation } from "@/components/navigation"
+import { PageHeader } from "@/components/page-header"
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Calendar, MapPin } from "lucide-react"
@@ -29,35 +30,27 @@ export default function ExperiencePage() {
         </div>
 
         <div className="max-w-6xl mx-auto" style={{ position: "relative", zIndex: 1 }}>
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h1 className="text-5xl sm:text-6xl font-bold font-serif mb-6 bg-clip-text py-2" style={{ textShadow: "0 2px 16px rgba(0,0,0,0.45)" }}>
-              Experience
-            </h1>
-            {/* <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-              Professional roles, leadership positions, and contributions to the tech community
-            </p> */}
-          </div>
+          <PageHeader title="Experience" />
 
           {/* Timeline */}
           <div className="relative space-y-8">
             {/* Vertical line for desktop */}
-            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/20"></div>
+            <div className="hidden lg:block absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-primary/40 via-primary/20 to-transparent"></div>
 
             {experiences.map((exp, index) => (
               <div key={index} className="relative">
-                <Card className="glass-card p-8 glow-hover transition-all duration-500 lg:ml-12">
+                <Card className="glass-card p-8 lg:ml-12">
                   <div className="grid lg:grid-cols-12 gap-6">
                     {/* Left section - Meta info */}
                     <div className="lg:col-span-4 space-y-4">
                       <div>
                         <Badge
                           variant="outline"
-                          className="text-xs mb-3 bg-accent/10 border-accent/30 text-accent font-medium"
+                          className="text-xs mb-3 border-primary/25 bg-primary/5 text-primary font-medium uppercase tracking-[0.14em]"
                         >
                           {exp.type}
                         </Badge>
-                        <h3 className="text-xl font-bold font-serif mb-2 text-foreground">
+                        <h3 className="text-xl font-semibold font-serif mb-2 text-foreground">
                           {exp.title}
                         </h3>
                         <p className="text-primary font-semibold text-lg">{exp.company}</p>
@@ -65,18 +58,18 @@ export default function ExperiencePage() {
 
                       <div className="space-y-2 text-sm text-muted-foreground">
                         <div className="flex items-center gap-2">
-                          <Calendar className="h-4 w-4 text-primary" />
+                          <Calendar className="h-4 w-4" />
                           <span>{exp.period}</span>
                         </div>
                         <div className="flex items-center gap-2">
-                          <MapPin className="h-4 w-4 text-accent" />
+                          <MapPin className="h-4 w-4" />
                           <span>{exp.location}</span>
                         </div>
                       </div>
 
                       {/* Technologies */}
                       <div className="pt-4 border-t border-border/50">
-                        <h4 className="font-semibold mb-3 text-xs uppercase tracking-wide text-muted-foreground">
+                        <h4 className="font-semibold mb-3 text-xs uppercase tracking-[0.18em] text-muted-foreground">
                           Technologies
                         </h4>
                         <div className="flex flex-wrap gap-2">
@@ -95,14 +88,13 @@ export default function ExperiencePage() {
 
                     {/* Right section - Description & highlights */}
                     <div className="lg:col-span-8 space-y-6">
-                      <p className="text-foreground leading-relaxed text-lg">
+                      <p className="text-foreground/90 leading-relaxed">
                         {exp.description}
                       </p>
 
                       <div>
-                        <h4 className="font-semibold mb-4 text-sm uppercase tracking-wide text-muted-foreground flex items-center gap-2">
-                          <span className="w-1 h-4 bg-gradient-coral rounded-full"></span>
-                          Key Highlights
+                        <h4 className="font-semibold mb-4 text-xs uppercase tracking-[0.18em] text-muted-foreground">
+                          Key highlights
                         </h4>
                         <div className="grid gap-3">
                           {exp.highlights.map((highlight, idx) => (

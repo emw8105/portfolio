@@ -1,6 +1,7 @@
 "use client"
 import { useState } from "react"
 import { Navigation } from "@/components/navigation"
+import { PageHeader } from "@/components/page-header"
 import { projectsData } from "@/lib/projects"
 import { useRouter } from "next/navigation"
 import Image from "next/image"
@@ -173,16 +174,7 @@ export default function ProjectsPage() {
 
       <main className="pt-24 pb-20 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-12 max-w-4xl space-y-5">
-            <div className="space-y-4">
-              <h1 className="font-serif text-[clamp(3rem,7vw,6rem)] font-extrabold uppercase leading-[0.9] tracking-[-0.05em] text-foreground">
-                Projects
-              </h1>
-              {/* <p className="max-w-2xl text-lg leading-relaxed text-muted-foreground sm:text-xl">
-                Products and systems, open whichever ones look interesting.
-              </p> */}
-            </div>
-          </div>
+          <PageHeader title="Projects" />
 
           <div className="group relative mb-10 pt-8 pr-2 sm:pt-10 sm:pr-4">
             <Image

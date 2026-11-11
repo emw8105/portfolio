@@ -13,13 +13,12 @@ export default function NotFound() {
                     className="mx-auto"
                     unoptimized
                 />
-                <h1 className="text-5xl font-bold mb-4">404</h1>
-                <h2 className="text-2xl font-semibold mb-2">Page Not Found</h2>
+                <h1 className="font-serif text-6xl font-light tracking-[-0.03em] mb-3">404</h1>
                 <p className="text-muted-foreground mb-8">
-                    Oops! Whatever you&apos;re looking for, it&apos;s not here...<br />
+                    Whatever you&apos;re looking for, it&apos;s not here.
                 </p>
-                <Link href="/" className="inline-block px-6 py-3 rounded-lg bg-primary text-primary-foreground font-semibold shadow hover:bg-primary/90 transition">
-                    Go Home
+                <Link href="/" className="inline-flex items-center rounded-full bg-primary px-6 py-3 font-semibold text-primary-foreground transition-colors hover:bg-primary/90">
+                    Go home
                 </Link>
             </div>
         </div>

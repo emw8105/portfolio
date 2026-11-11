@@ -262,7 +262,6 @@ export function BubblesBackdrop({ count = 18, opacity = 0.55, className = "" }: 
             {items.map((b, i) => (
                 <span
                     key={i}
-                    className="bubble-rise"
                     style={{
                         position: "absolute",
                         bottom: -40,
