@@ -93,7 +93,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                 </div>
 
                 <h1
-                  className="font-serif font-extrabold uppercase leading-[0.92] tracking-[-0.05em] text-foreground"
+                  className="font-serif font-light leading-[0.95] tracking-[-0.03em] text-foreground"
                   style={{ fontSize: titleFontSize }}
                 >
                   {project.title}
@@ -185,7 +185,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                         type="button"
                         onClick={() => setActiveNarrative(index)}
                         aria-pressed={isActive}
-                        className={`relative py-4 pr-8 text-sm font-medium transition-all duration-200 ${isActive
+                        className={`relative py-4 pr-8 text-sm font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/50 ${isActive
                           ? "text-primary after:absolute after:inset-x-0 after:bottom-[-1px] after:h-[2px] after:rounded-full after:bg-primary"
                           : "text-foreground/40 hover:text-foreground/70"
                           }`}
@@ -206,7 +206,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       type="button"
                       aria-label="Previous section"
                       onClick={() => setActiveNarrative((p) => (p - 1 + narrativeSections.length) % narrativeSections.length)}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 text-foreground/40 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-primary disabled:opacity-25"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 text-foreground/40 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 disabled:opacity-25"
                     >
                       <ArrowLeft className="h-3.5 w-3.5" />
                     </button>
@@ -214,7 +214,7 @@ export default function ProjectPage({ params }: ProjectPageProps) {
                       type="button"
                       aria-label="Next section"
                       onClick={() => setActiveNarrative((p) => (p + 1) % narrativeSections.length)}
-                      className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 text-foreground/40 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-primary disabled:opacity-25"
+                      className="flex h-7 w-7 items-center justify-center rounded-full border border-primary/20 text-foreground/40 transition-all duration-200 hover:border-primary/50 hover:bg-primary/10 hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 disabled:opacity-25"
                     >
                       <ArrowLeft className="h-3.5 w-3.5 rotate-180" />
                     </button>

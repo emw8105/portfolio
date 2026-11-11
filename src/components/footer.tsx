@@ -2,7 +2,7 @@
 
 import { quotes } from "@/lib/quotes"
 import { useState, useEffect } from "react"
-import { Kelp, Coral, BubbleSvg } from "./ocean-creatures"
+import { Kelp, Coral } from "./ocean-creatures"
 
 function splitQuote(quote: string) {
     const match = quote.match(/^"(.+)"\s-\s(.+)$/)
@@ -45,37 +45,6 @@ export function Footer() {
                             <Coral color="#ff6b8a" size={36} />
                         </div>
                     </div>
-                    <div aria-hidden className="pointer-events-none absolute bottom-0 right-0 flex items-end gap-1 opacity-45">
-                        <div style={{ animationName: "kelp-sway", animationDuration: "5s", animationDelay: "-0.8s", animationTimingFunction: "ease-in-out", animationIterationCount: "infinite", transformOrigin: "bottom center", opacity: 0.65 }}>
-                            <Coral color="#4be0c1" size={32} />
-                        </div>
-                        <div style={{ animationName: "kelp-sway", animationDuration: "4.4s", animationDelay: "-3.2s", animationTimingFunction: "ease-in-out", animationIterationCount: "infinite", transformOrigin: "bottom center" }}>
-                            <Kelp color="#1a8a5e" height={64} />
-                        </div>
-                        <div style={{ animationName: "kelp-sway", animationDuration: "6s", animationDelay: "-1s", animationTimingFunction: "ease-in-out", animationIterationCount: "infinite", transformOrigin: "bottom center", opacity: 0.5 }}>
-                            <Kelp color="#2da97a" height={50} />
-                        </div>
-                    </div>
-
-                    {/* A few small rising bubbles in the footer */}
-                    {[14, 35, 52, 68, 82].map((left, i) => (
-                        <div
-                            key={i}
-                            aria-hidden
-                            style={{
-                                position: "absolute", bottom: -8, left: `${left}%`,
-                                animationName: "ocean-bubble-rise",
-                                animationDuration: `${10 + i * 3}s`,
-                                animationDelay: `${i * 2.1}s`,
-                                animationTimingFunction: "linear",
-                                animationIterationCount: "infinite",
-                                pointerEvents: "none", zIndex: 0,
-                            }}
-                        >
-                            <BubbleSvg size={8 + i * 3} />
-                        </div>
-                    ))}
-
                     <blockquote className="footer-quote relative z-10 min-w-0 max-w-3xl text-[clamp(0.96rem,1.05vw,1.08rem)] leading-[1.68] text-foreground/90">
                         <div className="footer-quote-frame">
                             {selectedQuote ? (

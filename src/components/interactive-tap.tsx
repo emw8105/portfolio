@@ -102,12 +102,11 @@ export function InteractiveTap() {
                     onClick={handleTap}
                     onPointerMove={handlePointerMove}
                     onPointerLeave={resetPointerState}
-                    className={`interactive-tap-card home-surface border border-ocean-border bg-ocean-surface rounded-[1.75rem] p-5 relative cursor-pointer transition-all duration-700 w-full ${nojimaTap ? "nojima-active" : ""}`}
+                    className={`interactive-tap-card home-surface border border-ocean-border bg-ocean-surface rounded-[1.75rem] p-5 relative cursor-pointer w-full ${nojimaTap ? "nojima-active" : ""}`}
                     aria-label={nojimaTap ? "Stop the ocean animation" : "Start the ocean animation"}
                     aria-pressed={nojimaTap}
                 >
                     <div className="interactive-tap-glow" />
-                    <div className="interactive-tap-grid" />
 
                     {/* Caustics sheen visible even when off (subtle) */}
                     <div style={{ opacity: nojimaTap ? 0.3 : 0.08, transition: "opacity 1.2s ease", position: "absolute", inset: 0, borderRadius: "inherit", overflow: "hidden", pointerEvents: "none" }}>

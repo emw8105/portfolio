@@ -1,7 +1,6 @@
 "use client"
 import { useEffect, useState } from "react"
 import Image from "next/image"
-import { Card } from "@/components/ui/card"
 import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
 import { ChevronLeft, ChevronRight } from "lucide-react"
@@ -74,11 +73,8 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
     }, [selectedImage, project.images])
 
     return (
-        <Card className="glass-card glow-hover mb-8 p-6 sm:p-8">
-            <div className="mb-6 space-y-3">
-                <p className="text-[0.72rem] font-semibold uppercase tracking-[0.32em] text-primary/85">Project Gallery</p>
-                <h2 className="font-serif text-3xl font-bold tracking-[-0.03em] text-foreground">Screens and snapshots</h2>
-            </div>
+        <section>
+            <h2 className="mb-6 text-[0.67rem] font-semibold uppercase tracking-[0.3em] text-primary/80">Gallery</h2>
 
             {project.images && project.images.length > 0 ? (
                 <div className="relative px-8">
@@ -90,7 +86,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                                 className="keen-slider__slide cursor-pointer group"
                                 onClick={() => setSelectedImage(index % count)} // map back to real index
                             >
-                                <div className="aspect-video rounded-lg overflow-hidden bg-muted relative transition-all duration-300 group-hover:shadow-lg group-hover:shadow-white/30">
+                                <div className="aspect-video rounded-lg overflow-hidden bg-muted relative border border-primary/10 transition-colors duration-300 group-hover:border-primary/35">
                                     <Image
                                         src={image.url || "/placeholder.svg"}
                                         alt={image.alt}
@@ -109,7 +105,8 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute top-1/2 -left-4 -translate-y-1/2 bg-background/80 shadow-md hover:shadow-lg rounded-full"
+                        aria-label="Previous image"
+                        className="absolute top-1/2 -left-4 -translate-y-1/2 rounded-full border border-primary/20 bg-background/70 backdrop-blur-sm hover:border-primary/40 hover:bg-primary/10"
                         onClick={() => instanceRef.current?.prev()}
                     >
                         <ChevronLeft className="h-5 w-5" />
@@ -117,7 +114,8 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     <Button
                         variant="ghost"
                         size="icon"
-                        className="absolute top-1/2 -right-4 -translate-y-1/2 bg-background/80 shadow-md hover:shadow-lg rounded-full"
+                        aria-label="Next image"
+                        className="absolute top-1/2 -right-4 -translate-y-1/2 rounded-full border border-primary/20 bg-background/70 backdrop-blur-sm hover:border-primary/40 hover:bg-primary/10"
                         onClick={() => instanceRef.current?.next()}
                     >
                         <ChevronRight className="h-5 w-5" />
@@ -129,7 +127,7 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
 
             {/* Lightbox Modal */}
             <Dialog open={selectedImage !== null} onOpenChange={() => setSelectedImage(null)}>
-                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex flex-col items-center justify-center bg-black">
+                <DialogContent className="max-w-[95vw] max-h-[95vh] p-0 flex flex-col items-center justify-center bg-[oklch(0.09_0.03_240)]">
                     {selectedImage !== null && project.images && (
                         <div className="flex flex-col items-center w-full">
                             <div className="relative w-[95vw] h-[85vh] flex items-center justify-center">
@@ -148,6 +146,6 @@ export default function ProjectGallery({ project }: ProjectGalleryProps) {
                     )}
                 </DialogContent>
             </Dialog>
-        </Card>
+        </section>
     )
 }

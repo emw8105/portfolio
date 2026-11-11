@@ -286,6 +286,10 @@ html, body, #__next {
     overflow: hidden;
     isolation: isolate;
     will-change: transform;
+    transition:
+      transform 0.18s cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
   }
 
   .interactive-tap-card:hover {
@@ -315,19 +319,6 @@ html, body, #__next {
   .interactive-tap-card:focus-visible .interactive-tap-glow,
   .interactive-tap-card[aria-pressed="true"] .interactive-tap-glow {
     opacity: 0.42;
-  }
-
-  .interactive-tap-grid {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    background-image:
-      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 26px 26px;
-    mask-image: radial-gradient(circle at center, rgba(0, 0, 0, 0.45), transparent 88%);
-    opacity: 0.08;
-    z-index: 0;
   }
 
   .interactive-tap-card img {
