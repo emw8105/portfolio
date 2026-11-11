@@ -1,5 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
+import { Analytics } from "@vercel/analytics/next"
 import { Plus_Jakarta_Sans, Fraunces } from "next/font/google"
 import "./globals.css"
 import { ScrollDepth } from "@/components/scroll-depth"
@@ -38,6 +39,7 @@ export default function RootLayout({
       <body className="font-sans">
         <ScrollDepth />
         {children}
+        <Analytics />
       </body>
     </html>
   )
