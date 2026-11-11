@@ -88,7 +88,7 @@ export default function AboutPage() {
                   <p>
                     I&apos;m a Solutions Architect at AWS, working
                     closely with some of the world&apos;s largest organizations to design and
-                    implement cloud-native architectures. My focus is being a knowledgeable and approachable partner for technical teams,
+                    implement AWS service-based architectures. My focus is being a technical advisor and approachable partner for teams of all backgrounds,
                     helping solve the most complex challenges faced by enterprises.
                   </p>
                   <p>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                     cloud architecture, full-stack development, and ML/AI systems.
                   </p>
                   <p className="text-primary/80 italic border-l-2 border-primary pl-4">
-                    Outside of work, I&apos;m staying active at the gym and tend to jump into side projects whenever an idea sticks, but time is short and the ideas are many.
+                    Outside of work, I like to stay active at the gym and pursue side projects whenever an idea sticks.
                   </p>
                 </div>
               </Card>

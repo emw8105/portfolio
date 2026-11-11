@@ -1,8 +1,8 @@
 export const interests = [
     "Cooking and baking 😋",
     "Creating bad d&d characters 🎲",
-    "Finding an excuse to try Rust 🦀",
+    "Trying out local inference 🧠",
     "Building personal projects 💻",
-    "Refactoring old code 🧹",
+    "Mentoring young professionals 👩‍🏫",
     "Learning fantasy football 🏈",
   ]
